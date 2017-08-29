@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Line.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Linex.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>E35942271F55564C009EFA35</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E359423A1F55565E009EFA35</key>
 		<dict>
 			<key>primary</key>
 			<true/>

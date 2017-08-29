@@ -12,6 +12,10 @@
 		E359421F1F55564C009EFA35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E359421E1F55564C009EFA35 /* Assets.xcassets */; };
 		E35942221F55564C009EFA35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35942201F55564C009EFA35 /* Main.storyboard */; };
 		E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359422C1F55564D009EFA35 /* LinexTests.swift */; };
+		E359423E1F55565E009EFA35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
+		E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35942421F55565E009EFA35 /* SourceEditorExtension.swift */; };
+		E35942451F55565E009EFA35 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35942441F55565E009EFA35 /* SourceEditorCommand.swift */; };
+		E35942491F55565E009EFA35 /* Line.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E359423B1F55565E009EFA35 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,7 +26,28 @@
 			remoteGlobalIDString = E35942161F55564C009EFA35;
 			remoteInfo = Linex;
 		};
+		E35942471F55565E009EFA35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E359420F1F55564C009EFA35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E359423A1F55565E009EFA35;
+			remoteInfo = Line;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E359424D1F55565E009EFA35 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E35942491F55565E009EFA35 /* Line.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E35942171F55564C009EFA35 /* Linex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +59,12 @@
 		E35942281F55564D009EFA35 /* LinexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E359422C1F55564D009EFA35 /* LinexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinexTests.swift; sourceTree = "<group>"; };
 		E359422E1F55564D009EFA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E359423B1F55565E009EFA35 /* Line.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Line.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E359423D1F55565E009EFA35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E35942411F55565E009EFA35 /* Line.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Line.entitlements; sourceTree = "<group>"; };
+		E35942421F55565E009EFA35 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		E35942441F55565E009EFA35 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		E35942461F55565E009EFA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +82,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E35942381F55565E009EFA35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E359423E1F55565E009EFA35 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +98,8 @@
 			children = (
 				E35942191F55564C009EFA35 /* Linex */,
 				E359422B1F55564D009EFA35 /* LinexTests */,
+				E359423F1F55565E009EFA35 /* Line */,
+				E359423C1F55565E009EFA35 /* Frameworks */,
 				E35942181F55564C009EFA35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +109,7 @@
 			children = (
 				E35942171F55564C009EFA35 /* Linex.app */,
 				E35942281F55564D009EFA35 /* LinexTests.xctest */,
+				E359423B1F55565E009EFA35 /* Line.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +135,33 @@
 			path = LinexTests;
 			sourceTree = "<group>";
 		};
+		E359423C1F55565E009EFA35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E359423D1F55565E009EFA35 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E359423F1F55565E009EFA35 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				E35942421F55565E009EFA35 /* SourceEditorExtension.swift */,
+				E35942441F55565E009EFA35 /* SourceEditorCommand.swift */,
+				E35942461F55565E009EFA35 /* Info.plist */,
+				E35942401F55565E009EFA35 /* Supporting Files */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		E35942401F55565E009EFA35 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E35942411F55565E009EFA35 /* Line.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,10 +172,12 @@
 				E35942131F55564C009EFA35 /* Sources */,
 				E35942141F55564C009EFA35 /* Frameworks */,
 				E35942151F55564C009EFA35 /* Resources */,
+				E359424D1F55565E009EFA35 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E35942481F55565E009EFA35 /* PBXTargetDependency */,
 			);
 			name = Linex;
 			productName = Linex;
@@ -131,6 +202,23 @@
 			productReference = E35942281F55564D009EFA35 /* LinexTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E359423A1F55565E009EFA35 /* Line */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E359424A1F55565E009EFA35 /* Build configuration list for PBXNativeTarget "Line" */;
+			buildPhases = (
+				E35942371F55565E009EFA35 /* Sources */,
+				E35942381F55565E009EFA35 /* Frameworks */,
+				E35942391F55565E009EFA35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Line;
+			productName = Line;
+			productReference = E359423B1F55565E009EFA35 /* Line.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -152,6 +240,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = E35942161F55564C009EFA35;
 					};
+					E359423A1F55565E009EFA35 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = KQQ77ZBE5E;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = E35942121F55564C009EFA35 /* Build configuration list for PBXProject "Linex" */;
@@ -169,6 +262,7 @@
 			targets = (
 				E35942161F55564C009EFA35 /* Linex */,
 				E35942271F55564C009EFA35 /* LinexTests */,
+				E359423A1F55565E009EFA35 /* Line */,
 			);
 		};
 /* End PBXProject section */
@@ -184,6 +278,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E35942261F55564C009EFA35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35942391F55565E009EFA35 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -210,6 +311,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E35942371F55565E009EFA35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
+				E35942451F55565E009EFA35 /* SourceEditorCommand.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -217,6 +327,11 @@
 			isa = PBXTargetDependency;
 			target = E35942161F55564C009EFA35 /* Linex */;
 			targetProxy = E35942291F55564D009EFA35 /* PBXContainerItemProxy */;
+		};
+		E35942481F55565E009EFA35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E359423A1F55565E009EFA35 /* Line */;
+			targetProxy = E35942471F55565E009EFA35 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -327,13 +442,16 @@
 		E35942321F55564D009EFA35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,13 +459,16 @@
 		E35942331F55564D009EFA35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -384,6 +505,42 @@
 			};
 			name = Release;
 		};
+		E359424B1F55565E009EFA35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Line/Line.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				INFOPLIST_FILE = Line/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex.Line;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E359424C1F55565E009EFA35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Line/Line.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				INFOPLIST_FILE = Line/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex.Line;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -403,6 +560,7 @@
 				E35942331F55564D009EFA35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E35942341F55564D009EFA35 /* Build configuration list for PBXNativeTarget "LinexTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +569,16 @@
 				E35942361F55564D009EFA35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E359424A1F55565E009EFA35 /* Build configuration list for PBXNativeTarget "Line" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E359424B1F55565E009EFA35 /* Debug */,
+				E359424C1F55565E009EFA35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
