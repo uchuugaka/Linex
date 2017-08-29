@@ -22,26 +22,44 @@ enum Options: String {
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     public func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Swift.Void) {
+        let buffer = invocation.buffer
+
         switch Options(command: invocation.commandIdentifier) {
         case .Duplicate:
-            let buffer = invocation.buffer
             let range1 = invocation.buffer.selections.lastObject as! XCSourceTextRange
             let currentCursorlineOffset = range1.start.line
             let currentLine = buffer.lines[currentCursorlineOffset] as! String
             invocation.buffer.lines.insert(currentLine, at: currentCursorlineOffset)
 
         case .NewCommentedLine:
-            Swift.print("Here")
-            invocation.buffer.lines.insert("Commented line", at: 0)
+            let range1 = invocation.buffer.selections.lastObject as! XCSourceTextRange
+            let currentLineOffset = range1.start.line
+            let currentLine = "// " + (buffer.lines[currentLineOffset] as! String)
+            invocation.buffer.lines.insert(currentLine, at: currentLineOffset)
 
         case .OpenNewLine:
-            Swift.print("Here")
-            invocation.buffer.lines.insert("Open New line", at: 0)
+            let range1 = invocation.buffer.selections.lastObject as! XCSourceTextRange
+            let currentLineOffset = range1.start.line
+            let currentLine = buffer.lines[currentLineOffset] as! String
+            let indentationOffset = currentLine.lineIndentationOffset()
+            let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
+            invocation.buffer.lines.insert(offsetWhiteSpaces, at: currentLineOffset + 1)
+
+            let position = XCSourceTextPosition(line: currentLineOffset + 1, column: indentationOffset)
+            let lineSelection = XCSourceTextRange(start: position, end: position)
+            invocation.buffer.selections.setArray([lineSelection])
         }
-//        Swift.print("Here")
-
-
-
         completionHandler(nil)
     }
+
 }
+
+
+
+
+
+
+
+
+
+
