@@ -10,7 +10,7 @@ import Foundation
 import XcodeKit
 
 enum Options: String {
-    case OpenNewLine, NewCommentedLine, Duplicate
+    case OpenNewLine, NewCommentedLine, Duplicate, DeleteLine
     case SelectLine, OneSpace
     init(command: String) {
         // Eg: com.kaunteya.Line.Duplicate
@@ -65,6 +65,15 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             buffer.lines.replaceObject(at: currentLineOffset, with: currentLine)
             range.end.column = newOffset
             range.start.column = newOffset
+
+        case .DeleteLine:
+            //TODO: Do nothing if there is any selection
+            let range = invocation.buffer.selections.lastObject as! XCSourceTextRange
+            let currentLineOffset = range.start.line
+            let currentLine = buffer.lines[currentLineOffset] as! String
+            let indentationOffset = currentLine.lineIndentationOffset()
+            let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
+            buffer.lines.replaceObject(at: currentLineOffset, with: offsetWhiteSpaces)
         }
 
         completionHandler(nil)
