@@ -76,6 +76,14 @@
                     <key>XCSourceEditorCommandName</key>
                     <string>Delete Line</string>
                 </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Join</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Join Line</string>
+                </dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>

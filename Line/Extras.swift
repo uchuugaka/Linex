@@ -12,15 +12,11 @@ import XcodeKit
 
 extension XCSourceEditorCommandInvocation {
 
-    func noSelection() -> Bool {
-        assert(self.buffer.selections.count > 0, "Count can be zero. Wrong assumption")
-        let range = self.buffer.selections.lastObject as! XCSourceTextRange
-        return range.start.column == range.end.column && range.start.line == range.end.line
-    }
 
-    func selectionRanges(of buffer: XCSourceTextBuffer) -> [XCSourceTextRange]? {
+    func selectionRanges() -> [XCSourceTextRange]? {
         assert(self.buffer.selections.count > 0, "Count can be zero. Wrong assumption")
-        return buffer.selections.map { $0 as! XCSourceTextRange }
+
+        return self.buffer.selections.map { $0 as! XCSourceTextRange }
     }
 
     func moveCursorTo(location: XCSourceTextPosition) {
