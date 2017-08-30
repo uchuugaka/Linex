@@ -57,7 +57,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             range.end.column = 0
 
         case .OneSpace:
-            break
+            let range = invocation.buffer.selections.lastObject as! XCSourceTextRange
+            let currentLineOffset = range.start.line
+            var currentLine = buffer.lines[currentLineOffset] as! String
+            let pin = range.end.column
+            let newOffset = currentLine.toOneSpaceAt(pin: pin)
+            buffer.lines.replaceObject(at: currentLineOffset, with: currentLine)
+            range.end.column = newOffset
+            range.start.column = newOffset
         }
 
         completionHandler(nil)
