@@ -67,8 +67,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             range.start.column = newOffset
 
         case .DeleteLine:
-            //TODO: Do nothing if there is any selection
             let range = invocation.buffer.selections.lastObject as! XCSourceTextRange
+            if range.start.line != range.end.line { break; }
             let currentLineOffset = range.start.line
             let currentLine = buffer.lines[currentLineOffset] as! String
             let indentationOffset = currentLine.lineIndentationOffset()
