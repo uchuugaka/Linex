@@ -11,6 +11,7 @@ import XcodeKit
 
 enum Options: String {
     case OpenNewLine, NewCommentedLine, Duplicate
+    case SelectLine, OneSpace
     init(command: String) {
         // Eg: com.kaunteya.Line.Duplicate
         let bundle = Bundle.main.bundleIdentifier! + "."
@@ -48,7 +49,17 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             let position = XCSourceTextPosition(line: currentLineOffset + 1, column: indentationOffset)
             let lineSelection = XCSourceTextRange(start: position, end: position)
             invocation.buffer.selections.setArray([lineSelection])
+
+        case .SelectLine:
+            let range = invocation.buffer.selections.lastObject as! XCSourceTextRange
+            range.start.column = 0
+            range.end.line += 1
+            range.end.column = 0
+
+        case .OneSpace:
+            break
         }
+
         completionHandler(nil)
     }
 
