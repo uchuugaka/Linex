@@ -30,8 +30,7 @@ extension String {
         return i
     }
 
-    mutating func toOneSpaceAt(pin: Int) -> Int {
-        guard self[pin] == " " else { return pin}
+    func lineOneSpaceAt(pin: Int) -> (Int, String) {
 
         var start = pin
         while start > 0 && self[start - 1] == " " {
@@ -42,9 +41,13 @@ extension String {
         while end < self.characters.count && self[end] == " " {
             end += 1
         }
-
+        if start == end {
+            return (pin, self)
+        }
         let range = self.index(self.startIndex, offsetBy: start)..<self.index(self.startIndex, offsetBy: end)
-        self.replaceSubrange(range, with: " ")
-        return start
+        var newString = self
+        newString.replaceSubrange(range, with: " ")
+        return (start, newString)
     }
+
 }

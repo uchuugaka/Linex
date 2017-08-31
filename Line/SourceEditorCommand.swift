@@ -87,10 +87,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .OneSpace: //Does not work when caret is at end non white char
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let currentLineOffset = range.start.line
-            var currentLine = buffer.lines[currentLineOffset] as! String
+            let currentLine = buffer.lines[currentLineOffset] as! String
             let pin = range.end.column
-            let newOffset = currentLine.toOneSpaceAt(pin: pin)
-            buffer.lines.replaceObject(at: currentLineOffset, with: currentLine)
+            let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: pin)
+            buffer.lines.replaceObject(at: currentLineOffset, with: newLine)
             range.end.column = newOffset
             range.start.column = newOffset
 
