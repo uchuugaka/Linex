@@ -28,16 +28,43 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         switch Options(command: invocation.commandIdentifier) {
         case .Duplicate:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let currentCursorlineOffset = range.start.line
-            let currentLine = buffer.lines[currentCursorlineOffset] as! String
-            buffer.lines.insert(currentLine, at: currentCursorlineOffset)
+            let selRange = buffer.selections.lastObject as! XCSourceTextRange
+            var oldOffset = selRange.end.line
+            let noSelection = selRange.start.column == selRange.end.column && selRange.start.line == selRange.end.line
+            let linesIndexSet: IndexSet
+            if noSelection {
+                linesIndexSet = IndexSet(integersIn: selRange.start.line...selRange.end.line)
+                oldOffset += 1
+            } else {
+                linesIndexSet = IndexSet(integersIn: selRange.start.line..<selRange.end.line)
+            }
+            let copyOfLines = buffer.lines.objects(at: linesIndexSet)
+            buffer.lines.insert(copyOfLines, at: linesIndexSet)
+            selRange.start.line = oldOffset
+            if noSelection {
+                selRange.end.line = oldOffset
+            }
 
         case .NewCommentedLine:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let currentLineOffset = range.start.line
-            let currentLine = "// " + (buffer.lines[currentLineOffset] as! String)
-            buffer.lines.insert(currentLine, at: currentLineOffset)
+
+            let selRange = buffer.selections.lastObject as! XCSourceTextRange
+            var oldOffset = selRange.end.line
+            let noSelection = selRange.start.column == selRange.end.column && selRange.start.line == selRange.end.line
+            let linesIndexSet: IndexSet
+            if noSelection {
+                linesIndexSet = IndexSet(integersIn: selRange.start.line...selRange.end.line)
+                oldOffset += 1
+            } else {
+                linesIndexSet = IndexSet(integersIn: selRange.start.line..<selRange.end.line)
+            }
+            let copyOfLines = buffer.lines.objects(at: linesIndexSet) as! [String]
+            let commentedLines = copyOfLines.map { "//" + $0 }
+            buffer.lines.insert(commentedLines, at: linesIndexSet)
+
+            selRange.start.line = oldOffset
+            if noSelection {
+                selRange.end.line = oldOffset
+            }
 
         case .OpenNewLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
