@@ -101,7 +101,16 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
             }
         case .HomeToggle:
-            break
+            let range = buffer.selections.lastObject as! XCSourceTextRange
+            let noSelection = range.start.column == range.end.column && range.start.line == range.end.line
+            if noSelection == false { break }//Will not work if there is selection
+            let indentationOffset = (buffer.lines[range.start.line] as! String).lineIndentationOffset()
+
+            if range.start.column == indentationOffset {
+                range.start.column = 0; range.end.column = 0;
+            } else {
+                range.start.column = indentationOffset; range.end.column = indentationOffset;
+            }
         }
 
         completionHandler(nil)
