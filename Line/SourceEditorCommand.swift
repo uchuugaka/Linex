@@ -11,7 +11,7 @@ import XcodeKit
 
 enum Options: String {
     case OpenNewLine, NewCommentedLine, Duplicate, DeleteLine, Join
-    case HomeToggle
+    case LineBeginning
 }
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -100,7 +100,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             } else {
 
             }
-        case .HomeToggle:
+        case .LineBeginning:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let noSelection = range.start.column == range.end.column && range.start.line == range.end.line
             if noSelection == false { break }//Will not work if there is selection

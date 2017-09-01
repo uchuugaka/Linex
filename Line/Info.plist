@@ -72,9 +72,9 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).HomeToggle</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).LineBeginning</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Home Toggle</string>
+                    <string>Line Beginning</string>
                 </dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
