@@ -56,22 +56,6 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).SelectLine</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Select Line</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).OneSpace</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>One Space</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
                     <string>$(PRODUCT_BUNDLE_IDENTIFIER).DeleteLine</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Delete Line</string>
@@ -83,6 +67,14 @@
                     <string>$(PRODUCT_BUNDLE_IDENTIFIER).Join</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Join Line</string>
+                </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).HomeToggle</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Home Toggle</string>
                 </dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

@@ -11,13 +11,7 @@ import XcodeKit
 
 enum Options: String {
     case OpenNewLine, NewCommentedLine, Duplicate, DeleteLine, Join
-    case SelectLine, OneSpace
-    init(command: String) {
-        // Eg: com.kaunteya.Line.Duplicate
-        let bundle = Bundle.main.bundleIdentifier! + "."
-        let str = command.substring(from: bundle.endIndex)
-        self.init(rawValue: str)!
-    }
+    case HomeToggle
 }
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -26,7 +20,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         let buffer = invocation.buffer
 
-        switch Options(command: invocation.commandIdentifier) {
+        switch Options(command: invocation.commandIdentifier)! {
         case .Duplicate:
             let selRange = buffer.selections.lastObject as! XCSourceTextRange
             var oldOffset = selRange.end.line
@@ -78,21 +72,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             let lineSelection = XCSourceTextRange(start: position, end: position)
             buffer.selections.setArray([lineSelection])
 
-        case .SelectLine:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            range.start.column = 0
-            range.end.line += 1
-            range.end.column = 0
-
-        case .OneSpace: //Does not work when caret is at end non white char
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let currentLineOffset = range.start.line
-            let currentLine = buffer.lines[currentLineOffset] as! String
-            let pin = range.end.column
-            let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: pin)
-            buffer.lines.replaceObject(at: currentLineOffset, with: newLine)
-            range.end.column = newOffset
-            range.start.column = newOffset
 
         case .DeleteLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
@@ -121,7 +100,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             } else {
 
             }
-
+        case .HomeToggle:
+            break
         }
 
         completionHandler(nil)

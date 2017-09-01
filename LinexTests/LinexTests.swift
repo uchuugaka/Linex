@@ -46,6 +46,7 @@ class LinexTests: XCTestCase {
         XCTAssert(t1.lineOneSpaceAt(pin: 5) == (1, t2))
         XCTAssert(t1.lineOneSpaceAt(pin: 6) == (6, t1))
         XCTAssert(t1.lineOneSpaceAt(pin: 7) == (7, t1))
+        XCTAssert(t1.lineOneSpaceAt(pin: 8) == (8, t1))
     }
 
 }

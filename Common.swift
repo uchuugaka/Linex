@@ -1,11 +1,12 @@
 //
-//  Line+String.swift
+//  Common.swift
 //  Linex
 //
-//  Created by Kaunteya Suryawanshi on 29/08/17.
+//  Created by Kaunteya Suryawanshi on 01/09/17.
 //  Copyright © 2017 Kaunteya Suryawanshi. All rights reserved.
 //
 
+import Foundation
 import Foundation
 
 extension String {
@@ -50,4 +51,23 @@ extension String {
         return (start, newString)
     }
 
+    func trimStart() -> String {
+        return self.replacingOccurrences(of: "^[ \t]+",
+                                         with: "",
+                                         options: CompareOptions.regularExpression)
+    }
+
+    static func spaces(count: Int) -> String {
+        return Array<String>(repeating: " ", count: count).joined()
+    }
+
+}
+
+extension RawRepresentable where RawValue == String {
+    init?(command: String) {
+        // Eg: com.kaunteya.Line.Duplicate
+        let bundle = Bundle.main.bundleIdentifier! + "."
+        let str = command.substring(from: bundle.endIndex)
+        self.init(rawValue: str)
+    }
 }
