@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Case {
+enum Case: String {
     case title // "We Have A Book"
     case upper // "WE HAVE A BOOK"
     case lower // "we have a book"

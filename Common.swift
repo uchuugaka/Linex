@@ -72,8 +72,7 @@ extension String {
 extension RawRepresentable where RawValue == String {
     init?(command: String) {
         // Eg: com.kaunteya.Line.Duplicate
-        let bundle = Bundle.main.bundleIdentifier! + "."
-        let str = command.substring(from: bundle.endIndex)
-        self.init(rawValue: str)
+        let value = command.components(separatedBy: ".").last!
+        self.init(rawValue: value)
     }
 }

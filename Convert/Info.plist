@@ -32,7 +32,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Title</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).title</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Title Case</string>
                 </dict>
@@ -40,7 +40,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).UpperCase</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).upperCase</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>UPPER CASE</string>
                 </dict>
@@ -48,7 +48,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Lower</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).lower</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>lower case</string>
                 </dict>
@@ -56,7 +56,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Snake</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).snake</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>snake_case</string>
                 </dict>
@@ -64,7 +64,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Camel</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).camel</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>camelCase</string>
                 </dict>
@@ -72,7 +72,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Pascal</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).pascal</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>PascalCase</string>
                 </dict>

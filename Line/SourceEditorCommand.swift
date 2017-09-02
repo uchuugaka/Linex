@@ -10,8 +10,8 @@ import Foundation
 import XcodeKit
 
 enum Options: String {
-    case OpenNewLine, NewCommentedLine, Duplicate, DeleteLine, Join
-    case LineBeginning
+    case openNewLine, newCommentedLine, duplicate, deleteLine, join
+    case lineBeginning
 }
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -21,7 +21,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let buffer = invocation.buffer
 
         switch Options(command: invocation.commandIdentifier)! {
-        case .Duplicate:
+        case .duplicate:
             let selRange = buffer.selections.lastObject as! XCSourceTextRange
             var oldOffset = selRange.end.line
             let noSelection = selRange.start.column == selRange.end.column && selRange.start.line == selRange.end.line
@@ -39,7 +39,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 selRange.end.line = oldOffset
             }
 
-        case .NewCommentedLine:
+        case .newCommentedLine:
 
             let selRange = buffer.selections.lastObject as! XCSourceTextRange
             var oldOffset = selRange.end.line
@@ -60,7 +60,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 selRange.end.line = oldOffset
             }
 
-        case .OpenNewLine:
+        case .openNewLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let currentLineOffset = range.start.line
             let currentLine = buffer.lines[currentLineOffset] as! String
@@ -73,13 +73,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             buffer.selections.setArray([lineSelection])
 
 
-        case .DeleteLine:
+        case .deleteLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             if range.start.line != range.end.line { break; }
             let currentLineOffset = range.start.line
             buffer.lines.removeObject(at: currentLineOffset)
 
-        case .Join:
+        case .join:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let noSelection = range.start.column == range.end.column && range.start.line == range.end.line
             let currentLineOffset = range.start.line
@@ -100,7 +100,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             } else {
 
             }
-        case .LineBeginning:
+        case .lineBeginning:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let noSelection = range.start.column == range.end.column && range.start.line == range.end.line
             if noSelection == false { break }//Will not work if there is selection

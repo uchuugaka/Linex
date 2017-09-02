@@ -32,7 +32,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Duplicate</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).duplicate</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Duplicate</string>
                 </dict>
@@ -40,7 +40,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenNewLine</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).openNewLine</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Open New Line</string>
                 </dict>
@@ -48,7 +48,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).NewCommentedLine</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).newCommentedLine</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Commented Duplicate</string>
                 </dict>
@@ -56,7 +56,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).DeleteLine</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).deleteLine</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Delete Line</string>
                 </dict>
@@ -64,7 +64,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).Join</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).join</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Join Line</string>
                 </dict>
@@ -72,7 +72,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).LineBeginning</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).lineBeginning</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Line Beginning</string>
                 </dict>

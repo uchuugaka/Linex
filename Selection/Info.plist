@@ -32,7 +32,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).SelectLine</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).selectLine</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Select Line</string>
                 </dict>
@@ -40,7 +40,7 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).OneSpace</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).oneSpace</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>One Space</string>
                 </dict>

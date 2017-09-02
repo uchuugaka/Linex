@@ -10,7 +10,7 @@ import Foundation
 import XcodeKit
 
 enum Options: String {
-    case SelectLine, OneSpace, Expand
+    case selectLine, oneSpace, expand
 }
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -19,13 +19,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let buffer = invocation.buffer
 
         switch Options(command: invocation.commandIdentifier)! {
-        case .SelectLine:
+        case .selectLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             range.start.column = 0
             range.end.line += 1
             range.end.column = 0
 
-        case .OneSpace: //Does not work when caret is at end non white char
+        case .oneSpace: //Does not work when caret is at end non white char
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let currentLineOffset = range.start.line
             let currentLine = buffer.lines[currentLineOffset] as! String
@@ -34,7 +34,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             buffer.lines.replaceObject(at: currentLineOffset, with: newLine)
             range.end.column = newOffset
             range.start.column = newOffset
-        case .Expand:
+        case .expand:
             break
         }
         completionHandler(nil)
