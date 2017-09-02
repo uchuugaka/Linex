@@ -24,6 +24,13 @@
 		E39E22801F59C59100354A5F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* Common.swift */; };
 		E39E22811F59C59200354A5F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* Common.swift */; };
 		E39E22821F59C59300354A5F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* Common.swift */; };
+		E3F543941F5A84FC008F426E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
+		E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */; };
+		E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */; };
+		E3F5439F1F5A84FC008F426E /* Convert.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3F543931F5A84FC008F426E /* Convert.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E3F543A41F5A8518008F426E /* CaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543A31F5A8518008F426E /* CaseHandler.swift */; };
+		E3F543A51F5A8534008F426E /* CaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543A31F5A8518008F426E /* CaseHandler.swift */; };
+		E3F543A61F5ABA48008F426E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,13 @@
 			remoteGlobalIDString = E39E226C1F59876A00354A5F;
 			remoteInfo = Selection;
 		};
+		E3F5439D1F5A84FC008F426E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E359420F1F55564C009EFA35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3F543921F5A84FC008F426E;
+			remoteInfo = Convert;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +72,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				E35942491F55565E009EFA35 /* Line.appex in Embed App Extensions */,
+				E3F5439F1F5A84FC008F426E /* Convert.appex in Embed App Extensions */,
 				E39E22791F59876A00354A5F /* Selection.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -88,6 +103,12 @@
 		E39E22741F59876A00354A5F /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		E39E22761F59876A00354A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E39E227E1F59C58E00354A5F /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		E3F543931F5A84FC008F426E /* Convert.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Convert.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F543971F5A84FC008F426E /* Convert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Convert.entitlements; sourceTree = "<group>"; };
+		E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		E3F5439C1F5A84FC008F426E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3F543A31F5A8518008F426E /* CaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +142,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3F543901F5A84FC008F426E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F543941F5A84FC008F426E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -132,6 +161,7 @@
 				E359422B1F55564D009EFA35 /* LinexTests */,
 				E359423F1F55565E009EFA35 /* Line */,
 				E39E226F1F59876A00354A5F /* Selection */,
+				E3F543951F5A84FC008F426E /* Convert */,
 				E359423C1F55565E009EFA35 /* Frameworks */,
 				E35942181F55564C009EFA35 /* Products */,
 			);
@@ -144,6 +174,7 @@
 				E35942281F55564D009EFA35 /* LinexTests.xctest */,
 				E359423B1F55565E009EFA35 /* Line.appex */,
 				E39E226D1F59876A00354A5F /* Selection.appex */,
+				E3F543931F5A84FC008F426E /* Convert.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +247,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E3F543951F5A84FC008F426E /* Convert */ = {
+			isa = PBXGroup;
+			children = (
+				E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */,
+				E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */,
+				E3F543A31F5A8518008F426E /* CaseHandler.swift */,
+				E3F5439C1F5A84FC008F426E /* Info.plist */,
+				E3F543961F5A84FC008F426E /* Supporting Files */,
+			);
+			path = Convert;
+			sourceTree = "<group>";
+		};
+		E3F543961F5A84FC008F426E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3F543971F5A84FC008F426E /* Convert.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,6 +284,7 @@
 			dependencies = (
 				E35942481F55565E009EFA35 /* PBXTargetDependency */,
 				E39E22781F59876A00354A5F /* PBXTargetDependency */,
+				E3F5439E1F5A84FC008F426E /* PBXTargetDependency */,
 			);
 			name = Linex;
 			productName = Linex;
@@ -291,6 +343,23 @@
 			productReference = E39E226D1F59876A00354A5F /* Selection.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
+		E3F543921F5A84FC008F426E /* Convert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3F543A21F5A84FC008F426E /* Build configuration list for PBXNativeTarget "Convert" */;
+			buildPhases = (
+				E3F5438F1F5A84FC008F426E /* Sources */,
+				E3F543901F5A84FC008F426E /* Frameworks */,
+				E3F543911F5A84FC008F426E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Convert;
+			productName = Convert;
+			productReference = E3F543931F5A84FC008F426E /* Convert.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -322,6 +391,11 @@
 						DevelopmentTeam = KQQ77ZBE5E;
 						ProvisioningStyle = Automatic;
 					};
+					E3F543921F5A84FC008F426E = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = KQQ77ZBE5E;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = E35942121F55564C009EFA35 /* Build configuration list for PBXProject "Linex" */;
@@ -341,6 +415,7 @@
 				E35942271F55564C009EFA35 /* LinexTests */,
 				E359423A1F55565E009EFA35 /* Line */,
 				E39E226C1F59876A00354A5F /* Selection */,
+				E3F543921F5A84FC008F426E /* Convert */,
 			);
 		};
 /* End PBXProject section */
@@ -376,6 +451,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3F543911F5A84FC008F426E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -394,6 +476,7 @@
 			files = (
 				E39E22821F59C59300354A5F /* Common.swift in Sources */,
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
+				E3F543A51F5A8534008F426E /* CaseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +501,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3F5438F1F5A84FC008F426E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F543A61F5ABA48008F426E /* Common.swift in Sources */,
+				E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */,
+				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,
+				E3F543A41F5A8518008F426E /* CaseHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -435,6 +529,11 @@
 			isa = PBXTargetDependency;
 			target = E39E226C1F59876A00354A5F /* Selection */;
 			targetProxy = E39E22771F59876A00354A5F /* PBXContainerItemProxy */;
+		};
+		E3F5439E1F5A84FC008F426E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3F543921F5A84FC008F426E /* Convert */;
+			targetProxy = E3F5439D1F5A84FC008F426E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -678,6 +777,40 @@
 			};
 			name = Release;
 		};
+		E3F543A01F5A84FC008F426E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Convert/Convert.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				INFOPLIST_FILE = Convert/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex.Convert;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E3F543A11F5A84FC008F426E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Convert/Convert.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				INFOPLIST_FILE = Convert/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex.Convert;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -722,6 +855,15 @@
 			buildConfigurations = (
 				E39E227A1F59876A00354A5F /* Debug */,
 				E39E227B1F59876A00354A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3F543A21F5A84FC008F426E /* Build configuration list for PBXNativeTarget "Convert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3F543A01F5A84FC008F426E /* Debug */,
+				E3F543A11F5A84FC008F426E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

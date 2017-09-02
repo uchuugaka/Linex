@@ -61,6 +61,12 @@ extension String {
         return Array<String>(repeating: " ", count: count).joined()
     }
 
+    func replacedRegex(pattern: String, with template: String) -> String {
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let range = NSMakeRange(0, characters.count)
+        let modString = regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: template)
+        return modString
+    }
 }
 
 extension RawRepresentable where RawValue == String {
