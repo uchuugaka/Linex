@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import XcodeKit
 
 extension String {
 
@@ -54,4 +55,21 @@ extension RawRepresentable where RawValue == String {
         let value = command.components(separatedBy: ".").last!
         self.init(rawValue: value)
     }
+}
+
+func selectionRanges(of buffer: XCSourceTextBuffer) -> [XCSourceTextRange] {
+    return buffer.selections.map { $0 as! XCSourceTextRange }
+}
+
+func firstSelectionRange(of buffer: XCSourceTextBuffer) -> XCSourceTextRange? {
+    return selectionRanges(of: buffer).first
+}
+
+func selectedLinesIndexSet(of buffer: XCSourceTextBuffer) -> IndexSet? {
+    guard let selectionRange = firstSelectionRange(of: buffer), buffer.lines.count > 0 else { return nil }
+    let selectionRangeEndLine = selectionRange.end.line + (selectionRange.end.column == 0 ? 0 : 1 )
+    let targetRange = Range(uncheckedBounds: (
+        lower: selectionRange.start.line,
+        upper: min(selectionRangeEndLine, buffer.lines.count)))
+    return IndexSet(integersIn: targetRange)
 }

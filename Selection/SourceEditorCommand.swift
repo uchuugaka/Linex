@@ -37,12 +37,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .expand:
             break
         case .align:
-            break
-//            guard let indexSet = linesIndexSet(of: buffer) else {
-//                print("indexSet is nil"); return
-//            }
-//            print("Indexset \(indexSet)")
-//            let allLines = buffer.lines.objects(at: indexSet) as! [String]
+            guard let selectedLinesIndexSet = selectedLinesIndexSet(of: buffer) else {
+                return
+            }
+            let selectedLines = buffer.lines.objects(at: selectedLinesIndexSet) as! [String]
+            if let aligned = selectedLines.autoAlign() {
+                buffer.lines.replaceObjects(at: selectedLinesIndexSet, with: aligned)
+            }
         }
         completionHandler(nil)
     }
