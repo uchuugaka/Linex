@@ -10,7 +10,7 @@ import Foundation
 import XcodeKit
 
 enum Options: String {
-    case selectLine, oneSpace, expand
+    case selectLine, oneSpace, expand, align
 }
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -36,6 +36,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             range.start.column = newOffset
         case .expand:
             break
+        case .align:
+            break
+//            guard let indexSet = linesIndexSet(of: buffer) else {
+//                print("indexSet is nil"); return
+//            }
+//            print("Indexset \(indexSet)")
+//            let allLines = buffer.lines.objects(at: indexSet) as! [String]
         }
         completionHandler(nil)
     }

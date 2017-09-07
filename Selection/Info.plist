@@ -44,6 +44,14 @@
                     <key>XCSourceEditorCommandName</key>
                     <string>One Space</string>
                 </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).align</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Align</string>
+                </dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>

@@ -30,26 +30,6 @@ extension String {
         return i
     }
 
-    func lineOneSpaceAt(pin: Int) -> (Int, String) {
-
-        var start = pin
-        while start > 0 && self[start - 1] == " " {
-            start -= 1
-        }
-
-        var end = pin
-        while end < self.characters.count && self[end] == " " {
-            end += 1
-        }
-        if start == end {
-            return (pin, self)
-        }
-        let range = self.index(self.startIndex, offsetBy: start)..<self.index(self.startIndex, offsetBy: end)
-        var newString = self
-        newString.replaceSubrange(range, with: " ")
-        return (start, newString)
-    }
-
     func trimStart() -> String {
         return self.replacingOccurrences(of: "^[ \t]+",
                                          with: "",
