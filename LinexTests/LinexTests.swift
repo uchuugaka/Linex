@@ -82,4 +82,81 @@ class LinexTests: XCTestCase {
         XCTAssert(t1.lineOneSpaceAt(pin: 8) == (8, t1))
     }
 
+    func testAlign() {
+        XCTAssertEqual(["let name = \"Kaunteya\""].autoAlign()!,
+                       ["let name = \"Kaunteya\""])
+
+        XCTAssertEqual(["var name = Kaunteya",
+                        "self.lastupdated = createdOn",
+                        "self.name = name",
+                        "self.uuid = UUID().uuidString",
+                        "self.createdOn = Date()",
+                        ].autoAlign()!,
+                       [
+                        "var name         = Kaunteya",
+                        "self.lastupdated = createdOn",
+                        "self.name        = name",
+                        "self.uuid        = UUID().uuidString",
+                        "self.createdOn   = Date()"
+            ])
+
+        XCTAssertEqual(["let name = \"Kaunteya\"",
+                        "var telephoneNumber = \"8973459878945734\"",
+                        "var age: Int! = 45"
+            ].autoAlign()!,
+                       [
+                        "let name            = \"Kaunteya\"",
+                        "var telephoneNumber = \"8973459878945734\"",
+                        "var age: Int!       = 45"
+
+            ])
+        
+        XCTAssertEqual(["let name = \"Kaunteya\"",
+                        "var telephoneNumber: String = \"8973459878945734\"",
+                        "var age: Int! = 45"
+            ].autoAlign()!,
+                       [
+                        "let name                    = \"Kaunteya\"",
+                        "var telephoneNumber: String = \"8973459878945734\"",
+                        "var age            : Int!   = 45"
+
+            ])
+        
+        XCTAssertEqual(["var name: String",
+                        "var telephoneNumber: String",
+                        "var age: Int!"
+            ].autoAlign()!,
+                       [
+                        "var name           : String",
+                        "var telephoneNumber: String",
+                        "var age            : Int!"
+
+            ])
+
+        XCTAssertEqual(["var name: String",
+                        "var telephoneNumber: String",
+                        "",
+                        "var age: Int!"
+            ].autoAlign()!,
+                       [
+                        "var name           : String",
+                        "var telephoneNumber: String",
+                        "",
+                        "var age            : Int!"
+
+            ])
+        XCTAssertEqual(["var name: String",
+                        "var telephoneNumber: String",
+                        "// Age of the person",
+                        "var age: Int!"
+            ].autoAlign()!,
+                       [
+                        "var name           : String",
+                        "var telephoneNumber: String",
+                        "// Age of the person",
+                        "var age            : Int!"
+
+            ])
+
+    }
 }

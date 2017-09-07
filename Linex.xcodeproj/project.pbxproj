@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E31C9FE11F60708C008BBAFD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* Common.swift */; };
 		E31FD4741F5712540044765A /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31FD4731F5712540044765A /* Extras.swift */; };
 		E359421B1F55564C009EFA35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421A1F55564C009EFA35 /* AppDelegate.swift */; };
 		E359421D1F55564C009EFA35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421C1F55564C009EFA35 /* ViewController.swift */; };
@@ -17,6 +18,8 @@
 		E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35942421F55565E009EFA35 /* SourceEditorExtension.swift */; };
 		E35942451F55565E009EFA35 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35942441F55565E009EFA35 /* SourceEditorCommand.swift */; };
 		E35942491F55565E009EFA35 /* Line.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E359423B1F55565E009EFA35 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E359BCF61F604E000071246B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359BCF51F604E000071246B /* Util.swift */; };
+		E359BD0A1F6063A70071246B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359BCF51F604E000071246B /* Util.swift */; };
 		E39E226E1F59876A00354A5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
 		E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22721F59876A00354A5F /* SourceEditorExtension.swift */; };
 		E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22741F59876A00354A5F /* SourceEditorCommand.swift */; };
@@ -97,6 +100,7 @@
 		E35942421F55565E009EFA35 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		E35942441F55565E009EFA35 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		E35942461F55565E009EFA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E359BCF51F604E000071246B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		E39E226D1F59876A00354A5F /* Selection.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Selection.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39E22711F59876A00354A5F /* Selection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Selection.entitlements; sourceTree = "<group>"; };
 		E39E22721F59876A00354A5F /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 			children = (
 				E39E22721F59876A00354A5F /* SourceEditorExtension.swift */,
 				E39E22741F59876A00354A5F /* SourceEditorCommand.swift */,
+				E359BCF51F604E000071246B /* Util.swift */,
 				E39E22761F59876A00354A5F /* Info.plist */,
 				E39E22701F59876A00354A5F /* Supporting Files */,
 			);
@@ -466,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E359421D1F55564C009EFA35 /* ViewController.swift in Sources */,
+				E31C9FE11F60708C008BBAFD /* Common.swift in Sources */,
 				E359421B1F55564C009EFA35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +483,7 @@
 				E39E22821F59C59300354A5F /* Common.swift in Sources */,
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
 				E3F543A51F5A8534008F426E /* CaseHandler.swift in Sources */,
+				E359BD0A1F6063A70071246B /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +505,7 @@
 				E39E22811F59C59200354A5F /* Common.swift in Sources */,
 				E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */,
 				E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */,
+				E359BCF61F604E000071246B /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,6 +874,7 @@
 				E3F543A11F5A84FC008F426E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
