@@ -10,7 +10,7 @@ import Foundation
 import XcodeKit
 
 enum Options: String {
-    case openNewLine, newCommentedLine, duplicate, deleteLine, join
+    case duplicate, openNewLineBelow, openNewLineAbove, commentedDuplicate, deleteLine, join
     case lineBeginning
 }
 
@@ -21,6 +21,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let buffer = invocation.buffer
 
         switch Options(command: invocation.commandIdentifier)! {
+
         case .duplicate:
             let selRange = buffer.selections.lastObject as! XCSourceTextRange
             var oldOffset = selRange.end.line
@@ -39,7 +40,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 selRange.end.line = oldOffset
             }
 
-        case .newCommentedLine:
+        case .commentedDuplicate:
 
             let selRange = buffer.selections.lastObject as! XCSourceTextRange
             var oldOffset = selRange.end.line
@@ -60,7 +61,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 selRange.end.line = oldOffset
             }
 
-        case .openNewLine:
+        case .openNewLineBelow:
             let range = buffer.selections.lastObject as! XCSourceTextRange
             let currentLineOffset = range.start.line
             let currentLine = buffer.lines[currentLineOffset] as! String
@@ -72,6 +73,17 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             let lineSelection = XCSourceTextRange(start: position, end: position)
             buffer.selections.setArray([lineSelection])
 
+        case .openNewLineAbove:
+            let range = buffer.selections.lastObject as! XCSourceTextRange
+            let currentLineOffset = range.start.line
+            let currentLine = buffer.lines[currentLineOffset] as! String
+            let indentationOffset = currentLine.lineIndentationOffset()
+            let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
+            buffer.lines.insert(offsetWhiteSpaces, at: currentLineOffset)
+            range.start.line = currentLineOffset
+            range.end.line = currentLineOffset
+            range.start.column = indentationOffset
+            range.end.column = indentationOffset
 
         case .deleteLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
@@ -116,13 +128,3 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         completionHandler(nil)
     }
 }
-
-
-
-
-
-
-
-
-
-

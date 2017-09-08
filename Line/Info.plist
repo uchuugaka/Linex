@@ -40,15 +40,23 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).openNewLine</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).openNewLineBelow</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Open New Line</string>
+                    <string>Open New Line Below</string>
                 </dict>
                 <dict>
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).newCommentedLine</string>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).openNewLineAbove</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Open New Line Above</string>
+                </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).commentedDuplicate</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Commented Duplicate</string>
                 </dict>
