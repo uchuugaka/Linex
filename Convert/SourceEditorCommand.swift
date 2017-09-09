@@ -32,9 +32,21 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let range = buffer.selections.firstObject as! XCSourceTextRange
                 let currentLineOffset = range.start.line
                 var currentLine = buffer.lines[currentLineOffset] as! String
+                let currentRange = currentLine.indexRangeFor(range: range.start.column...range.start.column)
                 let currentChar = currentLine[range.start.column] as String
-                let currentRange = currentLine.rangeFor(range: range.start.column...range.start.column)
                 if let _ = currentChar.rangeOfCharacter(from: .decimalDigits), let num = Int(currentChar) {
+                    switch command {
+                    case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
+                    case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
+                    }
+                }
+                buffer.lines.replaceObject(at: currentLineOffset, with: currentLine)
+            } else {
+                let range = buffer.selections.firstObject as! XCSourceTextRange
+                let currentLineOffset = range.start.line
+                var currentLine = buffer.lines[currentLineOffset] as! String
+                let currentRange = currentLine.indexRangeFor(range: range.start.column..<range.end.column)
+                if let num = Int(currentLine.substring(with: currentRange)) {
                     switch command {
                     case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
                     case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")

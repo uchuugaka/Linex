@@ -23,11 +23,11 @@ extension String {
         return self.index(self.startIndex, offsetBy: offset)
     }
 
-    func rangeFor(range: Range<Int>) -> Range<Index> {
+    func indexRangeFor(range: Range<Int>) -> Range<Index> {
         return indexAt(offset: range.lowerBound)..<indexAt(offset: range.upperBound)
     }
 
-    func rangeFor(range: ClosedRange<Int>) -> ClosedRange<Index> {
+    func indexRangeFor(range: ClosedRange<Int>) -> ClosedRange<Index> {
         return indexAt(offset: range.lowerBound)...indexAt(offset: range.upperBound)
     }
 
