@@ -9,13 +9,46 @@
 import Foundation
 import XcodeKit
 
+enum Options: String {
+    case increment, decrement
+}
+
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
 
-        let selectedCase = Case(command: invocation.commandIdentifier)!
         let buffer = invocation.buffer
 
+        //For case conversion
+        if let selectedCase = Case(command: invocation.commandIdentifier) {
+            convertToCase(selectedCase, buffer: buffer)
+            completionHandler(nil)
+            return
+        }
+        if let command = Options(command: invocation.commandIdentifier) {
+            let selRange = buffer.selections.firstObject as! XCSourceTextRange
+            let noSelection = selRange.start.column == selRange.end.column && selRange.start.line == selRange.end.line
+            if noSelection {
+                let range = buffer.selections.firstObject as! XCSourceTextRange
+                let currentLineOffset = range.start.line
+                var currentLine = buffer.lines[currentLineOffset] as! String
+                let currentChar = currentLine[range.start.column] as String
+                let currentRange = currentLine.rangeFor(range: range.start.column...range.start.column)
+                if let _ = currentChar.rangeOfCharacter(from: .decimalDigits), let num = Int(currentChar) {
+                    switch command {
+                    case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
+                    case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
+                    }
+                }
+                buffer.lines.replaceObject(at: currentLineOffset, with: currentLine)
+            }
+        }
+
+        completionHandler(nil)
+    }
+
+
+    func convertToCase(_ selectedCase: Case, buffer: XCSourceTextBuffer) {
         let range = buffer.selections.lastObject as! XCSourceTextRange
         let currentLineOffset = range.start.line
         let currentLine = buffer.lines[currentLineOffset] as! String
@@ -23,8 +56,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let selectedString = currentLine.substring(with: strRange).toRaw()?.convertTo(case: selectedCase) ?? "++++++++"
         let finalStr = currentLine.replacingCharacters(in: strRange, with: selectedString)
         buffer.lines.replaceObject(at: currentLineOffset, with: finalStr)
-
-        completionHandler(nil)
     }
     
 }

@@ -19,6 +19,18 @@ extension String {
         return String(self[i] as Character)
     }
 
+    func indexAt(offset: Int) -> Index {
+        return self.index(self.startIndex, offsetBy: offset)
+    }
+
+    func rangeFor(range: Range<Int>) -> Range<Index> {
+        return indexAt(offset: range.lowerBound)..<indexAt(offset: range.upperBound)
+    }
+
+    func rangeFor(range: ClosedRange<Int>) -> ClosedRange<Index> {
+        return indexAt(offset: range.lowerBound)...indexAt(offset: range.upperBound)
+    }
+
     /// Fetch indentation offset of lines in code
     /// "    var foo" -> 4
     func lineIndentationOffset() -> Int {
