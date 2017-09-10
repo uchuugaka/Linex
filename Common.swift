@@ -49,8 +49,8 @@ extension String {
                                          options: CompareOptions.regularExpression)
     }
 
-    static func spaces(count: Int) -> String {
-        return Array<String>(repeating: " ", count: count).joined()
+    func repeating(count: Int) -> String {
+        return Array<String>(repeating: self, count: count).joined()
     }
 
     func replacedRegex(pattern: String, with template: String) -> String {
@@ -69,19 +69,41 @@ extension RawRepresentable where RawValue == String {
     }
 }
 
-func selectionRanges(of buffer: XCSourceTextBuffer) -> [XCSourceTextRange] {
-    return buffer.selections.map { $0 as! XCSourceTextRange }
+enum SelectionType {
+    case selection([XCSourceTextRange])
+    case noSelection(XCSourceTextPosition)
 }
 
-func firstSelectionRange(of buffer: XCSourceTextBuffer) -> XCSourceTextRange? {
-    return selectionRanges(of: buffer).first
+/// Returns nil if nothing is selected
+func selectionRanges(of buffer: XCSourceTextBuffer) -> SelectionType {
+    let selections = buffer.selections as! [XCSourceTextRange]
+    if selections.count == 1 {
+        let range = selections.first!
+        if range.start.line == range.end.line && range.start.column == range.end.column {
+            return SelectionType.noSelection(range.start)
+        }
+    }
+    let textRangeList = buffer.selections.map { $0 as! XCSourceTextRange }
+    return SelectionType.selection(textRangeList)
 }
 
-func selectedLinesIndexSet(of buffer: XCSourceTextBuffer) -> IndexSet? {
-    guard let selectionRange = firstSelectionRange(of: buffer), buffer.lines.count > 0 else { return nil }
-    let selectionRangeEndLine = selectionRange.end.line + (selectionRange.end.column == 0 ? 0 : 1 )
-    let targetRange = Range(uncheckedBounds: (
-        lower: selectionRange.start.line,
-        upper: min(selectionRangeEndLine, buffer.lines.count)))
-    return IndexSet(integersIn: targetRange)
+
+/// Indexes of all the lines
+///
+/// - Returns: Returns nil if no selection
+func selectedLinesIndexSet(for selectedRanges: SelectionType) -> [IndexSet] {
+    switch selectedRanges {
+    case .noSelection(let range):
+        return [IndexSet(integer: range.line)]
+
+    case .selection(let selectedRanges):
+        let indexList: [IndexSet] = selectedRanges.map { (textRange) -> IndexSet in
+            let selectionRangeEndLine = textRange.end.line + (textRange.end.column == 0 ? 0 : 1 )
+            let targetRange = Range(uncheckedBounds: (
+                lower: textRange.start.line,
+                upper: selectionRangeEndLine))
+            return IndexSet(integersIn: targetRange)
+        }
+        return indexList
+    }
 }

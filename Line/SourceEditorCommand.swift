@@ -19,112 +19,89 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     public func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Swift.Void) {
 
         let buffer = invocation.buffer
+        let selectedRanges: SelectionType = selectionRanges(of: buffer)
+        let selectionIndexes:[IndexSet] = selectedLinesIndexSet(for: selectedRanges)
 
         switch Options(command: invocation.commandIdentifier)! {
 
         case .duplicate:
-            let selRange = buffer.selections.lastObject as! XCSourceTextRange
-            var oldOffset = selRange.end.line
-            let noSelection = selRange.start.column == selRange.end.column && selRange.start.line == selRange.end.line
-            let linesIndexSet: IndexSet
-            if noSelection {
-                linesIndexSet = IndexSet(integersIn: selRange.start.line...selRange.end.line)
-                oldOffset += 1
-            } else {
-                linesIndexSet = IndexSet(integersIn: selRange.start.line..<selRange.end.line)
-            }
-            let copyOfLines = buffer.lines.objects(at: linesIndexSet)
-            buffer.lines.insert(copyOfLines, at: linesIndexSet)
-            selRange.start.line = oldOffset
-            if noSelection {
-                selRange.end.line = oldOffset
-            }
+            let copyOfLines = buffer.lines.objects(at: selectionIndexes.first!)
+            buffer.lines.insert(copyOfLines, at: selectionIndexes.first!)
 
         case .commentedDuplicate:
-
-            let selRange = buffer.selections.lastObject as! XCSourceTextRange
-            var oldOffset = selRange.end.line
-            let noSelection = selRange.start.column == selRange.end.column && selRange.start.line == selRange.end.line
-            let linesIndexSet: IndexSet
-            if noSelection {
-                linesIndexSet = IndexSet(integersIn: selRange.start.line...selRange.end.line)
-                oldOffset += 1
-            } else {
-                linesIndexSet = IndexSet(integersIn: selRange.start.line..<selRange.end.line)
-            }
-            let copyOfLines = buffer.lines.objects(at: linesIndexSet) as! [String]
-            let commentedLines = copyOfLines.map { "//" + $0 }
-            buffer.lines.insert(commentedLines, at: linesIndexSet)
-
-            selRange.start.line = oldOffset
-            if noSelection {
-                selRange.end.line = oldOffset
-            }
+            let copyOfLines = buffer.lines.objects(at: selectionIndexes.first!)
+            let commentedLines = copyOfLines.map { "//" + ($0 as! String) }
+            buffer.lines.insert(commentedLines, at: selectionIndexes.first!)
 
         case .openNewLineBelow:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let currentLineOffset = range.start.line
-            let currentLine = buffer.lines[currentLineOffset] as! String
-            let indentationOffset = currentLine.lineIndentationOffset()
-            let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
-            buffer.lines.insert(offsetWhiteSpaces, at: currentLineOffset + 1)
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                let indentationOffset = (buffer.lines[caretPosition.line] as! String).lineIndentationOffset()
+                let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
+                buffer.lines.insert(offsetWhiteSpaces, at: caretPosition.line + 1)
 
-            let position = XCSourceTextPosition(line: currentLineOffset + 1, column: indentationOffset)
-            let lineSelection = XCSourceTextRange(start: position, end: position)
-            buffer.selections.setArray([lineSelection])
+                let position = XCSourceTextPosition(line: caretPosition.line + 1, column: indentationOffset)
+                let lineSelection = XCSourceTextRange(start: position, end: position)
+                buffer.selections.setArray([lineSelection])
+            case .selection(_): break
+            }
 
         case .openNewLineAbove:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let currentLineOffset = range.start.line
-            let currentLine = buffer.lines[currentLineOffset] as! String
-            let indentationOffset = currentLine.lineIndentationOffset()
-            let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
-            buffer.lines.insert(offsetWhiteSpaces, at: currentLineOffset)
-            range.start.line = currentLineOffset
-            range.end.line = currentLineOffset
-            range.start.column = indentationOffset
-            range.end.column = indentationOffset
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                let range = buffer.selections.firstObject as! XCSourceTextRange
+                let indentationOffset = (buffer.lines[caretPosition.line] as! String).lineIndentationOffset()
+                buffer.lines.insert(" ".repeating(count: indentationOffset), at: caretPosition.line)
+                range.start.line = caretPosition.line
+                range.end.line = caretPosition.line
+                range.start.column = indentationOffset
+                range.end.column = indentationOffset
+
+            case .selection(_): break
+            }
 
         case .deleteLine:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            if range.start.line != range.end.line { break; }
-            let currentLineOffset = range.start.line
-            buffer.lines.removeObject(at: currentLineOffset)
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                buffer.lines.removeObject(at: caretPosition.line)
+            case .selection(_): break
+            }
 
         case .join:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let noSelection = range.start.column == range.end.column && range.start.line == range.end.line
-            let currentLineOffset = range.start.line
-            if noSelection {
-                if currentLineOffset == buffer.lines.count { return }
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                if caretPosition.line == buffer.lines.count { return }
 
-                var firstLine = buffer.lines[currentLineOffset] as! String
+                var firstLine = buffer.lines[caretPosition.line] as! String
                 firstLine = firstLine.trimmingCharacters(in: .newlines)
 
-                var newLine = buffer.lines[currentLineOffset + 1] as! String
+                var newLine = buffer.lines[caretPosition.line + 1] as! String
                 newLine = newLine.trimmingCharacters(in: .whitespaces)
 
-                buffer.lines.replaceObject(at: currentLineOffset, with: "\(firstLine) \(newLine)")
-                buffer.lines.removeObject(at: currentLineOffset + 1)
+                buffer.lines.replaceObject(at: caretPosition.line, with: "\(firstLine) \(newLine)")
+                buffer.lines.removeObject(at: caretPosition.line + 1)
 
+                let range = buffer.selections.lastObject as! XCSourceTextRange
                 range.start.column = firstLine.characters.count + 1
                 range.end.column = firstLine.characters.count + 1
-            } else {
 
+            case .selection(_): break
             }
+
         case .lineBeginning:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            let noSelection = range.start.column == range.end.column && range.start.line == range.end.line
-            if noSelection == false { break }//Will not work if there is selection
-            let indentationOffset = (buffer.lines[range.start.line] as! String).lineIndentationOffset()
-
-            if range.start.column == indentationOffset {
-                range.start.column = 0; range.end.column = 0;
-            } else {
-                range.start.column = indentationOffset; range.end.column = indentationOffset;
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                let range = buffer.selections.lastObject as! XCSourceTextRange
+                let indentationOffset = (buffer.lines[caretPosition.line] as! String).lineIndentationOffset()
+                if range.start.column == indentationOffset {
+                    range.start.column = 0; range.end.column = 0;
+                } else {
+                    range.start.column = indentationOffset; range.end.column = indentationOffset;
+                }
+            case .selection(_): break
             }
-        }
 
+        }
         completionHandler(nil)
     }
 }
