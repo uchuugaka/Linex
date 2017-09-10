@@ -25,8 +25,19 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         switch Options(command: invocation.commandIdentifier)! {
 
         case .duplicate:
+            let range = buffer.selections.firstObject as! XCSourceTextRange
+            let oldLineOffset = range.end.line
+            let oldColumnOffset = range.end.column
             let copyOfLines = buffer.lines.objects(at: selectionIndexes.first!)
             buffer.lines.insert(copyOfLines, at: selectionIndexes.first!)
+
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                break
+            case .selection(_):
+                range.start.line = oldLineOffset + 1
+                range.end.column = oldColumnOffset
+            }
 
         case .commentedDuplicate:
             let copyOfLines = buffer.lines.objects(at: selectionIndexes.first!)
