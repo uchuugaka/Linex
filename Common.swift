@@ -43,7 +43,7 @@ extension String {
         return i
     }
 
-    func trimStart() -> String {
+    func trimmedStart() -> String {
         return self.replacingOccurrences(of: "^[ \t]+",
                                          with: "",
                                          options: CompareOptions.regularExpression)

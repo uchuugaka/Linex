@@ -114,7 +114,23 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 range.start.column = firstLine.characters.count + 1
                 range.end.column = firstLine.characters.count + 1
 
-            case .selection(_): break
+            case .selection(_):
+                let range = buffer.selections.firstObject as! XCSourceTextRange
+                let selectedLines = buffer.lines.objects(at: selectionIndexes.first!) as! [String]
+
+                var joinedLine = ""
+                for (i, line) in selectedLines.enumerated() {
+                    if i == 0 {
+                        joinedLine += " " + line.trimmingCharacters(in: .newlines)
+                    } else {
+                        joinedLine += " " + line.trimmedStart().trimmingCharacters(in: .newlines)
+                    }
+                }
+                buffer.lines.removeObjects(at: selectionIndexes.first!)
+                buffer.lines.insert(joinedLine, at: range.start.line)
+
+                range.end.line = range.start.line
+                range.end.column = joinedLine.characters.count
             }
 
         case .lineBeginning:
