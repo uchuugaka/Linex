@@ -32,11 +32,15 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             buffer.lines.insert(copyOfLines, at: selectionIndexes.first!)
 
             switch selectedRanges {
-            case .noSelection(let caretPosition):
+            case .noSelection( _):
+                if oldColumnOffset == 0 {
+                    range.start.line += 1
+                    range.end.line += 1
+                }
                 break
             case .selection(_):
-                range.start.line = oldLineOffset + 1
-                range.end.column = oldColumnOffset
+                range.start.line = oldColumnOffset == 0 ? oldLineOffset : oldLineOffset + 1
+                range.end.column = oldColumnOffset == 0 ? oldColumnOffset : oldColumnOffset + 1
             }
 
         case .commentedDuplicate:
