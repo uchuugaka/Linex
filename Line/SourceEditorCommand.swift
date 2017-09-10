@@ -26,8 +26,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         case .duplicate:
             let range = buffer.selections.firstObject as! XCSourceTextRange
-            let oldLineOffset = range.end.line
-            let oldColumnOffset = range.end.column
+            let (oldLineOffset, oldColumnOffset) = (range.end.line, range.end.column)
             let copyOfLines = buffer.lines.objects(at: selectionIndexes.first!)
             buffer.lines.insert(copyOfLines, at: selectionIndexes.first!)
 
@@ -44,9 +43,24 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .commentedDuplicate:
+            let range = buffer.selections.firstObject as! XCSourceTextRange
+            let (oldLineOffset, oldColumnOffset) = (range.end.line, range.end.column)
+
             let copyOfLines = buffer.lines.objects(at: selectionIndexes.first!)
             let commentedLines = copyOfLines.map { "//" + ($0 as! String) }
             buffer.lines.insert(commentedLines, at: selectionIndexes.first!)
+
+            switch selectedRanges {
+            case .noSelection( _):
+                if oldColumnOffset == 0 {
+                    range.start.line += 1
+                    range.end.line += 1
+                }
+                break
+            case .selection(_):
+                range.start.line = oldColumnOffset == 0 ? oldLineOffset : oldLineOffset + 1
+                range.end.column = oldColumnOffset == 0 ? oldColumnOffset : oldColumnOffset + 1
+            }
 
         case .openNewLineBelow:
             switch selectedRanges {
