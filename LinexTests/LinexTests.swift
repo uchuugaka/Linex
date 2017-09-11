@@ -82,6 +82,30 @@ class LinexTests: XCTestCase {
         XCTAssert(t1.lineOneSpaceAt(pin: 8) == (8, t1))
     }
 
+    func testFarthestDistance() {
+        XCTAssertEqual(["var name = Kaunteya",].farthestOffsetFor(subStr: "=")!, 8)
+
+        XCTAssertEqual(["var name = Kaunteya",
+                        "self.lastupdated = createdOn",
+                        ].farthestOffsetFor(subStr: "=")!,16)
+
+        XCTAssertEqual(["var name = Kaunteya",
+                        "self.lastupdated = createdOn",
+                        "self.name = name",
+                        ].farthestOffsetFor(subStr: "=")!, 16)
+
+        XCTAssertEqual(["var name  = Kaunteya",
+                        "self.lastupdated     = createdOn",
+                        "self.name = name",
+                        ].farthestOffsetFor(subStr: "=")!, 16)
+
+        XCTAssertEqual(["var name  = Kaunteya",
+                        "self.lastupdated     = createdOn",
+                        "self.name                             = name",
+                        ].farthestOffsetFor(subStr: "=")!, 16)
+
+    }
+
     func testAlign() {
         XCTAssertEqual(["let name = \"Kaunteya\""].autoAlign()!,
                        ["let name = \"Kaunteya\""])
@@ -158,5 +182,39 @@ class LinexTests: XCTestCase {
 
             ])
 
+        ///////////////////////////////////////////
+
+        XCTAssertEqual(["var name           : String",
+                        "var age            : Int!"
+            ].autoAlign()!,
+                       [
+                        "var name: String",
+                        "var age : Int!"
+
+            ])
+
+        //Case where previously aligned content was disturbed
+        XCTAssertEqual(["self.name          = campaignDict[kName];",
+                        "self.trackUserOnLaunch      = [campaignDict[kTrackUserOnLaunch] boolValue];",
+                        "self.segmentObject = campaignDict[kSegmentObject];"
+            ].autoAlign()!,
+                       [
+                        "self.name              = campaignDict[kName];",
+                        "self.trackUserOnLaunch = [campaignDict[kTrackUserOnLaunch] boolValue];",
+                        "self.segmentObject     = campaignDict[kSegmentObject];"
+            ])
+
+        XCTAssertEqual(["let name                         = \"Kaunteya\"",
+                        "var telephoneNumber: String = \"8973459878945734\"",
+                        "var age: Int! = 45"
+            ].autoAlign()!,
+                       [
+                        "let name                    = \"Kaunteya\"",
+                        "var telephoneNumber: String = \"8973459878945734\"",
+                        "var age            : Int!   = 45"
+
+            ])
+
+        
     }
 }

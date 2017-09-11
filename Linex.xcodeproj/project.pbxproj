@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E31FD4741F5712540044765A /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31FD4731F5712540044765A /* Extras.swift */; };
+		E356FD7E1F66D281004558F1 /* XcodeKitExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */; };
+		E356FD7F1F66D282004558F1 /* XcodeKitExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */; };
+		E356FD801F66D284004558F1 /* XcodeKitExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */; };
 		E359421B1F55564C009EFA35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421A1F55564C009EFA35 /* AppDelegate.swift */; };
 		E359421D1F55564C009EFA35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421C1F55564C009EFA35 /* ViewController.swift */; };
 		E359421F1F55564C009EFA35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E359421E1F55564C009EFA35 /* Assets.xcassets */; };
@@ -84,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		E31FD4731F5712540044765A /* Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
+		E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeKitExt.swift; sourceTree = "<group>"; };
 		E35942171F55564C009EFA35 /* Linex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E359421A1F55564C009EFA35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E359421C1F55564C009EFA35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E39E227E1F59C58E00354A5F /* Common.swift */,
+				E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */,
 				E35942191F55564C009EFA35 /* Linex */,
 				E359422B1F55564D009EFA35 /* LinexTests */,
 				E359423F1F55565E009EFA35 /* Line */,
@@ -489,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E356FD7E1F66D281004558F1 /* XcodeKitExt.swift in Sources */,
 				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
 				E31FD4741F5712540044765A /* Extras.swift in Sources */,
 				E39E22801F59C59100354A5F /* Common.swift in Sources */,
@@ -500,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E356FD7F1F66D282004558F1 /* XcodeKitExt.swift in Sources */,
 				E39E22811F59C59200354A5F /* Common.swift in Sources */,
 				E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */,
 				E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */,
@@ -511,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E356FD801F66D284004558F1 /* XcodeKitExt.swift in Sources */,
 				E3F543A61F5ABA48008F426E /* Common.swift in Sources */,
 				E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */,
 				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,

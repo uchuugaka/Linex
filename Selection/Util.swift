@@ -37,7 +37,7 @@ extension Array where Element == String {
         for str in self {
             let seperated = str.components(separatedBy: subStr)
             if seperated.count == 2 {
-                let offset = seperated.first!.characters.count
+                let offset = seperated.first!.trimmedEnd().characters.count
                 if offset > farthest { farthest = offset }
             }
         }
@@ -61,7 +61,7 @@ extension Array where Element == String {
             let component = str.components(separatedBy: seperator)
             if component.count == 2 {
                 let a = component.first!.padding(toLength: alignOffset, withPad: " ", startingAt: 0)
-                return a + seperator + component[1]
+                return "\(a)\(seperator)\(component[1].trimmedStart())"
             }
             return str
         }
@@ -69,6 +69,6 @@ extension Array where Element == String {
     }
 
     func autoAlign() -> [String]? {
-        return self.aligned(seperator: ":")?.aligned(seperator: "=")
+        return self.aligned(seperator: ": ")?.aligned(seperator: " = ")
     }
 }
