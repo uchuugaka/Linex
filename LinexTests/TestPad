@@ -1,0 +1,45 @@
+//-----------------------------------
+let name = "Kaunteya"
+let age = 23
+let height = 6.3
+
+//-----------------------------------
+let name = "Kaunteya"
+//Age of Person
+let age: Int = 23
+let height: Double = 6.3
+
+//-----------------------------------
+let name: String = "Kaunteya"
+let age: Int = 23
+let height: Double = 6.3
+
+//-----------------------------------
+let name: String = "Kaunteya"
+let age           : Int = 23
+//Height
+let height: Double = 6.3
+
+
+//-----------------------------------
+let name: String           = "Kaunteya"
+
+let age: Int       = 23
+let height: Double = 6.3
+
+
+Increment/Decrement
+
+1
+202
+
+true
+
+YES
+
+Case Check
+
+some_variation_with_a_name
+
+
+

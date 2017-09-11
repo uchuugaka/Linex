@@ -88,6 +88,7 @@
 /* Begin PBXFileReference section */
 		E31FD4731F5712540044765A /* Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
 		E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeKitExt.swift; sourceTree = "<group>"; };
+		E356FD811F66F55C004558F1 /* TestPad */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestPad; sourceTree = "<group>"; };
 		E35942171F55564C009EFA35 /* Linex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E359421A1F55564C009EFA35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E359421C1F55564C009EFA35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				E359422C1F55564D009EFA35 /* LinexTests.swift */,
+				E356FD811F66F55C004558F1 /* TestPad */,
 				E359422E1F55564D009EFA35 /* Info.plist */,
 			);
 			path = LinexTests;
