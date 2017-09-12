@@ -10,6 +10,12 @@ import Foundation
 
 extension String {
 
+    /// All multiple whitespaces are replaced by one whitespace
+    var condensedWhitespace: String {
+        let components = self.components(separatedBy: .whitespaces)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
