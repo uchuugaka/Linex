@@ -55,6 +55,14 @@ let name: String           = "Kaunteya"
 #define address @"Pune India"
 #define city @"Pune"
 
+//---------Case of Blank Line
+#define name @"Kaunteya"
+#define age 23
+#define someVeryVeryLongName @"Long String" // Trailing comment is here
+
+#define address @"Pune India"
+#define city @"Pune" //Trailing comment
+
 
 Increment/Decrement
 
