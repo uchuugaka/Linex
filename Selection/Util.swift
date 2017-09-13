@@ -27,6 +27,25 @@ extension String {
         newString.replaceSubrange(range, with: " ")
         return (start, newString)
     }
+
+    func selectWord(pin: Int) -> Range<Int>? {
+        guard pin <= self.characters.count else {
+            return nil
+        }
+        guard self.characters.count > 1  else {
+            return nil
+        }
+        var start = pin
+        while start >= 0 && (self[start] as String).rangeOfCharacter(from: .alphanumerics) != nil {
+            start -= 1
+        }
+        var end = pin
+        while end < characters.count && (self[end] as String).rangeOfCharacter(from: .alphanumerics) != nil {
+            end += 1
+        }
+        if start == end { return nil }
+        return start + 1..<end
+    }
 }
 extension Array where Element == String {
 

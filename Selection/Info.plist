@@ -32,6 +32,14 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).expand</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Select Word</string>
+                </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
                     <string>$(PRODUCT_BUNDLE_IDENTIFIER).selectLine</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>Select Line</string>

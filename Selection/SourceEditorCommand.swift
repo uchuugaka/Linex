@@ -41,8 +41,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .selection(_): break
             }
 
-
         case .expand:
+            switch selectedRanges {
+            case .noSelection(let caretPosition):
+                let range = buffer.selections.lastObject as! XCSourceTextRange
+                let currentLine = buffer.lines[caretPosition.line] as! String
+                let pin = range.end.column
+
+                if let selectionRange = currentLine.selectWord(pin: pin) {
+                    range.start.column = selectionRange.lowerBound
+                    range.end.column = selectionRange.upperBound
+                }
+            case .selection(_): break
+            }
+
             break
 
         case .align:
