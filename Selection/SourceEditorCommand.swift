@@ -10,7 +10,7 @@ import Foundation
 import XcodeKit
 
 enum Options: String {
-    case selectLine, oneSpace, expand, align
+    case selectLine, selectLineAbove, oneSpace, expand, align
 }
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -26,6 +26,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             let range = buffer.selections.lastObject as! XCSourceTextRange
             range.start.column = 0
             range.end.line += 1
+            range.end.column = 0
+
+        case .selectLineAbove:
+            let range = buffer.selections.lastObject as! XCSourceTextRange
+            range.start.column = 0
+            range.start.line = max(range.start.line - 1, 0)
             range.end.column = 0
 
         case .oneSpace:

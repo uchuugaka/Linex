@@ -48,6 +48,14 @@
                     <key>XCSourceEditorCommandClassName</key>
                     <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
                     <key>XCSourceEditorCommandIdentifier</key>
+                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).selectLineAbove</string>
+                    <key>XCSourceEditorCommandName</key>
+                    <string>Select Line Up</string>
+                </dict>
+                <dict>
+                    <key>XCSourceEditorCommandClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+                    <key>XCSourceEditorCommandIdentifier</key>
                     <string>$(PRODUCT_BUNDLE_IDENTIFIER).oneSpace</string>
                     <key>XCSourceEditorCommandName</key>
                     <string>One Space</string>
