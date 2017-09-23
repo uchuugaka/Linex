@@ -46,7 +46,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let currentLineOffset = range.start.line
                 var currentLine = buffer.lines[currentLineOffset] as! String
                 let currentRange = currentLine.indexRangeFor(range: range.start.column..<range.end.column)
-                if let num = Int(currentLine.substring(with: currentRange)) {
+                if let num = Int(currentLine[currentRange]) {
                     switch command {
                     case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
                     case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
@@ -65,7 +65,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let currentLineOffset = range.start.line
         let currentLine = buffer.lines[currentLineOffset] as! String
         let strRange = currentLine.index(currentLine.startIndex, offsetBy: range.start.column)..<currentLine.index(currentLine.startIndex, offsetBy: range.end.column)
-        let selectedString = currentLine.substring(with: strRange).toRaw()?.convertTo(case: selectedCase) ?? "++++++++"
+        let selectedString = String(currentLine[strRange]).toRaw()?.convertTo(case: selectedCase) ?? "++++++++"
         let finalStr = currentLine.replacingCharacters(in: strRange, with: selectedString)
         buffer.lines.replaceObject(at: currentLineOffset, with: finalStr)
     }
