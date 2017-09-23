@@ -23,46 +23,40 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let selectionIndexSet: IndexSet = selectedLinesIndexSet(for: selectedRanges)
 
         switch Options(command: invocation.commandIdentifier)! {
-
         case .duplicate:
             let range = buffer.selections.firstObject as! XCSourceTextRange
             let copyOfLines = buffer.lines.objects(at: selectionIndexSet)
             buffer.lines.insert(copyOfLines, at: selectionIndexSet)
 
             switch selectedRanges {
-            case .none( _, let column):
+            case .none(_, let column):
                 if column == 0 {
                     range.start.line += 1
                     range.end.line += 1
                 }
             case .words(_, _, _)://TODO:
                 break
-            case .lines(_, _): break
-//                range.start.line = start.column == 0 ? line : line + 1
-//                range.end.column = end.column == 0 ? column : column + 1
+            case .lines(_, let endPosition): range.start = endPosition
             case .multiLocation(_): break
             }
 
         case .commentedDuplicate:
-
-//            let range = buffer.selections.firstObject as! XCSourceTextRange
-//            let (oldLineOffset, oldColumnOffset) = (range.end.line, range.end.column)
-
+            let range = buffer.selections.firstObject as! XCSourceTextRange
             let copyOfLines = buffer.lines.objects(at: selectionIndexSet)
             let commentedLines = copyOfLines.map { "//" + ($0 as! String) }
             buffer.lines.insert(commentedLines, at: selectionIndexSet)
 
-//            switch selectedRanges {
-//            case .noSelection( _):
-//                if oldColumnOffset == 0 {
-//                    range.start.line += 1
-//                    range.end.line += 1
-//                }
-//                break
-//            case .selection(_):
-//                range.start.line = oldColumnOffset == 0 ? oldLineOffset : oldLineOffset + 1
-//                range.end.column = oldColumnOffset == 0 ? oldColumnOffset : oldColumnOffset + 1
-//            }
+            switch selectedRanges {
+            case .none(_, let column):
+                if column == 0 {
+                    range.start.line += 1
+                    range.end.line += 1
+                }
+            case .words(_, _, _)://TODO:
+                break
+            case .lines(_, let endPosition): range.start = endPosition
+            case .multiLocation(_): break
+            }
 
         case .openNewLineBelow:
             switch selectedRanges {
@@ -107,7 +101,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .join:
-
             switch selectedRanges {
             case .none(let line, _),
                  .words(let line, _, _):
@@ -147,7 +140,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .lineBeginning:
-
             switch selectedRanges {
             case .none(let line, _),
                  .words(let line, _, _):
