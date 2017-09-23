@@ -48,13 +48,22 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .words(let line, let colStart, let colEnd):
                 var currentLine = buffer.lines[line] as! String
                 let currentRange = currentLine.indexRangeFor(range: colStart..<colEnd)
-                if let num = Int(currentLine[currentRange]) {
-                    switch command {
-                    case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
-                    case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
-                    }
+                guard let num = Int(currentLine[currentRange]) else { return }
+
+                let newNum: String
+                switch command {
+                case .increment: newNum = "\(num + 1)"
+                case .decrement: newNum = "\(num - 1)"
                 }
+
+                currentLine.replaceSubrange(currentRange, with: newNum)
                 buffer.lines.replaceObject(at: line, with: currentLine)
+
+                //Selection / Caret posistion
+                if (colEnd - colStart != newNum.count) {
+                    let range = buffer.selections.firstObject as! XCSourceTextRange
+                    range.end.column = colStart + newNum.count
+                }
 
             case .lines(_, _): break
             case .multiLocation(_): break
