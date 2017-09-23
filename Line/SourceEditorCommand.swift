@@ -131,7 +131,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 var joinedLine = ""
                 for (i, line) in selectedLines.enumerated() {
                     if i == 0 {
-                        joinedLine += " " + line.trimmingCharacters(in: .newlines)
+                        joinedLine += line.trimmingCharacters(in: .newlines)
                     } else {
                         joinedLine += " " + line.trimmedStart().trimmingCharacters(in: .newlines)
                     }
