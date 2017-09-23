@@ -20,14 +20,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let buffer = invocation.buffer
         let selectedRanges: SelectionType = selectionRanges(of: buffer)
 
-        //For case conversion
-        if let selectedCase = Case(command: invocation.commandIdentifier) {
-            convertToCase(selectedCase, buffer: buffer)
-            completionHandler(nil)
-            return
-        }
-
-        //For other commands
         if let command = Options(command: invocation.commandIdentifier) {
 
             switch selectedRanges {
@@ -35,6 +27,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let range = buffer.selections.firstObject as! XCSourceTextRange
                 var currentLine = buffer.lines[line] as! String
                 let currentChar = currentLine[column] as String
+
+                //If caret is beside number
                 if let _ = currentChar.rangeOfCharacter(from: .decimalDigits), let num = Int(currentChar) {
                     let currentRange = currentLine.indexRangeFor(range: range.start.column...range.start.column)
                     switch command {
@@ -43,8 +37,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     }
                 } else {
                     if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: column) {
-                        let selectedString = currentLine[selectionRange]
-                        if let newString = toggle(boolString: selectedString) {
+                        let selectedSubString = currentLine[selectionRange]
+                        if let newString = toggle(boolString: selectedSubString) {
                             currentLine.replaceSubrange(selectionRange, with: newString)
                         }
                     }
@@ -79,15 +73,4 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         default: return nil
         }
     }
-
-    func convertToCase(_ selectedCase: Case, buffer: XCSourceTextBuffer) {
-        let range = buffer.selections.lastObject as! XCSourceTextRange
-        let currentLineOffset = range.start.line
-        let currentLine = buffer.lines[currentLineOffset] as! String
-        let strRange = currentLine.index(currentLine.startIndex, offsetBy: range.start.column)..<currentLine.index(currentLine.startIndex, offsetBy: range.end.column)
-        let selectedString = String(currentLine[strRange]).toRaw()?.convertTo(case: selectedCase) ?? "++++++++"
-        let finalStr = currentLine.replacingCharacters(in: strRange, with: selectedString)
-        buffer.lines.replaceObject(at: currentLineOffset, with: finalStr)
-    }
-    
 }

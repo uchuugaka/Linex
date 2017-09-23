@@ -33,8 +33,6 @@
 		E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */; };
 		E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */; };
 		E3F5439F1F5A84FC008F426E /* Convert.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3F543931F5A84FC008F426E /* Convert.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E3F543A41F5A8518008F426E /* CaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543A31F5A8518008F426E /* CaseHandler.swift */; };
-		E3F543A51F5A8534008F426E /* CaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543A31F5A8518008F426E /* CaseHandler.swift */; };
 		E3F543A61F5ABA48008F426E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* Common.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,7 +114,6 @@
 		E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		E3F5439C1F5A84FC008F426E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3F543A31F5A8518008F426E /* CaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,7 +260,6 @@
 			children = (
 				E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */,
 				E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */,
-				E3F543A31F5A8518008F426E /* CaseHandler.swift */,
 				E3F5439C1F5A84FC008F426E /* Info.plist */,
 				E3F543961F5A84FC008F426E /* Supporting Files */,
 			);
@@ -487,7 +483,6 @@
 			files = (
 				E39E22821F59C59300354A5F /* Common.swift in Sources */,
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
-				E3F543A51F5A8534008F426E /* CaseHandler.swift in Sources */,
 				E359BD0A1F6063A70071246B /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,7 +519,6 @@
 				E3F543A61F5ABA48008F426E /* Common.swift in Sources */,
 				E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */,
 				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,
-				E3F543A41F5A8518008F426E /* CaseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

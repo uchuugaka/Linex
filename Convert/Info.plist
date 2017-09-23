@@ -28,70 +28,22 @@
 		<dict>
 			<key>XCSourceEditorCommandDefinitions</key>
 			<array>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).title</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Title Case</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).upperCase</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>UPPER CASE</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).lower</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>lower case</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).snake</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>snake_case</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).camel</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>camelCase</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).pascal</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>PascalCase</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).increment</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Increment</string>
-                </dict>
-                <dict>
-                    <key>XCSourceEditorCommandClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-                    <key>XCSourceEditorCommandIdentifier</key>
-                    <string>$(PRODUCT_BUNDLE_IDENTIFIER).decrement</string>
-                    <key>XCSourceEditorCommandName</key>
-                    <string>Decrement</string>
-                </dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).increment</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Increment</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>$(PRODUCT_BUNDLE_IDENTIFIER).decrement</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Decrement</string>
+				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>
