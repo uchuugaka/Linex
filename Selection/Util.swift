@@ -7,46 +7,6 @@
 //
 
 import Foundation
-extension String {
-    func lineOneSpaceAt(pin: Int) -> (Int, String) {
-
-        var start = pin
-        while start > 0 && self[start - 1] == " " {
-            start -= 1
-        }
-
-        var end = pin
-        while end < self.characters.count && self[end] == " " {
-            end += 1
-        }
-        if start == end {
-            return (pin, self)
-        }
-        let range = self.index(self.startIndex, offsetBy: start)..<self.index(self.startIndex, offsetBy: end)
-        var newString = self
-        newString.replaceSubrange(range, with: " ")
-        return (start, newString)
-    }
-
-    func selectWord(pin: Int) -> Range<Int>? {
-        guard pin <= self.characters.count else {
-            return nil
-        }
-        guard self.characters.count > 1  else {
-            return nil
-        }
-        var start = pin
-        while start >= 0 && (self[start] as String).rangeOfCharacter(from: .alphanumerics) != nil {
-            start -= 1
-        }
-        var end = pin
-        while end < characters.count && (self[end] as String).rangeOfCharacter(from: .alphanumerics) != nil {
-            end += 1
-        }
-        if start == end { return nil }
-        return start + 1..<end
-    }
-}
 extension Array where Element == String {
 
     // Return nil when offset is not found in any line
