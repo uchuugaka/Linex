@@ -19,7 +19,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         let buffer = invocation.buffer
         let selectedRanges: SelectionType = selectionRanges(of: buffer)
-        let selectionIndexes:[IndexSet] = selectedLinesIndexSet(for: selectedRanges)
+        let selectionIndex: IndexSet = selectedLinesIndexSet(for: selectedRanges)
 
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
@@ -36,41 +36,44 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         case .oneSpace:
             switch selectedRanges {
-            case .noSelection(let caretPosition):
+            case .none(let line, let column):
                 let range = buffer.selections.lastObject as! XCSourceTextRange
-                let currentLine = buffer.lines[caretPosition.line] as! String
-                let pin = range.end.column
-                let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: pin)
-                buffer.lines.replaceObject(at: caretPosition.line, with: newLine)
+                let currentLine = buffer.lines[line] as! String
+                let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: column)
+                buffer.lines.replaceObject(at: line, with: newLine)
                 range.end.column = newOffset
                 range.start.column = newOffset
-            case .selection(_): break
+            case .words(_, _, _): break
+            case .lines(_, _): break
+            case .multiLocation(_): break
             }
 
         case .expand:
             switch selectedRanges {
-            case .noSelection(let caretPosition):
+            case .none(let line, let column):
                 let range = buffer.selections.lastObject as! XCSourceTextRange
-                let currentLine = buffer.lines[caretPosition.line] as! String
-                let pin = range.end.column
+                let currentLine = buffer.lines[line] as! String
 
-                if let selectionRange:Range<Int> = currentLine.selectWord(pin: pin) {
+                if let selectionRange:Range<Int> = currentLine.selectWord(pin: column) {
                     range.start.column = selectionRange.lowerBound
                     range.end.column = selectionRange.upperBound
                 }
-            case .selection(_): break
+            case .words(_, _, _): break
+            case .lines(_, _): break
+            case .multiLocation(_): break
             }
-
-            break
 
         case .align:
             switch selectedRanges {
-            case .noSelection(_): break
-            case .selection(_):
-                let selectedLines = buffer.lines.objects(at: selectionIndexes.first!) as! [String]
+            case .none(_, _): break
+            case .words(_, _, _): break
+            case .lines(_, _):
+                let selectedLines = buffer.lines.objects(at: selectionIndex) as! [String]
                 if let aligned = selectedLines.autoAlign() {
-                    buffer.lines.replaceObjects(at: selectionIndexes.first!, with: aligned)
+                    buffer.lines.replaceObjects(at: selectionIndex, with: aligned)
                 }
+
+            case .multiLocation(_): break
             }
         }
         completionHandler(nil)
