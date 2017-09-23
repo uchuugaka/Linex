@@ -105,18 +105,31 @@ extension String {
     }
 
     func selectWord(pin: Int) -> Range<Int>? {
+        var pin = pin
         guard pin <= self.characters.count else {
             return nil
         }
         guard self.characters.count > 1  else {
             return nil
         }
+
+        // Move pin to one position left when it is after last character
+        let invalidLastChars = CharacterSet(charactersIn: " :!?,.")
+        var validChars = CharacterSet.alphanumerics
+        validChars.insert(charactersIn: "@_")
+        if (pin > 0), let _ = (self[pin] as String).rangeOfCharacter(from: invalidLastChars) {
+            if let _ = (self[pin - 1] as String).rangeOfCharacter(from: validChars) {
+                pin -= 1
+            }
+        }
+
         var start = pin
-        while start >= 0 && (self[start] as String).rangeOfCharacter(from: .alphanumerics) != nil {
+        while start >= 0 && (self[start] as String).rangeOfCharacter(from: validChars) != nil {
             start -= 1
         }
+
         var end = pin
-        while end < characters.count && (self[end] as String).rangeOfCharacter(from: .alphanumerics) != nil {
+        while end < characters.count && (self[end] as String).rangeOfCharacter(from: validChars) != nil {
             end += 1
         }
         if start == end { return nil }
