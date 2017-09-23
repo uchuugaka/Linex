@@ -24,6 +24,11 @@ extension String {
         return String(self[i] as Character)
     }
 
+    subscript (range: Range<Int>) -> Substring {
+        let rangeIndex:Range<Index> = self.indexRangeFor(range: range)
+        return self[rangeIndex]
+    }
+
     func indexAt(offset: Int) -> Index {
         return self.index(self.startIndex, offsetBy: offset)
     }
@@ -94,6 +99,11 @@ extension String {
         return (start, newString)
     }
 
+    func selectWord(pin: Int) -> Range<Index>? {
+        guard let range:Range<Int> = selectWord(pin: pin) else { return nil }
+        return self.indexRangeFor(range: range)
+    }
+
     func selectWord(pin: Int) -> Range<Int>? {
         guard pin <= self.characters.count else {
             return nil
@@ -121,3 +131,4 @@ extension RawRepresentable where RawValue == String {
         self.init(rawValue: value)
     }
 }
+

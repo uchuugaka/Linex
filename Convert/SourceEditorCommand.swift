@@ -39,6 +39,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
                     case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
                     }
+                } else {
+                    let pin = range.end.column
+                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: pin) {
+                        let selectedString = currentLine[selectionRange]
+                        if let newString = toggle(boolString: selectedString) {
+                            currentLine.replaceSubrange(selectionRange, with: newString)
+                        }
+                    }
                 }
                 buffer.lines.replaceObject(at: currentLineOffset, with: currentLine)
             } else {
@@ -59,6 +67,15 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         completionHandler(nil)
     }
 
+    private func toggle(boolString: Substring) -> String? {
+        switch boolString {
+        case "true": return "false"
+        case "false": return "true"
+        case "YES": return "NO"
+        case "NO": return "YES"
+        default: return nil
+        }
+    }
 
     func convertToCase(_ selectedCase: Case, buffer: XCSourceTextBuffer) {
         let range = buffer.selections.lastObject as! XCSourceTextRange

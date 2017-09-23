@@ -54,7 +54,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let currentLine = buffer.lines[caretPosition.line] as! String
                 let pin = range.end.column
 
-                if let selectionRange = currentLine.selectWord(pin: pin) {
+                if let selectionRange:Range<Int> = currentLine.selectWord(pin: pin) {
                     range.start.column = selectionRange.lowerBound
                     range.end.column = selectionRange.upperBound
                 }
