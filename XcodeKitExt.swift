@@ -41,7 +41,8 @@ func selectedLinesIndexSet(for selectedRanges: SelectionType) -> IndexSet {
     switch selectedRanges {
     case .none(let line, _): return IndexSet(integer: line)
     case .words(let line, _, _): return IndexSet(integer: line)
-    case .lines(let start, let end): return IndexSet(integersIn: start.line...end.line)
+    case .lines(let start, let end):
+        return IndexSet(integersIn: start.line...(end.column == 0 ? end.line - 1 : end.line))
     case .multiLocation(_): fatalError()
     }
 }
