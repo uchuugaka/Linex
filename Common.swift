@@ -90,12 +90,17 @@ extension String {
         while end < self.characters.count && self[end] == " " {
             end += 1
         }
-        if start == end {
-            return (pin, self)
-        }
-        let range = self.index(self.startIndex, offsetBy: start)..<self.index(self.startIndex, offsetBy: end)
+
         var newString = self
-        newString.replaceSubrange(range, with: " ")
+        if start == end {//No space
+            newString.replaceSubrange(self.indexAt(offset: start)..<self.indexAt(offset: start), with: " ")
+        } else if end - start == 1 {//If one space
+            let range = self.indexAt(offset: start)..<self.indexAt(offset: end)
+            newString.replaceSubrange(range, with: "")
+        } else { //More than one space
+            let range = self.indexAt(offset: start)..<self.indexAt(offset: end)
+            newString.replaceSubrange(range, with: " ")
+        }
         return (start, newString)
     }
 
