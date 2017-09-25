@@ -85,6 +85,8 @@
 
 /* Begin PBXFileReference section */
 		E31FD4731F5712540044765A /* Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
+		E330C82E1F796DE600ECC222 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		E330C82F1F796DF000ECC222 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeKitExt.swift; sourceTree = "<group>"; };
 		E356FD811F66F55C004558F1 /* TestPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPad.swift; sourceTree = "<group>"; };
 		E35942171F55564C009EFA35 /* Linex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,8 @@
 				E359421E1F55564C009EFA35 /* Assets.xcassets */,
 				E35942201F55564C009EFA35 /* Main.storyboard */,
 				E35942231F55564C009EFA35 /* Info.plist */,
+				E330C82E1F796DE600ECC222 /* README.md */,
+				E330C82F1F796DF000ECC222 /* LICENSE */,
 			);
 			path = Linex;
 			sourceTree = "<group>";
