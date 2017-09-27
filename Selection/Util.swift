@@ -23,7 +23,7 @@ extension Array where Element == String {
         return farthest
     }
 
-    func alignedDefineStatements() -> [String]? {
+    func alignedDefineStatements() -> [String] {
         var farthestOffset = 0
         var indexSet = [Int]()
         var alignedLines = self
@@ -42,7 +42,7 @@ extension Array where Element == String {
         }
 
         // If no #defines found in subsequent lines
-        if indexSet.count < 2 { return nil }
+        if indexSet.count < 2 { return self }
 
         //Align all #defines according to farthest offset
         for i in indexSet {
@@ -56,6 +56,54 @@ extension Array where Element == String {
         return alignedLines
     }
 
+    func alignedPropertyStatements() -> [String]? {
+        let pattern = "@property\\s*(\\([\\w,= ]+\\))*\\s*(\\w+)\\s*(\\*)*\\s*(\\w+);(.*)"
+        let mainRegex = try! NSRegularExpression(pattern: pattern)
+
+        // Calculate max lengths
+        var maxAttributeLength = 0
+        var maxDataTypeLength = 0;
+        for line in self {
+            let range = NSRange(location: 0, length: line.count)
+            if let property = mainRegex.firstMatch(in: line, options: [], range: range) {
+                let attributeRange = property.range(at: 1)
+                if attributeRange.lowerBound < attributeRange.upperBound && maxAttributeLength < line[attributeRange].count {
+                    maxAttributeLength = line[attributeRange].count
+                }
+                let dataTypeRange = property.range(at: 2)
+                if dataTypeRange.lowerBound < dataTypeRange.upperBound && maxDataTypeLength < line[dataTypeRange].count {
+                    maxDataTypeLength = line[dataTypeRange].count
+                }
+            }
+        }
+
+        // Align the lines
+        return self.map { line in
+            guard line.hasPrefix("@property") else { return line }
+            var newLine = "@property"
+            let range = NSRange(location: 0, length: line.count)
+            if let property = mainRegex.firstMatch(in: line, options: [], range: range) {
+
+                let attributeRange = property.range(at: 1)
+                let str = attributeRange.lowerBound < attributeRange.upperBound ? line[attributeRange] : ""
+                newLine += " " + str.padding(toLength: maxAttributeLength, withPad: " ", startingAt: 0)
+
+                let dataTypeRange = property.range(at: 2)
+                let str1 = dataTypeRange.lowerBound < dataTypeRange.upperBound ? line[dataTypeRange] : ""
+                newLine += " " + str1.padding(toLength: maxDataTypeLength, withPad: " ", startingAt: 0)
+
+                let asterisk = property.range(at: 3)
+                newLine += asterisk.lowerBound < asterisk.upperBound ? " *" : "  "
+
+                let variable = property.range(at: 4)
+                newLine += variable.lowerBound < variable.upperBound ? line[variable] + ";" : ";"
+
+                let trailing = property.range(at: 5)
+                newLine += trailing.lowerBound < trailing.upperBound ? line[trailing] : ""
+            }
+            return newLine
+        }
+    }
 
     func aligned(seperator: String) -> [String]? {
         guard self.count > 1 else {
@@ -85,6 +133,10 @@ extension Array where Element == String {
         if first!.hasPrefix("#define") {
             return self.alignedDefineStatements()
         }
+        if first!.hasPrefix("@property") {
+            return self.alignedPropertyStatements()
+        }
+
         return self.aligned(seperator: ": ")?.aligned(seperator: " = ")
     }
 }

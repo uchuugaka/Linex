@@ -28,6 +28,10 @@ extension String {
         let rangeIndex:Range<Index> = self.indexRangeFor(range: range)
         return self[rangeIndex]
     }
+    
+    subscript(range: NSRange) -> String {
+        return (self as NSString).substring(with: range)
+    }
 
     func indexAt(offset: Int) -> Index {
         return self.index(self.startIndex, offsetBy: offset)
