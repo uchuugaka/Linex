@@ -19,6 +19,9 @@ Delete current line or selected lines
 
 ### Join Line
 Joins the line below or all the selected lines
+![](/Images/join.gif)
+
+![](/Images/join-selection.gif)
 
 ### Line Beginning
 Toggles the caret between indented beginning and real begninning
