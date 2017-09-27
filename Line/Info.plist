@@ -34,7 +34,7 @@
                     <key>XCSourceEditorCommandIdentifier</key>
                     <string>$(PRODUCT_BUNDLE_IDENTIFIER).duplicate</string>
                     <key>XCSourceEditorCommandName</key>
-                    <string>Duplicate</string>
+                    <string>Duplicate Line</string>
                 </dict>
                 <dict>
                     <key>XCSourceEditorCommandClassName</key>
