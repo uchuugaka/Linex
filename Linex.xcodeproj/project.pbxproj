@@ -105,6 +105,7 @@
 		E35942441F55565E009EFA35 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		E35942461F55565E009EFA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E359BCF51F604E000071246B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		E383F00A1F7A13A900429B4D /* TestPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPad.m; sourceTree = "<group>"; };
 		E39E226D1F59876A00354A5F /* Selection.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Selection.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39E22711F59876A00354A5F /* Selection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Selection.entitlements; sourceTree = "<group>"; };
 		E39E22721F59876A00354A5F /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 			children = (
 				E359422C1F55564D009EFA35 /* LinexTests.swift */,
 				E356FD811F66F55C004558F1 /* TestPad.swift */,
+				E383F00A1F7A13A900429B4D /* TestPad.m */,
 				E359422E1F55564D009EFA35 /* Info.plist */,
 			);
 			path = LinexTests;
