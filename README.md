@@ -91,9 +91,9 @@ Smart align code.
 
 ## Recommended Shortcuts
 
-ction               | Shortcut                                             |
+| Action               | Shortcut                                             |
 | -------------------- | :--------------------------------------------------: |
-| <b>Line<b>           |                                                      |
+| `Line`               |                                                      |
 | Duplicate            |                                                      |
 | Open New Line Below  | <kbd>CTRL</kbd>+<kbd>return</kbd>                    |
 | Open New Line Above  | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>return</kbd>   |
@@ -102,14 +102,14 @@ ction               | Shortcut                                             |
 | Join Line            | <kbd>CTRL</kbd>+<kbd>J</kbd>                         |
 | Line Beginning       | <kbd>CTRL</kbd>+<kbd>A</kbd>                         |
 |                      |                                                      |
-| <b>Selection<b>      |                                                      |
+| `Selection`          |                                                      |
 | Select Word          | <kbd>CTRL</kbd>+<kbd>W</kbd>                         |
 | Select Line          | <kbd>CTRL</kbd>+<kbd>L</kbd>                         |
 | Select Line up       | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>L</kbd>        |
 | One Space            | <kbd>OPTN</kbd>+<kbd>Space</kbd>                     |
 | Align                | <kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>X</kbd>          |
 |                      |                                                      |
-| <b>Convert<b>        |                                                      |
+| `Convert`            |                                                      |
 | Increment            | <kbd>CTRL</kbd>+<kbd>+</kbd>                         |
 | Decrement            | <kbd>CTRL</kbd>+<kbd>-</kbd>                         |
 
