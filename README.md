@@ -90,24 +90,28 @@ Smart align code.
 ![Setting shortcuts](/Images/shortcut-demo.gif)
 
 ## Recommended Shortcuts
-- Line
-  - Duplicate
-  - Duplicates current line or selected line
-  - Open New Line Below (<kbd>CTRL</kbd>+<kbd>return</kbd>)
-  - Open New Line Above (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>return</kbd>)
-  - Commented Duplicate (<kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>/</kbd>)
-  - Delete Line
-  - Join Line (<kbd>CTRL</kbd>+<kbd>J</kbd>)
-  - Line Beginning (<kbd>CTRL</kbd>+<kbd>A</kbd>)
-- Selection
-  - Select Word (<kbd>CTRL</kbd>+<kbd>W</kbd>)
-  - Select Line (<kbd>CTRL</kbd>+<kbd>L</kbd>)
-  - Select Line up (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>L</kbd>)
-  - One Space (<kbd>OPTN</kbd>+<kbd>Space</kbd>)
-  - Align (<kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>X</kbd>)
-- Convert
-  - Increment (<kbd>CTRL</kbd>+<kbd>+</kbd>)
-  - Decrement (<kbd>CTRL</kbd>+<kbd>-</kbd>)
+
+ction               | Shortcut                                             |
+| -------------------- | :--------------------------------------------------: |
+| <b>Line<b>           |                                                      |
+| Duplicate            |                                                      |
+| Open New Line Below  | <kbd>CTRL</kbd>+<kbd>return</kbd>                    |
+| Open New Line Above  | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>return</kbd>   |
+| Commented Duplicate  | <kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>/</kbd>          |
+| Delete Line          |                                                      |
+| Join Line            | <kbd>CTRL</kbd>+<kbd>J</kbd>                         |
+| Line Beginning       | <kbd>CTRL</kbd>+<kbd>A</kbd>                         |
+|                      |                                                      |
+| <b>Selection<b>      |                                                      |
+| Select Word          | <kbd>CTRL</kbd>+<kbd>W</kbd>                         |
+| Select Line          | <kbd>CTRL</kbd>+<kbd>L</kbd>                         |
+| Select Line up       | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>L</kbd>        |
+| One Space            | <kbd>OPTN</kbd>+<kbd>Space</kbd>                     |
+| Align                | <kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>X</kbd>          |
+|                      |                                                      |
+| <b>Convert<b>        |                                                      |
+| Increment            | <kbd>CTRL</kbd>+<kbd>+</kbd>                         |
+| Decrement            | <kbd>CTRL</kbd>+<kbd>-</kbd>                         |
 
 # Contributing
 Pull requests with bug fixes or with new failing Test cases are welcomed.
