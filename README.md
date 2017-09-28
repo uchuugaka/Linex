@@ -77,6 +77,12 @@ Smart align code.
 ### Decrement
 
 # Installation
+1. Download the latest [Linex.app](https://github.com/kaunteya/Linex/releases/latest).
+2. Move the Linex.app to Applications folder.
+3. Open and Close it.
+4. Verify if the extensions are added in <kbd>System Preferences</kbd> -> <kbd>Extensions</kbd> -> <kbd>Xocde Source Editor</kbd>
+
+<img src="/Images/extension-preferences.png" alt="Extension preferences" width="500">
 
 # Shortcuts
 
