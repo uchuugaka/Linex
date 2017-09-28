@@ -10,6 +10,9 @@
   <a href="https://swift.org" target="_blank">
     <img src="https://img.shields.io/badge/Swift-4-orange.svg" alt="Language Swift 4">
   </a>
+  <a href="https://swift.org" target="_blank">
+    <img src="https://img.shields.io/badge/platform-macOS-green.svg" alt="Language Swift 4">
+  </a>
   <a href="https://opensource.org/licenses/MIT" target="_blank">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"/>
   </a> 
@@ -18,7 +21,7 @@
 - [Key Features](#key-features)
 - [Installation](#installation)
 - [Shortcuts](#shortcuts)
-- [Contributing](#Contributing)
+- [Contributing](#contributing)
 - [License](#license)
 
 # Key Features
@@ -96,9 +99,6 @@ Smart align code.
 - Convert
   - Increment (<kbd>CTRL</kbd>+<kbd>+</kbd>)
   - Decrement (<kbd>CTRL</kbd>+<kbd>-</kbd>)
-
-Open New Line Below
-Open New Line Above
 
 # Contributing
 Pull requests with bug fixes or with new failing Test cases are welcomed.
