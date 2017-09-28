@@ -79,7 +79,10 @@ Smart align code.
 # Installation
 
 # Shortcuts
+
 ## Setting Shortcuts
+![Setting shortcuts](/Images/shortcut-demo.gif)
+
 ## Recommended Shortcuts
 - Line
   - Duplicate
