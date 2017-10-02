@@ -26,3 +26,33 @@
 @property (nonatomic, weak) NSTimer* minShowTimer;
 @property (nonatomic, weak) NSTimer *hideDelayTimer;
 @property (nonatomic, weak) CADisplayLink *progressObjectDisplayLink; //Bottom Space of
+
+#define name @"Kaunteya"
+#define age 23
+#define someVeryVeryLongName @"Long String"
+#define address @"Pune India"
+#define city @"Pune"
+
+    //-------------Case Where there is a comment----------------
+#define name @"Kaunteya"
+#define age 23
+#define someVeryVeryLongName @"Long String"
+    //Address of Person
+#define address @"Pune India"
+#define city @"Pune"
+
+    //---------Case of Blank Line
+#define name @"Kaunteya"
+#define age 23
+#define someVeryVeryLongName @"Long String"
+
+#define address @"Pune India"
+#define city @"Pune"
+
+    //---------Case of Blank Line
+#define name @"Kaunteya"
+#define age 23
+#define someVeryVeryLongName @"Long String" // Trailing comment is here
+
+#define address @"Pune India"
+#define city @"Pune" //Trailing comment
