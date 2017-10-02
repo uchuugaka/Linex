@@ -100,7 +100,7 @@ Smart align code.
 | Open New Line Below  | <kbd>CTRL</kbd>+<kbd>return</kbd>                    |
 | Open New Line Above  | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>return</kbd>   |
 | Commented Duplicate  | <kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>/</kbd>          |
-| Delete Line          |                                                      |
+| Delete Line          | <kbd>CTRL</kbd>+<kbd>OPTN</kbd>+<kbd>L</kbd>            |
 | Join Line            | <kbd>CTRL</kbd>+<kbd>J</kbd>                         |
 | Line Beginning       | <kbd>CTRL</kbd>+<kbd>A</kbd>                         |
 |                      |                                                      |
