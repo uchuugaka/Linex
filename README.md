@@ -25,7 +25,22 @@
 - [License](#license)
 
 # Key Features
-
+- [Line](#line)
+  - [Duplicate](#duplicate)
+  - [Open new Line below](#open-new-line-below)
+  - [Open New Line Above](#open-new-line-above)
+  - [Commented Duplicate](#commented-duplicate)
+  - [Delete Line](#delete-line)
+  - [Join Line](#join-line)
+  - [Line beginning](#line-beginning)
+- [Selection](#selection)
+  - [Select Word](#select-word)
+  - [Select Line](#select-line)
+  - [Select Line up](#select-line-up)
+  - [One Space](#one-space)
+  - [Align](#align)
+- [Convert](#convert)
+  
 ## Line
 ### Duplicate
 Duplicates current line or selected line
@@ -38,7 +53,7 @@ Inserts new blank line below current line
 Inserts new blank line above current line
 ![](/Images/openlineabove.gif)
 
-### Commented Duplicate(⌘⌃/)
+### Commented Duplicate
 Duplicate+Comment current line or selected lines. It can be used to check variations in code
 ![](/Images/commentedduplicate.gif)
 
@@ -52,7 +67,7 @@ Joins the line below or all the selected lines
 ![](/Images/join-selection.gif)
 
 ### Line Beginning
-Toggles the caret between indented beginning and real begninning
+Toggles the caret between indented beginning and the real begninning
 ![Line Beginning](/Images/togglehome.gif)
 
 ## Selection
