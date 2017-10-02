@@ -32,13 +32,14 @@ Duplicates current line or selected line
 
 ### Open New Line Below
 Inserts new blank line below current line
+![](/Images/opennewline.gif)
 
 ### Open New Line Above
 Inserts new blank line above current line
 ![](/Images/openlineabove.gif)
 
 ### Commented Duplicate(⌘⌃/)
-Duplicates selection and comments it
+Duplicates current line or selected lines
 
 ### Delete Line
 Delete current line or selected lines
