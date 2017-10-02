@@ -39,7 +39,8 @@ Inserts new blank line above current line
 ![](/Images/openlineabove.gif)
 
 ### Commented Duplicate(⌘⌃/)
-Duplicates current line or selected lines
+Duplicate+Comment current line or selected lines. It can be used to check variations in code
+![](/Images/commentedduplicate.gif)
 
 ### Delete Line
 Delete current line or selected lines
