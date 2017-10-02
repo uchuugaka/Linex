@@ -69,7 +69,8 @@ Combination of `Select line` and `Select line up` can be used to expand selectio
 ![Select line up](/Images/selectdownup.gif)
 
 ### One Space
-Replace consecutive multiple spaces with one space. Press again to toggle between one space and no space
+Replace consecutive spaces with one space. Press again to toggle between `one space` and `no space`
+![One Space](/Images/onespace.gif)
 
 ### Align
 Smart align code.
