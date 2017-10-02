@@ -65,6 +65,7 @@ Selects line. After selecting current line starts selecting next lines
 
 ### Select Line up
 Selects line above the caret one-by-one
+Combination of `Select line` and `Select line up` can be used to expand selection above and below as seen below
 ![Select line up](/Images/selectdownup.gif)
 
 ### One Space
