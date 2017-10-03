@@ -46,7 +46,8 @@
 Duplicates current line or selected line
 
 ### Open New Line Below
-Inserts new blank line below current line. This allows you to create a new indented line irrespective oc your current caret postion.
+Inserts new blank line below current line.
+This allows you to create a new indented line irrespective of your current caret postion.
 ![](/Images/opennewline.gif)
 
 ### Open New Line Above
