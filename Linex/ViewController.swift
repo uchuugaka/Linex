@@ -10,18 +10,8 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBAction func actionOpenGithub(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "https://github.com/kaunteya/Linex")!)
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
 }
 
