@@ -96,7 +96,8 @@ Smart align code.
 ## Convert
 ### Increment & Decrement
 Increment & Decrement using quick shortcuts. These shortcuts also toggles `true`, `false`, `YES` & `NO`
-![Align](/Images/incrementdecrement.gif)
+![Increment Decrement](/Images/incrementdecrement.gif)
+![True false](/Images/incdec.gif)
 
 # Installation
 1. Download the latest [Linex.app](https://github.com/kaunteya/Linex/releases/latest).
