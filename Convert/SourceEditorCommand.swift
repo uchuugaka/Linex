@@ -48,21 +48,31 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .words(let line, let colStart, let colEnd):
                 var currentLine = buffer.lines[line] as! String
                 let currentRange = currentLine.indexRangeFor(range: colStart..<colEnd)
-                guard let num = Int(currentLine[currentRange]) else { return }
 
-                let newNum: String
-                switch command {
-                case .increment: newNum = "\(num + 1)"
-                case .decrement: newNum = "\(num - 1)"
-                }
+                if let newBool = toggle(boolString: currentLine[currentRange]) {
+                    currentLine.replaceSubrange(currentRange, with: newBool)
+                    buffer.lines.replaceObject(at: line, with: currentLine)
 
-                currentLine.replaceSubrange(currentRange, with: newNum)
-                buffer.lines.replaceObject(at: line, with: currentLine)
+                    //Selection / Caret posistion
+                    if (colEnd - colStart != newBool.count) {
+                        let range = buffer.selections.firstObject as! XCSourceTextRange
+                        range.end.column = colStart + newBool.count
+                    }
+                } else if let num = Int(currentLine[currentRange])  {
+                    let newNum: String
+                    switch command {
+                    case .increment: newNum = "\(num + 1)"
+                    case .decrement: newNum = "\(num - 1)"
+                    }
 
-                //Selection / Caret posistion
-                if (colEnd - colStart != newNum.count) {
-                    let range = buffer.selections.firstObject as! XCSourceTextRange
-                    range.end.column = colStart + newNum.count
+                    currentLine.replaceSubrange(currentRange, with: newNum)
+                    buffer.lines.replaceObject(at: line, with: currentLine)
+                    
+                    //Selection / Caret posistion
+                    if (colEnd - colStart != newNum.count) {
+                        let range = buffer.selections.firstObject as! XCSourceTextRange
+                        range.end.column = colStart + newNum.count
+                    }
                 }
 
             case .lines(_, _): break
