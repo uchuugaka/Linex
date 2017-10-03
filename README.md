@@ -95,8 +95,10 @@ Smart align code.
 
 ## Convert
 ### Increment & Decrement
-Increment & Decrement using quick shortcuts. These shortcuts also toggles `true`, `false`, `YES` & `NO`
+Increment & Decrement using quick shortcuts.
 ![Increment Decrement](/Images/incrementdecrement.gif)
+
+These shortcuts also toggles `true`, `false`, `YES` & `NO`
 ![True false](/Images/incdec.gif)
 
 # Installation
