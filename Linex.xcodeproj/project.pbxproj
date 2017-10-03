@@ -84,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E31714C31F8385F40036CF07 /* Linex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Linex.entitlements; sourceTree = "<group>"; };
 		E31FD4731F5712540044765A /* Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
 		E330C82E1F796DE600ECC222 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E330C82F1F796DF000ECC222 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
@@ -193,6 +194,7 @@
 		E35942191F55564C009EFA35 /* Linex */ = {
 			isa = PBXGroup;
 			children = (
+				E31714C31F8385F40036CF07 /* Linex.entitlements */,
 				E359421A1F55564C009EFA35 /* AppDelegate.swift */,
 				E359421C1F55564C009EFA35 /* ViewController.swift */,
 				E359421E1F55564C009EFA35 /* Assets.xcassets */,
@@ -397,6 +399,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = KQQ77ZBE5E;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					E35942271F55564C009EFA35 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -684,6 +691,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Linex/Linex.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -701,6 +709,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Linex/Linex.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
