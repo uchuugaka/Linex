@@ -18,11 +18,12 @@
   </a> 
 
 # Content
-- [Key Features](#key-features)
-- [Installation](#installation)
-- [Shortcuts](#shortcuts)
-- [Contributing](#contributing)
-- [License](#license)
+- [⭐️ Key Features](#key-features)
+- [📦 Installation](#installation)
+- [⌨️ Shortcuts](#shortcuts)
+- [👩‍💻 Contributing](#contributing)
+- [📃 License](#license)
+
 
 # Key Features
 - [Line](#line)
