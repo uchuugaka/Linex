@@ -4,7 +4,7 @@
   <br> Linex <br>
 </h1>
 
-<h4 align="center">The missing Xcode extension.</h4>
+<h4 align="center">Feature packed Xcode extension.</h4>
 
 <p align="center">
   <a href="https://swift.org" target="_blank">
