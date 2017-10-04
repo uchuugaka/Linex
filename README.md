@@ -41,7 +41,9 @@
   - [One Space](#one-space)
   - [Align](#align)
 - [Convert](#convert)
-  
+  - [Increment](#convert)
+  - [Decrement](#convert)
+
 ## Line
 ### Duplicate
 Duplicates current line or selected line
