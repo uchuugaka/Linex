@@ -18,12 +18,29 @@
   </a> 
 
 # Content
-- [⭐️ Key Features](#key-features)
 - [📦 Installation](#installation)
+- [⭐️ Key Features](#key-features)
 - [⌨️ Shortcuts](#shortcuts)
 - [👩‍💻 Contributing](#contributing)
 - [📃 License](#license)
 
+# Installation
+
+## Mac App Store
+
+Linex can be downloaded free on the Mac App Store.
+
+<a href="https://itunes.apple.com/us/app/linex-for-xcode/id1290932760?ls=1&mt=12" target="_blank">
+    <img src="/Images/mac-app-store.svg" alt="Mac App Store"/>
+</a>
+
+## Manual
+1. Download the latest [Linex.app](https://github.com/kaunteya/Linex/releases/latest).
+2. Move the Linex.app to Applications folder.
+3. Open and Close it.
+4. Verify if the extensions are added in <kbd>System Preferences</kbd> -> <kbd>Extensions</kbd> -> <kbd>Xcode Source Editor</kbd> as seen below
+
+<img src="/Images/extension-preferences.png" alt="Extension preferences" width="500">
 
 # Key Features
 - [Line](#line)
@@ -102,14 +119,6 @@ Increment & Decrement using quick shortcuts.
 
 These shortcuts also toggles `true`, `false`, `YES` & `NO`
 ![True false](/Images/incdec.gif)
-
-# Installation
-1. Download the latest [Linex.app](https://github.com/kaunteya/Linex/releases/latest).
-2. Move the Linex.app to Applications folder.
-3. Open and Close it.
-4. Verify if the extensions are added in <kbd>System Preferences</kbd> -> <kbd>Extensions</kbd> -> <kbd>Xcode Source Editor</kbd> as seen below
-
-<img src="/Images/extension-preferences.png" alt="Extension preferences" width="500">
 
 # Shortcuts
 
