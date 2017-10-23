@@ -28,13 +28,13 @@
 
 ## Mac App Store
 
-Linex can be downloaded free on the Mac App Store.
+Linex can be *purchased* on the Mac App Store. Please purchase the plugin as it would help me to maintain it.
 
 <a href="https://itunes.apple.com/us/app/linex-for-xcode/id1290932760?ls=1&mt=12" target="_blank">
     <img src="/Images/mac-app-store.svg" alt="Mac App Store"/>
 </a>
 
-## Manual
+## Manual(Free)
 1. Download the latest [Linex.app](https://github.com/kaunteya/Linex/releases/latest).
 2. Move the Linex.app to Applications folder.
 3. Open and Close it.
