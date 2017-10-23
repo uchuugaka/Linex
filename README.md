@@ -28,7 +28,7 @@
 
 ## Mac App Store
 
-Linex can be *purchased* on the Mac App Store. Please purchase the plugin as it would help me to maintain it.
+Linex can be *purchased* on the Mac App Store. Please consider purchasing the plugin as it would help me to maintain it.
 
 <a href="https://itunes.apple.com/us/app/linex-for-xcode/id1290932760?ls=1&mt=12" target="_blank">
     <img src="/Images/mac-app-store.svg" alt="Mac App Store"/>
@@ -148,6 +148,9 @@ These shortcuts also toggles `true`, `false`, `YES` & `NO`
 | `Convert`            |                                                      |
 | Increment            | <kbd>CTRL</kbd>+<kbd>+</kbd>                         |
 | Decrement            | <kbd>CTRL</kbd>+<kbd>-</kbd>                         |
+
+# Todo
+- Expand selection
 
 # Contributing
 Pull requests with bug fixes or with new failing Test cases are welcomed.
