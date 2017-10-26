@@ -28,13 +28,13 @@
 
 ## Mac App Store
 
-Linex can be *purchased* on the Mac App Store. Please consider purchasing the plugin as it would help me to maintain it.
+Linex can be downloaded from the Mac App Store.
 
 <a href="https://itunes.apple.com/us/app/linex-for-xcode/id1290932760?ls=1&mt=12" target="_blank">
     <img src="/Images/mac-app-store.svg" alt="Mac App Store"/>
 </a>
 
-## Manual(Free)
+## Manual
 1. Download the latest [Linex.app](https://github.com/kaunteya/Linex/releases/latest).
 2. Move the Linex.app to Applications folder.
 3. Open and Close it.
@@ -133,7 +133,7 @@ These shortcuts also toggles `true`, `false`, `YES` & `NO`
 | Duplicate            |                                                      |
 | Open New Line Below  | <kbd>CTRL</kbd>+<kbd>return</kbd>                    |
 | Open New Line Above  | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>return</kbd>   |
-| Commented Duplicate  | <kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>/</kbd>          |
+| Commented Duplicate  | <kbd>CMD</kbd>+<kbd>CTRL</kbd>+<kbd>/</kbd>          |
 | Delete Line          | <kbd>CTRL</kbd>+<kbd>OPTN</kbd>+<kbd>L</kbd>            |
 | Join Line            | <kbd>CTRL</kbd>+<kbd>J</kbd>                         |
 | Line Beginning       | <kbd>CTRL</kbd>+<kbd>A</kbd>                         |
@@ -143,7 +143,7 @@ These shortcuts also toggles `true`, `false`, `YES` & `NO`
 | Select Line          | <kbd>CTRL</kbd>+<kbd>L</kbd>                         |
 | Select Line up       | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>L</kbd>        |
 | One Space            | <kbd>OPTN</kbd>+<kbd>Space</kbd>                     |
-| Align                | <kbd>Cmd</kbd>+<kbd>CTRL</kbd>+<kbd>X</kbd>          |
+| Align                | <kbd>CMD</kbd>+<kbd>CTRL</kbd>+<kbd>X</kbd>          |
 |                      |                                                      |
 | `Convert`            |                                                      |
 | Increment            | <kbd>CTRL</kbd>+<kbd>+</kbd>                         |
