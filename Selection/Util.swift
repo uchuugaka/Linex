@@ -16,7 +16,7 @@ extension Array where Element == String {
         for str in self {
             let seperated = str.components(separatedBy: subStr)
             if seperated.count == 2 {
-                let offset = seperated.first!.trimmedEnd().characters.count
+                let offset = seperated.first!.trimmedEnd().count
                 if offset > farthest { farthest = offset }
             }
         }
@@ -34,8 +34,8 @@ extension Array where Element == String {
                 indexSet.append(i)
                 let split = line.condensedWhitespace.components(separatedBy: " ")
                 if split.count > 2 {
-                    if farthestOffset < split[1].characters.count {
-                        farthestOffset = split[1].characters.count
+                    if farthestOffset < split[1].count {
+                        farthestOffset = split[1].count
                     }
                 }
             }

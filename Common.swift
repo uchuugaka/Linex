@@ -49,7 +49,7 @@ extension String {
     /// "    var foo" -> 4
     func lineIndentationOffset() -> Int {
         var i = 0
-        for a in self.characters {
+        for a in self {
             if a == " " {
                 i += 1
             } else { break }
@@ -75,7 +75,7 @@ extension String {
 
     func replacedRegex(pattern: String, with template: String) -> String {
         let regex = try! NSRegularExpression(pattern: pattern)
-        let range = NSMakeRange(0, characters.count)
+        let range = NSMakeRange(0, count)
         let modString = regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: template)
         return modString
     }
@@ -91,7 +91,7 @@ extension String {
         }
 
         var end = pin
-        while end < self.characters.count && self[end] == " " {
+        while end < self.count && self[end] == " " {
             end += 1
         }
 
@@ -115,10 +115,10 @@ extension String {
 
     func selectWord(pin: Int) -> Range<Int>? {
         var pin = pin
-        guard pin <= self.characters.count else {
+        guard pin <= self.count else {
             return nil
         }
-        guard self.characters.count > 1  else {
+        guard self.count > 1  else {
             return nil
         }
 
@@ -138,7 +138,7 @@ extension String {
         }
 
         var end = pin
-        while end < characters.count && (self[end] as String).rangeOfCharacter(from: validChars) != nil {
+        while end < count && (self[end] as String).rangeOfCharacter(from: validChars) != nil {
             end += 1
         }
         if start == end { return nil }

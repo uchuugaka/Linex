@@ -114,8 +114,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
                 //Selection/CaretPosition
                 let range = buffer.selections.lastObject as! XCSourceTextRange
-                range.start.column = firstLine.characters.count + 1
-                range.end.column = firstLine.characters.count + 1
+                range.start.column = firstLine.count + 1
+                range.end.column = firstLine.count + 1
 
             case .lines(_, _):
                 let range = buffer.selections.firstObject as! XCSourceTextRange
@@ -134,7 +134,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
                 //Selection/CaretPosition
                 range.end.line = range.start.line
-                range.end.column = joinedLine.characters.count
+                range.end.column = joinedLine.count
 
             case .multiLocation(_): break
             }
