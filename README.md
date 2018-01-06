@@ -44,7 +44,7 @@ Linex can be downloaded from the Mac App Store.
 
 # Key Features
 - [Line](#line)
-  - [Duplicate](#duplicate)
+  - [Copy Line](#copy-line)
   - [Open new Line below](#open-new-line-below)
   - [Open New Line Above](#open-new-line-above)
   - [Commented Duplicate](#commented-duplicate)
@@ -62,7 +62,7 @@ Linex can be downloaded from the Mac App Store.
   - [Decrement](#convert)
 
 ## Line
-### Duplicate
+### Copy Lines
 Duplicates current line or selected line
 
 ### Open New Line Below
@@ -130,11 +130,11 @@ These shortcuts also toggles `true`, `false`, `YES` & `NO`
 | Action               | Shortcut                                             |
 | -------------------- | :--------------------------------------------------: |
 | `Line`               |                                                      |
-| Duplicate            |                                                      |
+| Copy Lines           | <kbd>OPTN</kbd>+<kbd>↓</kbd>                                                     |
 | Open New Line Below  | <kbd>CTRL</kbd>+<kbd>return</kbd>                    |
 | Open New Line Above  | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>return</kbd>   |
 | Commented Duplicate  | <kbd>CMD</kbd>+<kbd>CTRL</kbd>+<kbd>/</kbd>          |
-| Delete Line          | <kbd>CTRL</kbd>+<kbd>OPTN</kbd>+<kbd>L</kbd>            |
+| Delete Line          | <kbd>CTRL</kbd>+<kbd>OPTN</kbd>+<kbd>L</kbd>         |
 | Join Line            | <kbd>CTRL</kbd>+<kbd>J</kbd>                         |
 | Line Beginning       | <kbd>CTRL</kbd>+<kbd>A</kbd>                         |
 |                      |                                                      |
