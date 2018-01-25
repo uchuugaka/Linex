@@ -28,7 +28,7 @@
 
 ## Mac App Store
 
-Linex can be downloaded from the Mac App Store.
+Linex can be downloaded from the Mac App Store at a very modest price. Please consider purchasing it.
 
 <a href="https://itunes.apple.com/us/app/linex-for-xcode/id1290932760?ls=1&mt=12" target="_blank">
     <img src="/Images/mac-app-store.svg" alt="Mac App Store"/>
