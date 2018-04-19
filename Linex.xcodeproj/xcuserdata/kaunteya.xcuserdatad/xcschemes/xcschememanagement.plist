@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Convert.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Line.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,21 +33,6 @@
 			<true/>
 		</dict>
 		<key>E35942271F55564C009EFA35</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E359423A1F55565E009EFA35</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E39E226C1F59876A00354A5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E3F543921F5A84FC008F426E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

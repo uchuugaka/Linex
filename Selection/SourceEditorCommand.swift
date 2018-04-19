@@ -24,9 +24,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
             let range = buffer.selections.lastObject as! XCSourceTextRange
-            range.start.column = 0
-            range.end.line += 1
-            range.end.column = 0
+            switch selectedRanges {
+            case .none(let line, _):
+                let indentationOffset = (buffer.lines[line] as! String).lineIndentationOffset()
+                range.start.column = indentationOffset
+                range.end.column = (buffer.lines[line] as! String).count - 1
+
+            case .words(_, _, _),
+                 .lines(_, _):
+                range.start.column = 0
+                range.end.line += 1
+                range.end.column = 0
+
+            case .multiLocation(_): break
+            }
 
         case .selectLineAbove:
             let range = buffer.selections.lastObject as! XCSourceTextRange
