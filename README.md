@@ -19,7 +19,7 @@
 
 # Content
 - [📦 Installation](#installation)
-- [⭐️ Key Features](#key-features)
+- [⭐️ Key Features](#features)
 - [⌨️ Shortcuts](#shortcuts)
 - [👩‍💻 Contributing](#contributing)
 - [📃 License](#license)
@@ -42,83 +42,79 @@ Linex can be downloaded from the Mac App Store at a very modest price. Please co
 
 <img src="/Images/extension-preferences.png" alt="Extension preferences" width="500">
 
-# Key Features
-- [Line](#line)
-  - [Copy Line](#copy-line)
-  - [Open new Line below](#open-new-line-below)
-  - [Open New Line Above](#open-new-line-above)
-  - [Commented Duplicate](#commented-duplicate)
-  - [Delete Line](#delete-line)
-  - [Join Line](#join-line)
-  - [Line beginning](#line-beginning)
-- [Selection](#selection)
-  - [Select Word](#select-word)
-  - [Select Line](#select-line)
-  - [Select Line up](#select-line-up)
-  - [One Space](#one-space)
-  - [Align](#align)
-- [Convert](#convert)
-  - [Increment](#convert)
-  - [Decrement](#convert)
+# Features
 
-## Line
-### Copy Lines
-Duplicates current line or selected line
+Copy Line
 
-### Open New Line Below
+<details><summary>Open new Line below</summary>
+  
 Inserts new blank line below current line.
 This allows you to create a new indented line irrespective of your current caret postion.
 ![](/Images/opennewline.gif)
+</details>
 
-### Open New Line Above
-Inserts new blank line above current line
+<details><summary>Open New Line Above</summary>
+  
+  Inserts new blank line above current line
 ![](/Images/openlineabove.gif)
+</details>
 
-### Commented Duplicate
-Duplicate+Comment current line or selected lines. It can be used to check variations in code
+<details><summary>Commented Duplicate</summary>
+  
+  Duplicate+Comment current line or selected lines. It can be used to check variations in code
 ![](/Images/commentedduplicate.gif)
+</details>
 
-### Delete Line
-Delete current line or selected lines
+Delete Line
 
-### Join Line
-Joins the line below or all the selected lines
+<details><summary>Join Line</summary>
+  
+  Joins the line below or all the selected lines
 ![](/Images/join.gif)
 
-![](/Images/join-selection.gif)
+</details>
 
-### Line Beginning
-Toggles the caret between indented beginning and the real begninning
+<details><summary>Line beginning</summary>
+  
+  Toggles the caret between indented beginning and the real begninning
 ![Line Beginning](/Images/togglehome.gif)
+</details>
 
-## Selection
-### Select Word
-Selects the word around the caret
+Select Word
 
-### Select Line
-Selects line. After selecting current line starts selecting next lines
+<details><summary>Select Line</summary>
+  
+  Selects line. After selecting current line starts selecting next lines
 ![Select line](/Images/selectline.gif)
+</details>
 
-### Select Line up
-Selects line above the caret one-by-one
+<details><summary>Select Line up</summary>
+  
+  Selects line above the caret one-by-one
 Combination of `Select line` and `Select line up` can be used to expand selection above and below as seen below
 ![Select line up](/Images/selectdownup.gif)
+</details>
 
-### One Space
-Replace consecutive spaces with one space. Press again to toggle between `one space` and `no space`
+<details><summary>One Space</summary>
+
+  Replace consecutive spaces with one space. Press again to toggle between `one space` and `no space`
 ![One Space](/Images/onespace.gif)
+</details>
 
-### Align
-Smart align code.
+<details><summary>Align</summary>
+
+  Smart align code.
 ![Align](/Images/propertyalign.gif)
+</details>
 
-## Convert
-### Increment & Decrement
-Increment & Decrement using quick shortcuts.
+<details><summary>Increment / Decrement</summary>
+  
+  Increment & Decrement using quick shortcuts.
 ![Increment Decrement](/Images/incrementdecrement.gif)
 
 These shortcuts also toggles `true`, `false`, `YES` & `NO`
 ![True false](/Images/incdec.gif)
+</details>
 
 # Shortcuts
 
