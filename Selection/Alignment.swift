@@ -10,7 +10,7 @@ import Foundation
 extension Array where Element == String {
 
     // Return nil when offset is not found in any line
-    func farthestOffsetFor(subStr: String) -> Int? {
+    private func farthestOffsetFor(subStr: String) -> Int? {
         guard self.count > 0 else { return nil; }
         var farthest: Int = 0
         for str in self {
@@ -23,7 +23,7 @@ extension Array where Element == String {
         return farthest
     }
 
-    func alignedDefineStatements() -> [String] {
+    private func alignedDefineStatements() -> [String] {
         var farthestOffset = 0
         var indexSet = [Int]()
         var alignedLines = self
@@ -56,7 +56,7 @@ extension Array where Element == String {
         return alignedLines
     }
 
-    func alignedPropertyStatements() -> [String]? {
+    private func alignedPropertyStatements() -> [String]? {
         let pattern = "@property\\s*(\\([\\w,= ]+\\))*\\s*(\\w+)\\s*(\\*)*\\s*(\\w+);(.*)"
         let mainRegex = try! NSRegularExpression(pattern: pattern)
 
@@ -105,7 +105,7 @@ extension Array where Element == String {
         }
     }
 
-    func aligned(seperator: String) -> [String]? {
+    private func aligned(seperator: String) -> [String]? {
         guard self.count > 1 else {
             assert(self.count == 1)
             return self
