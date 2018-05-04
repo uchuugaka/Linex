@@ -108,12 +108,12 @@ extension String {
         return (start, newString)
     }
 
-    func selectWord(pin: Int) -> Range<Index>? {
-        guard let range:Range<Int> = selectWord(pin: pin) else { return nil }
+    func selectWord(pin: Int, validChars: CharacterSet) -> Range<Index>? {
+        guard let range:Range<Int> = selectWord(pin: pin, validChars: validChars) else { return nil }
         return self.indexRangeFor(range: range)
     }
 
-    func selectWord(pin: Int) -> Range<Int>? {
+    func selectWord(pin: Int, validChars: CharacterSet) -> Range<Int>? {
         var pin = pin
         guard pin <= self.count else {
             return nil
@@ -123,13 +123,8 @@ extension String {
         }
 
         // Move pin to one position left when it is after last character
-        let invalidLastChars = CharacterSet(charactersIn: " :!?,.")
-        var validChars = CharacterSet.alphanumerics
-        validChars.insert(charactersIn: "@_")
-        if (pin > 0), let _ = (self[pin] as String).rangeOfCharacter(from: invalidLastChars) {
-            if let _ = (self[pin - 1] as String).rangeOfCharacter(from: validChars) {
-                pin -= 1
-            }
+        if (pin > 0), let _ = (self[pin - 1] as String).rangeOfCharacter(from: validChars) {
+            pin -= 1
         }
 
         var start = pin

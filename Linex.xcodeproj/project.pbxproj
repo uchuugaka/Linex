@@ -22,6 +22,10 @@
 		E35942491F55565E009EFA35 /* Line.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E359423B1F55565E009EFA35 /* Line.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E359BCF61F604E000071246B /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359BCF51F604E000071246B /* Alignment.swift */; };
 		E359BD0A1F6063A70071246B /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359BCF51F604E000071246B /* Alignment.swift */; };
+		E37DDA782099DD5700D86394 /* Balanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DDA762099D9D100D86394 /* Balanced.swift */; };
+		E37DDA792099DD5800D86394 /* Balanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DDA762099D9D100D86394 /* Balanced.swift */; };
+		E37DDA7A2099DD5900D86394 /* Balanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DDA762099D9D100D86394 /* Balanced.swift */; };
+		E37DDA7D2099E65900D86394 /* SelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DDA7C2099E65900D86394 /* SelectionTests.swift */; };
 		E39E226E1F59876A00354A5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
 		E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22721F59876A00354A5F /* SourceEditorExtension.swift */; };
 		E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22741F59876A00354A5F /* SourceEditorCommand.swift */; };
@@ -107,6 +111,8 @@
 		E35942461F55565E009EFA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E359BCF51F604E000071246B /* Alignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
 		E35F567A1F7BEFA100905225 /* propertyalign.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = propertyalign.gif; sourceTree = "<group>"; };
+		E37DDA762099D9D100D86394 /* Balanced.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balanced.swift; sourceTree = "<group>"; };
+		E37DDA7C2099E65900D86394 /* SelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTests.swift; sourceTree = "<group>"; };
 		E383F00A1F7A13A900429B4D /* TestPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPad.m; sourceTree = "<group>"; };
 		E39E226D1F59876A00354A5F /* Selection.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Selection.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39E22711F59876A00354A5F /* Selection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Selection.entitlements; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 			children = (
 				E39E227E1F59C58E00354A5F /* Common.swift */,
 				E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */,
+				E37DDA762099D9D100D86394 /* Balanced.swift */,
 				E35F56791F7BEFA100905225 /* Images */,
 				E35942191F55564C009EFA35 /* Linex */,
 				E359422B1F55564D009EFA35 /* LinexTests */,
@@ -210,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				E359422C1F55564D009EFA35 /* LinexTests.swift */,
+				E37DDA7C2099E65900D86394 /* SelectionTests.swift */,
 				E356FD811F66F55C004558F1 /* TestPad.swift */,
 				E383F00A1F7A13A900429B4D /* TestPad.m */,
 				E359422E1F55564D009EFA35 /* Info.plist */,
@@ -507,6 +515,7 @@
 				E39E22821F59C59300354A5F /* Common.swift in Sources */,
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
 				E359BD0A1F6063A70071246B /* Alignment.swift in Sources */,
+				E37DDA7D2099E65900D86394 /* SelectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E356FD7E1F66D281004558F1 /* XcodeKitExt.swift in Sources */,
+				E37DDA782099DD5700D86394 /* Balanced.swift in Sources */,
 				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
 				E31FD4741F5712540044765A /* Extras.swift in Sources */,
 				E39E22801F59C59100354A5F /* Common.swift in Sources */,
@@ -527,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E356FD7F1F66D282004558F1 /* XcodeKitExt.swift in Sources */,
+				E37DDA792099DD5800D86394 /* Balanced.swift in Sources */,
 				E39E22811F59C59200354A5F /* Common.swift in Sources */,
 				E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */,
 				E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */,
@@ -542,6 +553,7 @@
 				E3F543A61F5ABA48008F426E /* Common.swift in Sources */,
 				E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */,
 				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,
+				E37DDA7A2099DD5900D86394 /* Balanced.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,7 +706,7 @@
 				CODE_SIGN_ENTITLEMENTS = Linex/Linex.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex;
@@ -712,7 +724,7 @@
 				CODE_SIGN_ENTITLEMENTS = Linex/Linex.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex;

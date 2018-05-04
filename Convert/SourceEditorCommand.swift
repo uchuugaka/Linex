@@ -36,7 +36,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
                     }
                 } else {
-                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: column) {
+                    let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_"))
+                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: column, validChars: validChars) {
                         let selectedSubString = currentLine[selectionRange]
                         if let newString = toggle(boolString: selectedSubString) {
                             currentLine.replaceSubrange(selectionRange, with: newString)
