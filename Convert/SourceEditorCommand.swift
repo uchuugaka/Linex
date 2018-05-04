@@ -23,10 +23,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         if let command = Options(command: invocation.commandIdentifier) {
 
             switch selectedRanges {
-            case .none(let line, let column):
+            case .none(let position):
                 let range = buffer.selections.firstObject as! XCSourceTextRange
-                var currentLine = buffer.lines[line] as! String
-                let currentChar = currentLine[column] as String
+                var currentLine = buffer.lines[position.line] as! String
+                let currentChar = currentLine[position.column] as String
 
                 //If caret is beside number
                 if let _ = currentChar.rangeOfCharacter(from: .decimalDigits), let num = Int(currentChar) {
@@ -37,14 +37,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     }
                 } else {
                     let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_"))
-                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: column, validChars: validChars) {
+                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: position.column, validChars: validChars) {
                         let selectedSubString = currentLine[selectionRange]
                         if let newString = toggle(boolString: selectedSubString) {
                             currentLine.replaceSubrange(selectionRange, with: newString)
                         }
                     }
                 }
-                buffer.lines.replaceObject(at: line, with: currentLine)
+                buffer.lines.replaceObject(at: position.line, with: currentLine)
 
             case .words(let line, let colStart, let colEnd):
                 var currentLine = buffer.lines[line] as! String
