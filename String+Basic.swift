@@ -56,11 +56,11 @@ extension String {
         return i
     }
 
-    func trimmedStart() -> String {
+    var trimmedStart: String {
         return self.replacingOccurrences(of: "^[ \t]+", with: "", options: .regularExpression)
     }
 
-    func trimmedEnd() -> String {
+    var trimmedEnd: String {
         return self.replacingOccurrences(of: "[ \t]+$", with: "", options: .regularExpression)
     }
 

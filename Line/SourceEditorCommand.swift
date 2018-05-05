@@ -158,7 +158,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     if i == 0 {
                         joinedLine += line.trimmingCharacters(in: .newlines)
                     } else {
-                        joinedLine += " " + line.trimmedStart().trimmingCharacters(in: .newlines)
+                        joinedLine += " " + line.trimmedStart.trimmingCharacters(in: .newlines)
                     }
                 }
                 buffer.lines.removeObjects(at: selectedLines)
