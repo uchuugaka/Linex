@@ -26,10 +26,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .none(let position):
                 let range = buffer.selections.firstObject as! XCSourceTextRange
                 var currentLine = buffer.lines[position.line] as! String
-                let currentChar = currentLine[position.column] as String
+                let currentChar = currentLine[position.column]
 
                 //If caret is beside number
-                if let _ = currentChar.rangeOfCharacter(from: .decimalDigits), let num = Int(currentChar) {
+                if currentChar.isPresent(in: .decimalDigits), let num = Int(String(currentChar)) {
                     let currentRange = currentLine.indexRangeFor(range: range.start.column...range.start.column)
                     switch command {
                     case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")

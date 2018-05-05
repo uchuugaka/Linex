@@ -65,20 +65,25 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let currentLine = buffer.lines[position.line] as! String
                 if currentLine.count == 0 { return }
                 let lineEnd = currentLine.count - 1
-                var rightChar: Character?
-                if position.column < lineEnd {
-                    rightChar = currentLine[position.column] as Character
-                }
-                var leftChar: Character?
-                if (position.column > 0) {
-                    leftChar = currentLine[position.column - 1] as Character
-                }
 
-                if let rightChar = rightChar, rightChar.isOpening {
-                    if let position = buffer.findClosing(for: rightChar, at: position) {
-                        range.end = position
+                if position.column < lineEnd {
+                    let rightChar = currentLine[position.column] as Character
+                    if rightChar.isOpening {
+                        if let position = buffer.findClosing(for: rightChar, at: position) {
+                            range.end = position
+                        }
                     }
                 }
+
+                if (position.column > 0) {
+                    let leftChar = currentLine[position.column - 1] as Character
+                    if leftChar.isClosing {
+                        if let position = buffer.findOpening(for: leftChar, at: position) {
+                            range.start = position
+                        }
+                    }
+                }
+
 
                 let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_"))
                 if let selectionRange:Range<Int> = currentLine.selectWord(pin: position.column, validChars: validChars) {
@@ -162,40 +167,42 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
 let openStopper = CharacterSet(charactersIn: "{[(\"")
 let closeStopper = CharacterSet(charactersIn: "}])\"")
+
 extension String {
     func findOpeningPosition(from: Int) -> Int? {
         var from = from - 1
         var onTheWayBrackets = 0
         while from >= 0 {
-            let currentChar = self[from] as String
+            let currentChar = self[from]
 
-            if currentChar.rangeOfCharacter(from: openStopper) != nil {
+            if currentChar.isPresent(in: openStopper) {
                 if onTheWayBrackets == 0 {
                     return from + 1
                 }
                 onTheWayBrackets -= 1
             }
-            if currentChar.rangeOfCharacter(from: closeStopper) != nil {
+            if currentChar.isPresent(in: closeStopper) {
                 onTheWayBrackets += 1
             }
             from -= 1
         }
         return nil
     }
+
     func findClosingPosition(from: Int) -> Int? {
         var from = from
         var onTheWayBrackets = 0
         let endOfLine = self.count
         while from < endOfLine {
-            let currentChar = self[from] as String
+            let currentChar = self[from]
 
-            if currentChar.rangeOfCharacter(from: closeStopper) != nil {
+            if currentChar.isPresent(in: closeStopper) {
                 if onTheWayBrackets == 0 {
                     return from
                 }
                 onTheWayBrackets -= 1
             }
-            if currentChar.rangeOfCharacter(from: openStopper) != nil {
+            if currentChar.isPresent(in: openStopper) {
                 onTheWayBrackets += 1
             }
             from += 1

@@ -16,15 +16,11 @@ extension String {
         return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
 
-    subscript (i: Int) -> Character {
+    subscript(i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
 
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
-    }
-
-    subscript (range: Range<Int>) -> Substring {
+    subscript(range: Range<Int>) -> Substring {
         let rangeIndex:Range<Index> = self.indexRangeFor(range: range)
         return self[rangeIndex]
     }
@@ -33,16 +29,20 @@ extension String {
         return (self as NSString).substring(with: range)
     }
 
-    func indexAt(offset: Int) -> Index {
+    func index(at offset: Int) -> Index {
         return self.index(self.startIndex, offsetBy: offset)
     }
 
     func indexRangeFor(range: Range<Int>) -> Range<Index> {
-        return indexAt(offset: range.lowerBound)..<indexAt(offset: range.upperBound)
+        return index(at: range.lowerBound)..<index(at: range.upperBound)
     }
 
     func indexRangeFor(range: ClosedRange<Int>) -> ClosedRange<Index> {
-        return indexAt(offset: range.lowerBound)...indexAt(offset: range.upperBound)
+        return index(at: range.lowerBound)...index(at: range.upperBound)
+    }
+
+    mutating func replace(range: Range<Int>, with replacement: String) {
+        self.replaceSubrange(self.index(at: range.lowerBound)..<self.index(at: range.lowerBound), with: replacement)
     }
 
     /// Fetch indentation offset of lines in code
@@ -97,13 +97,11 @@ extension String {
 
         var newString = self
         if start == end {//No space
-            newString.replaceSubrange(self.indexAt(offset: start)..<self.indexAt(offset: start), with: " ")
-        } else if end - start == 1 {//If one space
-            let range = self.indexAt(offset: start)..<self.indexAt(offset: end)
-            newString.replaceSubrange(range, with: "")
+            newString.replace(range: start..<start, with: " ")
+        } else if end - start == 1 {//If one space replace with no-space
+            newString.replace(range: start..<end, with: "")
         } else { //More than one space
-            let range = self.indexAt(offset: start)..<self.indexAt(offset: end)
-            newString.replaceSubrange(range, with: " ")
+            newString.replace(range: start..<end, with: " ")
         }
         return (start, newString)
     }
@@ -123,17 +121,17 @@ extension String {
         }
 
         // Move pin to one position left when it is after last character
-        if (pin > 0), let _ = (self[pin - 1] as String).rangeOfCharacter(from: validChars) {
+        if (pin > 0), self[pin - 1].isPresent(in: validChars) {
             pin -= 1
         }
 
         var start = pin
-        while start >= 0 && (self[start] as String).rangeOfCharacter(from: validChars) != nil {
+        while start >= 0 && self[start].isPresent(in: validChars) {
             start -= 1
         }
 
         var end = pin
-        while end < count && (self[end] as String).rangeOfCharacter(from: validChars) != nil {
+        while end < count && self[end].isPresent(in: validChars) {
             end += 1
         }
         if start == end { return nil }

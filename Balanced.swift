@@ -35,11 +35,10 @@ private let closingFor = ["{":"}", "(":")", "[":"]"]
 private let openingFor = ["}":"{", ")":"(", "]":"["]
 
 extension XCSourceTextBuffer {
-    func findClosing(for openingChar: Character,
-        at position: XCSourceTextPosition) -> XCSourceTextPosition? {
+    
+    func findClosing(for openingChar: Character, at position: XCSourceTextPosition) -> XCSourceTextPosition? {
         let closingChar = openingChar.closing
         var stackCount = 0
-
         var currentPosition = position.next(in: self)
         while currentPosition != nil {
             let currentChar = self.char(at: currentPosition!)
@@ -54,6 +53,24 @@ extension XCSourceTextBuffer {
             default: break
             }
             currentPosition = currentPosition!.next(in: self)
+        }
+        return nil
+    }
+
+    func findOpening(for closingChar: Character, at position: XCSourceTextPosition) -> XCSourceTextPosition? {
+        let openingChar = closingChar.opening
+        var stackCount = 0
+        var currentPosition = position.previous(in: self)?.previous(in: self)
+        while currentPosition != nil {
+            let currentChar = self.char(at: currentPosition!)
+            switch currentChar {
+            case closingChar: stackCount += 1
+            case openingChar:
+                if stackCount == 0 { return currentPosition! }
+                stackCount -= 1
+            default: break
+            }
+            currentPosition = currentPosition?.previous(in: self)
         }
         return nil
     }
@@ -76,6 +93,10 @@ extension XCSourceTextBuffer {
 }
 
 extension XCSourceTextPosition {
+    var isStart: Bool {
+        return self.line == 0 && self.column == 0
+    }
+
     func next(in buffer: XCSourceTextBuffer) -> XCSourceTextPosition? {
         guard self != buffer.lastPosition else { return nil }
 
@@ -83,8 +104,17 @@ extension XCSourceTextPosition {
         if self.column == currentLine.count - 1 {
             return XCSourceTextPosition(line: self.line + 1, column: 0)
         }
-        let newPosition = XCSourceTextPosition(line: self.line, column: self.column + 1)
-        return newPosition
+        return XCSourceTextPosition(line: self.line, column: self.column + 1)
+    }
+
+    func previous(in buffer: XCSourceTextBuffer) -> XCSourceTextPosition? {
+        guard !self.isStart else { return nil}
+
+        if self.column == 0 {
+            let currentLine = buffer.lines[self.line - 1] as! String
+            return XCSourceTextPosition(line: self.line - 1, column: currentLine.count - 1)
+        }
+        return XCSourceTextPosition(line: self.line, column: self.column - 1)
     }
 }
 
