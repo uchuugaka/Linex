@@ -19,16 +19,16 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     public func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Swift.Void) {
 
         let buffer = invocation.buffer
-        let selectedRanges: SelectionType = selectionRanges(of: buffer)
-        let selectionIndexSet: IndexSet = selectedLinesIndexSet(for: selectedRanges)
+        let selection = selectionType(of: buffer)
+        let selectedLines = selection.selectedLines
 
         switch Options(command: invocation.commandIdentifier)! {
         case .duplicate:
             let range = buffer.selections.firstObject as! XCSourceTextRange
-            let copyOfLines = buffer.lines.objects(at: selectionIndexSet)
-            buffer.lines.insert(copyOfLines, at: selectionIndexSet)
+            let copyOfLines = buffer.lines.objects(at: selectedLines)
+            buffer.lines.insert(copyOfLines, at: selectedLines)
 
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 if position.column == 0 {
                     range.start.line += 1
@@ -42,11 +42,11 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         case .commentedDuplicate:
             let range = buffer.selections.firstObject as! XCSourceTextRange
-            let copyOfLines = buffer.lines.objects(at: selectionIndexSet)
+            let copyOfLines = buffer.lines.objects(at: selectedLines)
             let commentedLines = copyOfLines.map { "//" + ($0 as! String) }
-            buffer.lines.insert(commentedLines, at: selectionIndexSet)
+            buffer.lines.insert(commentedLines, at: selectedLines)
 
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 if position.column == 0 {
                     range.start.line += 1
@@ -59,7 +59,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .openNewLineBelow:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let indentationOffset = (buffer.lines[position.line] as! String).indentationOffset
                 let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
@@ -84,7 +84,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .openNewLineAbove:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let indentationOffset = (buffer.lines[position.line] as! String).indentationOffset
                 let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
@@ -108,7 +108,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .deleteLine:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 buffer.lines.removeObject(at: position.line)
 
@@ -120,7 +120,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .join:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 if position.line == buffer.lines.count { return }
 
@@ -151,17 +151,17 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
             case .lines(_, _):
                 let range = buffer.selections.firstObject as! XCSourceTextRange
-                let selectedLines = buffer.lines.objects(at: selectionIndexSet) as! [String]
+                let lines = buffer.lines.objects(at: selectedLines) as! [String]
 
                 var joinedLine = ""
-                for (i, line) in selectedLines.enumerated() {
+                for (i, line) in lines.enumerated() {
                     if i == 0 {
                         joinedLine += line.trimmingCharacters(in: .newlines)
                     } else {
                         joinedLine += " " + line.trimmedStart().trimmingCharacters(in: .newlines)
                     }
                 }
-                buffer.lines.removeObjects(at: selectionIndexSet)
+                buffer.lines.removeObjects(at: selectedLines)
                 buffer.lines.insert(joinedLine, at: range.start.line)
 
                 //Selection/CaretPosition
@@ -172,7 +172,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .lineBeginning:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let range = buffer.selections.lastObject as! XCSourceTextRange
                 let indentationOffset = (buffer.lines[position.line] as! String).indentationOffset

@@ -18,11 +18,11 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
 
         let buffer = invocation.buffer
-        let selectedRanges: SelectionType = selectionRanges(of: buffer)
+        let selection = selectionType(of: buffer)
 
         if let command = Options(command: invocation.commandIdentifier) {
 
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let range = buffer.selections.firstObject as! XCSourceTextRange
                 var currentLine = buffer.lines[position.line] as! String

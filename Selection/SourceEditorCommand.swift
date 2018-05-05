@@ -20,13 +20,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             completionHandler(nil)
         }
         let buffer = invocation.buffer
-        let selectedRanges: SelectionType = selectionRanges(of: buffer)
-        let selectionIndex: IndexSet = selectedLinesIndexSet(for: selectedRanges)
+        let selection = selectionType(of: buffer)
+        let selectedLines = selection.selectedLines
         let range = buffer.selections.lastObject as! XCSourceTextRange
 
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let indentationOffset = (buffer.lines[position.line] as! String).indentationOffset
                 range.start.column = indentationOffset
@@ -47,7 +47,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             range.end.column = 0
 
         case .oneSpace:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let currentLine = buffer.lines[position.line] as! String
                 let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: position.column)
@@ -60,7 +60,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .expand:
-            switch selectedRanges {
+            switch selection {
             case .none(let position):
                 let currentLine = buffer.lines[position.line] as! String
                 if currentLine.count == 0 { return }
@@ -148,13 +148,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
         case .align:
-            switch selectedRanges {
+            switch selection {
             case .none(_): break
             case .words(_, _, _): break
             case .lines(_, _):
-                let selectedLines = buffer.lines.objects(at: selectionIndex) as! [String]
-                if let aligned = selectedLines.autoAlign() {
-                    buffer.lines.replaceObjects(at: selectionIndex, with: aligned)
+                let lines = buffer.lines.objects(at: selectedLines) as! [String]
+                if let aligned = lines.autoAlign() {
+                    buffer.lines.replaceObjects(at: selectedLines, with: aligned)
                 }
 
             case .multiLocation(_): break
