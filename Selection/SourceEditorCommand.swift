@@ -27,10 +27,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
             switch selectedRanges {
-            case .none(let line, _):
-                let indentationOffset = (buffer.lines[line] as! String).lineIndentationOffset()
+            case .none(let position):
+                let indentationOffset = (buffer.lines[position.line] as! String).lineIndentationOffset()
                 range.start.column = indentationOffset
-                range.end.column = (buffer.lines[line] as! String).count - 1
+                range.end.column = (buffer.lines[position.line] as! String).count - 1
 
             case .words(_, _, _),
                  .lines(_, _):
@@ -48,10 +48,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         case .oneSpace:
             switch selectedRanges {
-            case .none(let line, let column):
-                let currentLine = buffer.lines[line] as! String
-                let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: column)
-                buffer.lines.replaceObject(at: line, with: newLine)
+            case .none(let position):
+                let currentLine = buffer.lines[position.line] as! String
+                let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: position.column)
+                buffer.lines.replaceObject(at: position.line, with: newLine)
                 range.end.column = newOffset
                 range.start.column = newOffset
             case .words(_, _, _): break
@@ -61,27 +61,27 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         case .expand:
             switch selectedRanges {
-            case .none(let line, let column):
-                let currentLine = buffer.lines[line] as! String
+            case .none(let position):
+                let currentLine = buffer.lines[position.line] as! String
                 if currentLine.count == 0 { return }
                 let lineEnd = currentLine.count - 1
                 var rightChar: Character?
-                if column < lineEnd {
-                    rightChar = currentLine[column] as Character
+                if position.column < lineEnd {
+                    rightChar = currentLine[position.column] as Character
                 }
                 var leftChar: Character?
-                if (column > 0) {
-                    leftChar = currentLine[column - 1] as Character
+                if (position.column > 0) {
+                    leftChar = currentLine[position.column - 1] as Character
                 }
 
                 if let rightChar = rightChar, rightChar.isOpening {
-                    if let position = buffer.findClosing(for: rightChar, at: XCSourceTextPosition(line: line, column: column)) {
+                    if let position = buffer.findClosing(for: rightChar, at: position) {
                         range.end = position
                     }
                 }
 
                 let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_"))
-                if let selectionRange:Range<Int> = currentLine.selectWord(pin: column, validChars: validChars) {
+                if let selectionRange:Range<Int> = currentLine.selectWord(pin: position.column, validChars: validChars) {
                     range.start.column = selectionRange.lowerBound
                     range.end.column = selectionRange.upperBound
                 }
@@ -144,7 +144,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         case .align:
             switch selectedRanges {
-            case .none(_, _): break
+            case .none(_): break
             case .words(_, _, _): break
             case .lines(_, _):
                 let selectedLines = buffer.lines.objects(at: selectionIndex) as! [String]
