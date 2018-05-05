@@ -28,7 +28,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .selectLine:
             switch selectedRanges {
             case .none(let position):
-                let indentationOffset = (buffer.lines[position.line] as! String).lineIndentationOffset()
+                let indentationOffset = (buffer.lines[position.line] as! String).indentationOffset
                 range.start.column = indentationOffset
                 range.end.column = (buffer.lines[position.line] as! String).count - 1
 
@@ -92,7 +92,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
             case .words(let line, let colStart, let colEnd):
                 let currentLine = buffer.lines[line] as! String
-                let indentationIndex = currentLine.lineIndentationOffset()
+                let indentationIndex = currentLine.indentationOffset
                 let lineEnd = currentLine.count - 1
                 let currentStart = currentLine[colStart] as Character
                 let currentEnd = currentLine[colEnd - 1] as Character
@@ -118,7 +118,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
 
                 if (colEnd == lineEnd) {
-                    range.start.column = currentLine.lineIndentationOffset()
+                    range.start.column = currentLine.indentationOffset
                     return
                 }
 
@@ -131,7 +131,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
 
                 if (currentStart == "(" && currentEnd == ")" && colEnd == lineEnd) {
-                    range.start.column = currentLine.lineIndentationOffset()
+                    range.start.column = currentLine.indentationOffset
                     return
                 }
 

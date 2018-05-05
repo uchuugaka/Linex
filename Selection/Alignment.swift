@@ -67,7 +67,8 @@ extension Array where Element == String {
             let range = NSRange(location: 0, length: line.count)
             if let property = mainRegex.firstMatch(in: line, options: [], range: range) {
                 let attributeRange = property.range(at: 1)
-                if attributeRange.lowerBound < attributeRange.upperBound && maxAttributeLength < line[attributeRange].count {
+                if attributeRange.lowerBound < attributeRange.upperBound &&
+                    maxAttributeLength < line[attributeRange].count {
                     maxAttributeLength = line[attributeRange].count
                 }
                 let dataTypeRange = property.range(at: 2)
