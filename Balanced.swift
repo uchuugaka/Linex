@@ -9,30 +9,9 @@
 import Foundation
 import XcodeKit
 
-extension Character {
-    var isOpening: Bool {
-        let openStopper = CharacterSet(charactersIn: "{[(")
-        return CharacterSet(charactersIn: String(self)).isSubset(of: openStopper)
-    }
-    var isClosing:Bool {
-        let openStopper = CharacterSet(charactersIn: "}])")
-        return CharacterSet(charactersIn: String(self)).isSubset(of: openStopper)
-    }
-    func isPresent(in characterSet:CharacterSet) -> Bool {
-        return CharacterSet(charactersIn: String(self)).isSubset(of: characterSet)
-    }
-    var closing: Character {
-        assert(self.isOpening, "Only opening characters can have closing characters")
-        return ["{":"}", "(":")", "[":"]"][self]!
-    }
-    var opening: Character {
-        assert(self.isClosing, "Only closing characters can have opening characters")
-        return ["}":"{", ")":"(", "]":"["][self]!
-    }
-}
-
 private let closingFor = ["{":"}", "(":")", "[":"]"]
 private let openingFor = ["}":"{", ")":"(", "]":"["]
+
 
 extension XCSourceTextBuffer {
     
@@ -92,34 +71,3 @@ extension XCSourceTextBuffer {
     }
 }
 
-extension XCSourceTextPosition {
-    var isStart: Bool {
-        return self.line == 0 && self.column == 0
-    }
-
-    func next(in buffer: XCSourceTextBuffer) -> XCSourceTextPosition? {
-        guard self != buffer.lastPosition else { return nil }
-
-        let currentLine = buffer.lines[self.line] as! String
-        if self.column == currentLine.count - 1 {
-            return XCSourceTextPosition(line: self.line + 1, column: 0)
-        }
-        return XCSourceTextPosition(line: self.line, column: self.column + 1)
-    }
-
-    func previous(in buffer: XCSourceTextBuffer) -> XCSourceTextPosition? {
-        guard !self.isStart else { return nil}
-
-        if self.column == 0 {
-            let currentLine = buffer.lines[self.line - 1] as! String
-            return XCSourceTextPosition(line: self.line - 1, column: currentLine.count - 1)
-        }
-        return XCSourceTextPosition(line: self.line, column: self.column - 1)
-    }
-}
-
-extension XCSourceTextPosition: Equatable {
-    public static func == (lhs: XCSourceTextPosition, rhs: XCSourceTextPosition) -> Bool {
-        return lhs.line == rhs.line && lhs.column == rhs.column
-    }
-}
