@@ -57,15 +57,11 @@ extension String {
     }
 
     func trimmedStart() -> String {
-        return self.replacingOccurrences(of: "^[ \t]+",
-                                         with: "",
-                                         options: CompareOptions.regularExpression)
+        return self.replacingOccurrences(of: "^[ \t]+", with: "", options: .regularExpression)
     }
 
     func trimmedEnd() -> String {
-        return self.replacingOccurrences(of: "[ \t]+$",
-                                         with: "",
-                                         options: CompareOptions.regularExpression)
+        return self.replacingOccurrences(of: "[ \t]+$", with: "", options: .regularExpression)
     }
 
     func repeating(count: Int) -> String {

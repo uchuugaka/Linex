@@ -19,12 +19,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         let buffer = invocation.buffer
         let selection = buffer.selectionType
+        let range = buffer.selections.firstObject as! XCSourceTextRange
 
         if let command = Options(command: invocation.commandIdentifier) {
 
             switch selection {
             case .none(let position):
-                let range = buffer.selections.firstObject as! XCSourceTextRange
                 var currentLine = buffer.lines[position.line] as! String
                 let currentChar = currentLine[position.column]
 
