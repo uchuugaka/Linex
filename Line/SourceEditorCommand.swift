@@ -65,7 +65,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
                 buffer.lines.insert(offsetWhiteSpaces, at: position.line + 1)
                 //Selection
-                let position = XCSourceTextPosition(line: position.line + 1, column: indentationOffset)
+                let position = TextPosition(line: position.line + 1, column: indentationOffset)
                 let lineSelection = XCSourceTextRange(start: position, end: position)
                 buffer.selections.setArray([lineSelection])
 
@@ -75,7 +75,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
                 buffer.lines.insert(offsetWhiteSpaces, at: line + 1)
                 //Selection
-                let position = XCSourceTextPosition(line: line + 1, column: indentationOffset)
+                let position = TextPosition(line: line + 1, column: indentationOffset)
                 let lineSelection = XCSourceTextRange(start: position, end: position)
                 buffer.selections.setArray([lineSelection])
 
@@ -90,7 +90,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
                 buffer.lines.insert(offsetWhiteSpaces, at: position.line)
                 //Selection
-                let position = XCSourceTextPosition(line: position.line, column: indentationOffset)
+                let position = TextPosition(line: position.line, column: indentationOffset)
                 let lineSelection = XCSourceTextRange(start: position, end: position)
                 buffer.selections.setArray([lineSelection])
 
@@ -99,7 +99,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
                 buffer.lines.insert(offsetWhiteSpaces, at: line)
                 //Selection
-                let position = XCSourceTextPosition(line: line, column: indentationOffset)
+                let position = TextPosition(line: line, column: indentationOffset)
                 let lineSelection = XCSourceTextRange(start: position, end: position)
                 buffer.selections.setArray([lineSelection])
 
