@@ -1,21 +1,22 @@
 //
-//  Balanced.swift
+//  TextBuffer.swift
 //  Linex
 //
-//  Created by Kaunteya Suryawanshi on 02/05/18.
+//  Created by Kaunteya Suryawanshi on 05/05/18.
 //  Copyright © 2018 Kaunteya Suryawanshi. All rights reserved.
 //
 
 import Foundation
 import XcodeKit
 
+typealias TextBuffer = XCSourceTextBuffer
+
 private let closingFor = ["{":"}", "(":")", "[":"]"]
 private let openingFor = ["}":"{", ")":"(", "]":"["]
 
+extension TextBuffer {
 
-extension XCSourceTextBuffer {
-    
-    func findClosing(for openingChar: Character, at position: XCSourceTextPosition) -> XCSourceTextPosition? {
+    func findClosing(for openingChar: Character, at position: TextPosition) -> TextPosition? {
         let closingChar = openingChar.closing
         var stackCount = 0
         var currentPosition = position.next(in: self)
@@ -25,7 +26,7 @@ extension XCSourceTextBuffer {
             case openingChar: stackCount += 1
             case closingChar:
                 if stackCount == 0 {
-                    return XCSourceTextPosition(line: currentPosition!.line,
+                    return TextPosition(line: currentPosition!.line,
                                                 column: currentPosition!.column + 1)
                 }
                 stackCount -= 1
@@ -36,7 +37,7 @@ extension XCSourceTextBuffer {
         return nil
     }
 
-    func findOpening(for closingChar: Character, at position: XCSourceTextPosition) -> XCSourceTextPosition? {
+    func findOpening(for closingChar: Character, at position: TextPosition) -> TextPosition? {
         let openingChar = closingChar.opening
         var stackCount = 0
         var currentPosition = position.previous(in: self)?.previous(in: self)
@@ -55,17 +56,17 @@ extension XCSourceTextBuffer {
     }
 }
 
-extension XCSourceTextBuffer {
-    var lastPosition: XCSourceTextPosition {
+extension TextBuffer {
+    var lastPosition: TextPosition {
         let lastLine = self.lines[self.lines.count - 1] as! String
-        return XCSourceTextPosition(line: self.lines.count - 1, column: lastLine.count - 1)
+        return TextPosition(line: self.lines.count - 1, column: lastLine.count - 1)
     }
 
-    func isEnd(position: XCSourceTextPosition) -> Bool {
+    func isEnd(position: TextPosition) -> Bool {
         return lastPosition == position
     }
 
-    func char(at position: XCSourceTextPosition) -> Character {
+    func char(at position: TextPosition) -> Character {
         let currentLine = self.lines[position.line] as! String
         return currentLine[position.column] as Character
     }
