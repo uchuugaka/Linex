@@ -20,7 +20,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         let buffer = invocation.buffer
         let selection = buffer.selectionType
-        let selectedLines = selection.selectedLines
+        let selectedLines = buffer.selectedLines
 
         switch Options(command: invocation.commandIdentifier)! {
         case .duplicate:

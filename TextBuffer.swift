@@ -74,6 +74,9 @@ extension TextBuffer {
 }
 
 extension TextBuffer {
+    var selectedLines: IndexSet {
+        return self.selectionType.selectedLines
+    }
     var selectionType: SelectionType {
         let selections = self.selections as! [XCSourceTextRange]
         if selections.count == 1 {
