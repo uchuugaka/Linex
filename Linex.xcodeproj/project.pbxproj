@@ -131,7 +131,6 @@
 		E35942441F55565E009EFA35 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		E35942461F55565E009EFA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E359BCF51F604E000071246B /* Alignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
-		E35F567A1F7BEFA100905225 /* propertyalign.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = propertyalign.gif; sourceTree = "<group>"; };
 		E37DDA7C2099E65900D86394 /* SelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTests.swift; sourceTree = "<group>"; };
 		E383F00A1F7A13A900429B4D /* TestPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPad.m; sourceTree = "<group>"; };
 		E3938E33209DEC2B007F69E3 /* String+Linex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Linex.swift"; sourceTree = "<group>"; };
@@ -206,7 +205,6 @@
 				E3938E45209DF772007F69E3 /* TextBuffer.swift */,
 				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
 				E3938E39209DF605007F69E3 /* Character+Linex.swift */,
-				E35F56791F7BEFA100905225 /* Images */,
 				E35942191F55564C009EFA35 /* Linex */,
 				E359422B1F55564D009EFA35 /* LinexTests */,
 				E359423F1F55565E009EFA35 /* Line */,
@@ -282,14 +280,6 @@
 				E35942411F55565E009EFA35 /* Line.entitlements */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E35F56791F7BEFA100905225 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				E35F567A1F7BEFA100905225 /* propertyalign.gif */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		E39E226F1F59876A00354A5F /* Selection */ = {
