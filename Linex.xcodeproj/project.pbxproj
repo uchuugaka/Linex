@@ -43,6 +43,10 @@
 		E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
 		E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
 		E3938E4E209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
+		E3938E50209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
+		E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
+		E3938E52209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
+		E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
 		E39E226E1F59876A00354A5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
 		E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22721F59876A00354A5F /* SourceEditorExtension.swift */; };
 		E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22741F59876A00354A5F /* SourceEditorCommand.swift */; };
@@ -135,6 +139,7 @@
 		E3938E3F209DF64F007F69E3 /* TextPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPosition.swift; sourceTree = "<group>"; };
 		E3938E45209DF772007F69E3 /* TextBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBuffer.swift; sourceTree = "<group>"; };
 		E3938E4A209DF834007F69E3 /* String+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Basic.swift"; sourceTree = "<group>"; };
+		E3938E4F209DF8B0007F69E3 /* SelectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionType.swift; sourceTree = "<group>"; };
 		E39E226D1F59876A00354A5F /* Selection.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Selection.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39E22711F59876A00354A5F /* Selection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Selection.entitlements; sourceTree = "<group>"; };
 		E39E22721F59876A00354A5F /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -197,6 +202,7 @@
 				E3938E4A209DF834007F69E3 /* String+Basic.swift */,
 				E3938E33209DEC2B007F69E3 /* String+Linex.swift */,
 				E356FD7C1F66D266004558F1 /* XcodeKitExt.swift */,
+				E3938E4F209DF8B0007F69E3 /* SelectionType.swift */,
 				E3938E45209DF772007F69E3 /* TextBuffer.swift */,
 				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
 				E3938E39209DF605007F69E3 /* Character+Linex.swift */,
@@ -543,6 +549,7 @@
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
 				E3938E35209DEC32007F69E3 /* String+Linex.swift in Sources */,
 				E359BD0A1F6063A70071246B /* Alignment.swift in Sources */,
+				E3938E50209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E37DDA7D2099E65900D86394 /* SelectionTests.swift in Sources */,
 				E3938E44209DF667007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4B209DF834007F69E3 /* String+Basic.swift in Sources */,
@@ -558,6 +565,7 @@
 				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
 				E31FD4741F5712540044765A /* Extras.swift in Sources */,
 				E39E22801F59C59100354A5F /* Common.swift in Sources */,
+				E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E47209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E3938E41209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */,
@@ -575,6 +583,7 @@
 				E39E22811F59C59200354A5F /* Common.swift in Sources */,
 				E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */,
 				E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */,
+				E3938E52209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E48209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E3938E42209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */,
@@ -593,6 +602,7 @@
 				E3938E49209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,
 				E3938E3D209DF624007F69E3 /* Character+Linex.swift in Sources */,
+				E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E38209DEC34007F69E3 /* String+Linex.swift in Sources */,
 				E3938E43209DF666007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4E209DF834007F69E3 /* String+Basic.swift in Sources */,

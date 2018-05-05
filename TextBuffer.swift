@@ -15,6 +15,23 @@ private let closingFor = ["{":"}", "(":")", "[":"]"]
 private let openingFor = ["}":"{", ")":"(", "]":"["]
 
 extension TextBuffer {
+    var lastPosition: TextPosition {
+        let lastLine = self.lines[self.lines.count - 1] as! String
+        return TextPosition(line: self.lines.count - 1, column: lastLine.count - 1)
+    }
+
+    func isEnd(position: TextPosition) -> Bool {
+        return lastPosition == position
+    }
+
+    func char(at position: TextPosition) -> Character {
+        let currentLine = self.lines[position.line] as! String
+        return currentLine[position.column] as Character
+    }
+}
+
+
+extension TextBuffer {
 
     func findClosing(for openingChar: Character, at position: TextPosition) -> TextPosition? {
         let closingChar = openingChar.closing
@@ -57,18 +74,18 @@ extension TextBuffer {
 }
 
 extension TextBuffer {
-    var lastPosition: TextPosition {
-        let lastLine = self.lines[self.lines.count - 1] as! String
-        return TextPosition(line: self.lines.count - 1, column: lastLine.count - 1)
-    }
-
-    func isEnd(position: TextPosition) -> Bool {
-        return lastPosition == position
-    }
-
-    func char(at position: TextPosition) -> Character {
-        let currentLine = self.lines[position.line] as! String
-        return currentLine[position.column] as Character
+    var selectionType: SelectionType {
+        let selections = self.selections as! [XCSourceTextRange]
+        if selections.count == 1 {
+            let range = selections.first!
+            if range.start.line == range.end.line {
+                if range.start.column == range.end.column {
+                    return .none(position: TextPosition(line: range.start.line, column: range.start.column))
+                }
+                return .words(line: range.start.line, colStart: range.start.column, colEnd: range.end.column)
+            }
+            return .lines(start: range.start, end: range.end)
+        }
+        return .multiLocation(selections)
     }
 }
-

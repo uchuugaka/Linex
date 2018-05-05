@@ -18,7 +18,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
 
         let buffer = invocation.buffer
-        let selection = selectionType(of: buffer)
+        let selection = buffer.selectionType
 
         if let command = Options(command: invocation.commandIdentifier) {
 

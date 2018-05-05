@@ -19,7 +19,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     public func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Swift.Void) {
 
         let buffer = invocation.buffer
-        let selection = selectionType(of: buffer)
+        let selection = buffer.selectionType
         let selectedLines = selection.selectedLines
 
         switch Options(command: invocation.commandIdentifier)! {

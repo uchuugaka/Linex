@@ -20,7 +20,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             completionHandler(nil)
         }
         let buffer = invocation.buffer
-        let selection = selectionType(of: buffer)
+        let selection = buffer.selectionType
         let selectedLines = selection.selectedLines
         let range = buffer.selections.lastObject as! XCSourceTextRange
 
