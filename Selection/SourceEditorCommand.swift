@@ -67,7 +67,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let lineEnd = currentLine.count - 1
 
                 if position.column < lineEnd {
-                    let rightChar = currentLine[position.column] as Character
+                    let rightChar = currentLine[position.column]
                     if rightChar.isOpening {
                         if let position = buffer.findClosing(for: rightChar, at: position) {
                             range.end = position
@@ -76,7 +76,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
 
                 if (position.column > 0) {
-                    let leftChar = currentLine[position.column - 1] as Character
+                    let leftChar = currentLine[position.column - 1]
                     if leftChar.isClosing {
                         if let position = buffer.findOpening(for: leftChar, at: position) {
                             range.start = position
@@ -94,10 +94,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let currentLine = buffer.lines[line] as! String
                 let indentationIndex = currentLine.indentationOffset
                 let lineEnd = currentLine.count - 1
-                let currentStart = currentLine[colStart] as Character
-                let currentEnd = currentLine[colEnd - 1] as Character
-                let borderStart = currentLine[colStart - 1] as Character
-                let borderEnd = currentLine[colEnd] as Character
+                let currentStart = currentLine[colStart]
+                let currentEnd = currentLine[colEnd - 1]
+                let borderStart = colStart == 0 ? nil : currentLine[colStart - 1]
+                let borderEnd = currentLine[colEnd]
 
                 if (borderStart == "." || borderEnd == ".") {
                     let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_."))
