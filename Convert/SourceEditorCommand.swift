@@ -29,7 +29,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let currentChar = currentLine[position.column]
 
                 //If caret is beside number
-                if currentChar.isPresent(in: .decimalDigits), let num = Int(String(currentChar)) {
+                if currentChar.presentIn(.decimalDigits), let num = Int(String(currentChar)) {
                     let currentRange = currentLine.indexRangeFor(range: range.start.column...range.start.column)
                     switch command {
                     case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30650FA20AC6A9C006B0BBF /* TextDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650F720AC68CD006B0BBF /* TextDirection.swift */; };
+		E30650FB20AC6A9D006B0BBF /* TextDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650F720AC68CD006B0BBF /* TextDirection.swift */; };
+		E30650FC20AC6A9E006B0BBF /* TextDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650F720AC68CD006B0BBF /* TextDirection.swift */; };
+		E30650FE20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
+		E30650FF20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
+		E306510020AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
+		E306510220AD9F92006B0BBF /* ConditionalAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306510120AD9F92006B0BBF /* ConditionalAssignment.swift */; };
+		E306510320AD9F92006B0BBF /* ConditionalAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306510120AD9F92006B0BBF /* ConditionalAssignment.swift */; };
+		E306510420AD9F92006B0BBF /* ConditionalAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306510120AD9F92006B0BBF /* ConditionalAssignment.swift */; };
+		E306510520ADA09D006B0BBF /* ConditionalAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306510120AD9F92006B0BBF /* ConditionalAssignment.swift */; };
 		E359421B1F55564C009EFA35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421A1F55564C009EFA35 /* AppDelegate.swift */; };
 		E359421D1F55564C009EFA35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421C1F55564C009EFA35 /* ViewController.swift */; };
 		E359421F1F55564C009EFA35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E359421E1F55564C009EFA35 /* Assets.xcassets */; };
@@ -30,8 +40,6 @@
 		E3938E41209DF665007F69E3 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E3F209DF64F007F69E3 /* TextPosition.swift */; };
 		E3938E42209DF665007F69E3 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E3F209DF64F007F69E3 /* TextPosition.swift */; };
 		E3938E43209DF666007F69E3 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E3F209DF64F007F69E3 /* TextPosition.swift */; };
-		E3938E44209DF667007F69E3 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E3F209DF64F007F69E3 /* TextPosition.swift */; };
-		E3938E46209DF772007F69E3 /* TextBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E45209DF772007F69E3 /* TextBuffer.swift */; };
 		E3938E47209DF772007F69E3 /* TextBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E45209DF772007F69E3 /* TextBuffer.swift */; };
 		E3938E48209DF772007F69E3 /* TextBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E45209DF772007F69E3 /* TextBuffer.swift */; };
 		E3938E49209DF772007F69E3 /* TextBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E45209DF772007F69E3 /* TextBuffer.swift */; };
@@ -39,7 +47,6 @@
 		E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
 		E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
 		E3938E4E209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
-		E3938E50209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
 		E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
 		E3938E52209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
 		E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
@@ -105,6 +112,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E30650F720AC68CD006B0BBF /* TextDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDirection.swift; sourceTree = "<group>"; };
+		E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Linex.swift"; sourceTree = "<group>"; };
+		E306510120AD9F92006B0BBF /* ConditionalAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalAssignment.swift; sourceTree = "<group>"; };
 		E31714C31F8385F40036CF07 /* Linex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Linex.entitlements; sourceTree = "<group>"; };
 		E330C82E1F796DE600ECC222 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E330C82F1F796DF000ECC222 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
@@ -196,8 +206,11 @@
 				E3938E33209DEC2B007F69E3 /* String+Linex.swift */,
 				E3938E4F209DF8B0007F69E3 /* SelectionType.swift */,
 				E3938E45209DF772007F69E3 /* TextBuffer.swift */,
+				E30650F720AC68CD006B0BBF /* TextDirection.swift */,
 				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
 				E3938E39209DF605007F69E3 /* Character+Linex.swift */,
+				E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */,
+				E306510120AD9F92006B0BBF /* ConditionalAssignment.swift */,
 				E359423F1F55565E009EFA35 /* Line */,
 				E39E226F1F59876A00354A5F /* Selection */,
 				E3F543951F5A84FC008F426E /* Convert */,
@@ -527,13 +540,11 @@
 			files = (
 				E3938E3E209DF626007F69E3 /* Character+Linex.swift in Sources */,
 				E39E22821F59C59300354A5F /* Common.swift in Sources */,
-				E3938E46209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
 				E3938E35209DEC32007F69E3 /* String+Linex.swift in Sources */,
 				E359BD0A1F6063A70071246B /* Alignment.swift in Sources */,
-				E3938E50209DF8B0007F69E3 /* SelectionType.swift in Sources */,
+				E306510520ADA09D006B0BBF /* ConditionalAssignment.swift in Sources */,
 				E37DDA7D2099E65900D86394 /* SelectionTests.swift in Sources */,
-				E3938E44209DF667007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4B209DF834007F69E3 /* String+Basic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,8 +556,11 @@
 				E3938E3B209DF622007F69E3 /* Character+Linex.swift in Sources */,
 				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
 				E39E22801F59C59100354A5F /* Common.swift in Sources */,
+				E306510220AD9F92006B0BBF /* ConditionalAssignment.swift in Sources */,
 				E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */,
+				E30650FA20AC6A9C006B0BBF /* TextDirection.swift in Sources */,
 				E3938E47209DF772007F69E3 /* TextBuffer.swift in Sources */,
+				E30650FE20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
 				E3938E41209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */,
 				E35942451F55565E009EFA35 /* SourceEditorCommand.swift in Sources */,
@@ -560,14 +574,17 @@
 			files = (
 				E3938E3C209DF623007F69E3 /* Character+Linex.swift in Sources */,
 				E39E22811F59C59200354A5F /* Common.swift in Sources */,
+				E30650FB20AC6A9D006B0BBF /* TextDirection.swift in Sources */,
 				E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */,
 				E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */,
 				E3938E52209DF8B0007F69E3 /* SelectionType.swift in Sources */,
+				E306510320AD9F92006B0BBF /* ConditionalAssignment.swift in Sources */,
 				E3938E48209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E3938E42209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */,
 				E359BCF61F604E000071246B /* Alignment.swift in Sources */,
 				E3938E37209DEC33007F69E3 /* String+Linex.swift in Sources */,
+				E30650FF20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,8 +595,11 @@
 				E3F543A61F5ABA48008F426E /* Common.swift in Sources */,
 				E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */,
 				E3938E49209DF772007F69E3 /* TextBuffer.swift in Sources */,
+				E306510420AD9F92006B0BBF /* ConditionalAssignment.swift in Sources */,
 				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,
+				E30650FC20AC6A9E006B0BBF /* TextDirection.swift in Sources */,
 				E3938E3D209DF624007F69E3 /* Character+Linex.swift in Sources */,
+				E306510020AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
 				E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E38209DEC34007F69E3 /* String+Linex.swift in Sources */,
 				E3938E43209DF666007F69E3 /* TextPosition.swift in Sources */,

@@ -16,7 +16,17 @@ class SelectionTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    func testFoo() {
-        find
+    func testConditionalAssignment() {
+        XCTAssert(true)
+        var a = Optional("Kaunteya")
+        a ?= "Mohan"
+        XCTAssertEqual(a!, "Kaunteya")
+
+        var a1: String?
+        a1 ?= "Mohan"
+        XCTAssertEqual(a1!, "Mohan")
+
+        a1 ?= "Raju"
+        XCTAssertEqual(a1!, "Mohan")
     }
 }

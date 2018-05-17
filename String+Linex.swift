@@ -47,21 +47,20 @@ extension String {
         }
 
         // Move pin to one position left when it is after last character
-        if (pin > 0), self[pin - 1].isPresent(in: validChars) {
+        if (pin > 0), self[pin - 1].presentIn(validChars) {
             pin -= 1
         }
 
         var start = pin
-        while start >= 0 && self[start].isPresent(in: validChars) {
+        while start >= 0 && self[start].presentIn(validChars) {
             start -= 1
         }
 
         var end = pin
-        while end < count && self[end].isPresent(in: validChars) {
+        while end < count && self[end].presentIn(validChars) {
             end += 1
         }
         if start == end { return nil }
         return start + 1..<end
     }
-    }
-
+}

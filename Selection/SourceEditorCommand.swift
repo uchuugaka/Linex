@@ -22,7 +22,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let buffer = invocation.buffer
         let selection = buffer.selectionType
         let selectedLines = buffer.selectedLines
-        let range = buffer.selections.lastObject as! XCSourceTextRange
+        var range = buffer.selections.lastObject as! TextRange
 
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
@@ -66,30 +66,21 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 if currentLine.count == 0 { return }
                 let lineEnd = currentLine.count - 1
 
-                if position.column < lineEnd {
-                    let rightChar = currentLine[position.column]
-                    if rightChar.isOpening {
-                        if let position = buffer.findClosing(for: rightChar, at: position) {
-                            range.end = position
-                        }
-                    }
+                let rightChar: Character? = position.column < lineEnd ? currentLine[position.column] : nil
+
+                let leftChar: Character? = position.column > 0 ? currentLine[position.column - 1] :  nil
+
+                if rightChar?.isOpening ?? false  {
+                    range.end = buffer.closingPosition(for: rightChar!, startingAt: position) ?? range.end
+                    return
                 }
 
-                if (position.column > 0) {
-                    let leftChar = currentLine[position.column - 1]
-                    if leftChar.isClosing {
-                        if let position = buffer.findOpening(for: leftChar, at: position) {
-                            range.start = position
-                        }
-                    }
+                if leftChar?.isClosing ?? false {
+                    range.start = buffer.findOpening(for: leftChar!, at: position) ?? range.start
+                    return
                 }
+                range = buffer.wordSelectionRange(for: .validWordChars, at: position)
 
-
-                let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_"))
-                if let selectionRange:Range<Int> = currentLine.selectWord(pin: position.column, validChars: validChars) {
-                    range.start.column = selectionRange.lowerBound
-                    range.end.column = selectionRange.upperBound
-                }
             case .words(let line, let colStart, let colEnd):
                 let currentLine = buffer.lines[line] as! String
                 let indentationIndex = currentLine.indentationOffset
@@ -175,13 +166,13 @@ extension String {
         while from >= 0 {
             let currentChar = self[from]
 
-            if currentChar.isPresent(in: openStopper) {
+            if currentChar.presentIn(openStopper) {
                 if onTheWayBrackets == 0 {
                     return from + 1
                 }
                 onTheWayBrackets -= 1
             }
-            if currentChar.isPresent(in: closeStopper) {
+            if currentChar.presentIn(closeStopper) {
                 onTheWayBrackets += 1
             }
             from -= 1
@@ -196,13 +187,13 @@ extension String {
         while from < endOfLine {
             let currentChar = self[from]
 
-            if currentChar.isPresent(in: closeStopper) {
+            if currentChar.presentIn(closeStopper) {
                 if onTheWayBrackets == 0 {
                     return from
                 }
                 onTheWayBrackets -= 1
             }
-            if currentChar.isPresent(in: openStopper) {
+            if currentChar.presentIn(openStopper) {
                 onTheWayBrackets += 1
             }
             from += 1

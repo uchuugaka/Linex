@@ -16,6 +16,13 @@ extension TextPosition {
         return self.line == 0 && self.column == 0
     }
 
+    func move(_ direction: TextDirection, in buffer: XCSourceTextBuffer) -> TextPosition? {
+        switch direction {
+        case .forward: return next(in: buffer)
+        case .backward: return previous(in: buffer)
+        }
+    }
+
     func next(in buffer: XCSourceTextBuffer) -> TextPosition? {
         guard self != buffer.lastPosition else { return nil }
 

@@ -20,10 +20,11 @@ class LinexTests: XCTestCase {
     }
 
     func testLineIndentatinOffset() {
-        XCTAssertEqual("".lineIndentationOffset(), 0)
+        "".indentationOffset
+        XCTAssertEqual("".indentationOffset, 0)
         //              123456
-        XCTAssertEqual("      ".lineIndentationOffset(), 6)
-        XCTAssertEqual("      ABC".lineIndentationOffset(), 6)
+        XCTAssertEqual("      ".indentationOffset, 6)
+        XCTAssertEqual("      ABC".indentationOffset, 6)
 
     }
     
@@ -49,31 +50,7 @@ class LinexTests: XCTestCase {
         XCTAssert(t1.lineOneSpaceAt(pin: 7) == (7, t1))
         XCTAssert(t1.lineOneSpaceAt(pin: 8) == (8, t1))
     }
-
-    func testFarthestDistance() {
-        XCTAssertEqual(["var name = Kaunteya",].farthestOffsetFor(subStr: "=")!, 8)
-
-        XCTAssertEqual(["var name = Kaunteya",
-                        "self.lastupdated = createdOn",
-                        ].farthestOffsetFor(subStr: "=")!,16)
-
-        XCTAssertEqual(["var name = Kaunteya",
-                        "self.lastupdated = createdOn",
-                        "self.name = name",
-                        ].farthestOffsetFor(subStr: "=")!, 16)
-
-        XCTAssertEqual(["var name  = Kaunteya",
-                        "self.lastupdated     = createdOn",
-                        "self.name = name",
-                        ].farthestOffsetFor(subStr: "=")!, 16)
-
-        XCTAssertEqual(["var name  = Kaunteya",
-                        "self.lastupdated     = createdOn",
-                        "self.name                             = name",
-                        ].farthestOffsetFor(subStr: "=")!, 16)
-
-    }
-
+    
     func testAlign() {
         XCTAssertEqual(["let name = \"Kaunteya\""].autoAlign()!,
                        ["let name = \"Kaunteya\""])

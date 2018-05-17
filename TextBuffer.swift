@@ -10,6 +10,7 @@ import Foundation
 import XcodeKit
 
 typealias TextBuffer = XCSourceTextBuffer
+typealias TextRange = XCSourceTextRange
 
 private let closingFor = ["{":"}", "(":")", "[":"]"]
 private let openingFor = ["}":"{", ")":"(", "]":"["]
@@ -33,7 +34,29 @@ extension TextBuffer {
 
 extension TextBuffer {
 
-    func findClosing(for openingChar: Character, at position: TextPosition) -> TextPosition? {
+    func wordSelectionRange(for chars: CharacterSet, at position: TextPosition) -> TextRange {
+        let end = nextPosition(.forward, from: position, until: chars) ?? position
+        let start = nextPosition(.backward, from: position, until: chars) ?? position
+        return TextRange(start: start, end: end)
+    }
+
+    func nextPosition(_ direction: TextDirection,
+                      from startPosition: TextPosition,
+                      until charSet: CharacterSet) -> TextPosition? {
+        var currentPosition = Optional(startPosition)
+        if direction == .backward { currentPosition = startPosition.previous(in: self)}
+
+        while currentPosition != nil {
+            let currentChar = self.char(at: currentPosition!)
+            if !currentChar.presentIn(charSet) {
+                return direction == .backward ? currentPosition!.next(in: self) : currentPosition
+            }
+            currentPosition = currentPosition!.move(direction, in: self)
+        }
+        return nil
+    }
+
+    func closingPosition(for openingChar: Character, startingAt position: TextPosition) -> TextPosition? {
         let closingChar = openingChar.closing
         var stackCount = 0
         var currentPosition = position.next(in: self)

@@ -17,7 +17,7 @@ extension Character {
         let openStopper = CharacterSet(charactersIn: "}])")
         return CharacterSet(charactersIn: String(self)).isSubset(of: openStopper)
     }
-    func isPresent(in characterSet:CharacterSet) -> Bool {
+    func presentIn(_ characterSet:CharacterSet) -> Bool {
         return CharacterSet(charactersIn: String(self)).isSubset(of: characterSet)
     }
     var closing: Character {
