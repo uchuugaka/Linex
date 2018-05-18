@@ -24,7 +24,7 @@ extension TextPosition {
     }
 
     func next(in buffer: XCSourceTextBuffer) -> TextPosition? {
-        guard self != buffer.lastPosition else { return nil }
+        guard !buffer.isEnd(position: self) else {return nil}
 
         let currentLine = buffer.lines[self.line] as! String
         if self.column == currentLine.count - 1 {

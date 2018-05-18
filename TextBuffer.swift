@@ -12,9 +12,6 @@ import XcodeKit
 typealias TextBuffer = XCSourceTextBuffer
 typealias TextRange = XCSourceTextRange
 
-private let closingFor = ["{":"}", "(":")", "[":"]"]
-private let openingFor = ["}":"{", ")":"(", "]":"["]
-
 extension TextBuffer {
     var lastPosition: TextPosition {
         let lastLine = self.lines[self.lines.count - 1] as! String
