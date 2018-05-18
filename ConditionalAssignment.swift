@@ -10,7 +10,7 @@ import Foundation
 
 infix operator ?= : AssignmentPrecedence
 
-func ?= <T: Any>( left: inout T?, right: T?) {
+func ?= <T: Any>(left: inout T?, right: T?) {
     if left == nil {
         left = right
     }
