@@ -91,7 +91,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 let borderEnd = currentLine[colEnd]
 
                 if (borderStart == "." || borderEnd == ".") {
-                    let validChars = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_."))
+                    let validChars = CharacterSet("@$_.").union(.alphanumerics)
                     if let selectionRange:Range<Int> = currentLine.selectWord(pin: colStart, validChars: validChars) {
                         range.start.column = selectionRange.lowerBound
                         range.end.column = selectionRange.upperBound
@@ -156,8 +156,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
 }
 
-let openStopper = CharacterSet(charactersIn: "{[(\"")
-let closeStopper = CharacterSet(charactersIn: "}])\"")
+let openStopper = CharacterSet("{[(\"")
+let closeStopper = CharacterSet("}])\"")
 
 extension String {
     func findOpeningPosition(from: Int) -> Int? {

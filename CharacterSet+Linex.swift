@@ -9,7 +9,10 @@
 import Foundation
 
 extension CharacterSet {
+    init(_ string: String) {
+        self.init(charactersIn: string)
+    }
     static var validWordChars: CharacterSet {
-        return CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "@$_"))
+        return CharacterSet("@$_").union(.alphanumerics)
     }
 }
