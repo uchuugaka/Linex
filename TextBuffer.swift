@@ -53,15 +53,15 @@ extension TextBuffer {
         return nil
     }
 
-    func closingPosition(for openingChar: Character, startingAt position: TextPosition) -> TextPosition? {
-        let closingChar = openingChar.closing
+    func findClosing(for openingChar: Character, at position: TextPosition) -> TextPosition? {
+        assert(openingChar.isOpening, "Char must be opening")
         var stackCount = 0
         var currentPosition = position.next(in: self)
         while currentPosition != nil {
             let currentChar = self.char(at: currentPosition!)
             switch currentChar {
-            case openingChar: stackCount += 1
-            case closingChar:
+            case openingChar.closing: stackCount += 1
+            case openingChar:
                 if stackCount == 0 {
                     return TextPosition(line: currentPosition!.line,
                                                 column: currentPosition!.column + 1)
@@ -75,14 +75,14 @@ extension TextBuffer {
     }
 
     func findOpening(for closingChar: Character, at position: TextPosition) -> TextPosition? {
-        let openingChar = closingChar.opening
+        assert(closingChar.isClosing, "'closingChar' must be '), }, ]'")
         var stackCount = 0
         var currentPosition = position.previous(in: self)?.previous(in: self)
         while currentPosition != nil {
             let currentChar = self.char(at: currentPosition!)
             switch currentChar {
-            case closingChar: stackCount += 1
-            case openingChar:
+            case closingChar.closing: stackCount += 1
+            case closingChar:
                 if stackCount == 0 { return currentPosition! }
                 stackCount -= 1
             default: break

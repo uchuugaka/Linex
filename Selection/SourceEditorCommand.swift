@@ -22,7 +22,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let buffer = invocation.buffer
         let selection = buffer.selectionType
         let selectedLines = buffer.selectedLines
-        var range = buffer.selections.lastObject as! TextRange
+        let range = buffer.selections.lastObject as! TextRange
 
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
@@ -59,84 +59,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .multiLocation(_): break
             }
 
-        case .expand:
-            switch selection {
-            case .none(let position):
-                let currentLine = buffer.lines[position.line] as! String
-                if currentLine.count == 0 { return }
-                let lineEnd = currentLine.count - 1
-
-                let rightChar: Character? = position.column < lineEnd ? currentLine[position.column] : nil
-
-                let leftChar: Character? = position.column > 0 ? currentLine[position.column - 1] :  nil
-
-                if rightChar?.isOpening ?? false  {
-                    range.end = buffer.closingPosition(for: rightChar!, startingAt: position) ?? range.end
-                    return
-                }
-
-                if leftChar?.isClosing ?? false {
-                    range.start = buffer.findOpening(for: leftChar!, at: position) ?? range.start
-                    return
-                }
-                range = buffer.wordSelectionRange(for: .validWordChars, at: position)
-
-            case .words(let line, let colStart, let colEnd):
-                let currentLine = buffer.lines[line] as! String
-                let indentationIndex = currentLine.indentationOffset
-                let lineEnd = currentLine.count - 1
-                let currentStart = currentLine[colStart]
-                let currentEnd = currentLine[colEnd - 1]
-                let borderStart = colStart == 0 ? nil : currentLine[colStart - 1]
-                let borderEnd = currentLine[colEnd]
-
-                if (borderStart == "." || borderEnd == ".") {
-                    let validChars = CharacterSet("@$_.").union(.alphanumerics)
-                    if let selectionRange:Range<Int> = currentLine.selectWord(pin: colStart, validChars: validChars) {
-                        range.start.column = selectionRange.lowerBound
-                        range.end.column = selectionRange.upperBound
-                    }
-                    return
-                }
-                if (borderEnd == "(") {
-                    if let end = currentLine.findClosingPosition(from: colEnd + 1) {
-                        range.end.column = end + 1
-                    }
-                }
-                if (colStart == indentationIndex) {
-                    range.end.column = lineEnd
-                    return
-                }
-
-                if (colEnd == lineEnd) {
-                    range.start.column = currentLine.indentationOffset
-                    return
-                }
-
-                switch (borderStart, borderEnd) {
-                case ("\"","\""), ("{", "}"), ("[","]"), ("(",")"):
-                    range.start.column = colStart - 1
-                    range.end.column = colEnd + 1
-                    return
-                default: break
-                }
-
-                if (currentStart == "(" && currentEnd == ")" && colEnd == lineEnd) {
-                    range.start.column = currentLine.indentationOffset
-                    return
-                }
-
-                if let start = currentLine.findOpeningPosition(from: colStart) {
-                    range.start.column = start
-                }
-
-                if let end = currentLine.findClosingPosition(from: colEnd) {
-                    range.end.column = end
-                }
-
-            case .lines(_, _): break
-            case .multiLocation(_): break
-            }
+        case .expand: buffer.expand()
 
         case .align:
             switch selection {
@@ -154,50 +77,4 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         //        completionHandler(nil)
     }
     
-}
-
-let openStopper = CharacterSet("{[(\"")
-let closeStopper = CharacterSet("}])\"")
-
-extension String {
-    func findOpeningPosition(from: Int) -> Int? {
-        var from = from - 1
-        var onTheWayBrackets = 0
-        while from >= 0 {
-            let currentChar = self[from]
-
-            if currentChar.presentIn(openStopper) {
-                if onTheWayBrackets == 0 {
-                    return from + 1
-                }
-                onTheWayBrackets -= 1
-            }
-            if currentChar.presentIn(closeStopper) {
-                onTheWayBrackets += 1
-            }
-            from -= 1
-        }
-        return nil
-    }
-
-    func findClosingPosition(from: Int) -> Int? {
-        var from = from
-        var onTheWayBrackets = 0
-        let endOfLine = self.count
-        while from < endOfLine {
-            let currentChar = self[from]
-
-            if currentChar.presentIn(closeStopper) {
-                if onTheWayBrackets == 0 {
-                    return from
-                }
-                onTheWayBrackets -= 1
-            }
-            if currentChar.presentIn(openStopper) {
-                onTheWayBrackets += 1
-            }
-            from += 1
-        }
-        return nil
-    }
 }
