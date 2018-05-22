@@ -9,6 +9,10 @@
 import Foundation
 
 extension Character {
+    func presentIn(_ string: String) -> Bool {
+        return self.presentIn(CharacterSet(string))
+    }
+
     func presentIn(_ characterSet:CharacterSet) -> Bool {
         return CharacterSet(String(self)).isSubset(of: characterSet)
     }
