@@ -12,8 +12,8 @@ import XcodeKit
 typealias TextRange = XCSourceTextRange
 
 extension TextRange {
-    func update(selection: TextRange) {
-        self.start = selection.start
-        self.end = selection.end
+    func updateSelection(range: TextRange) {
+        self.start = range.start
+        self.end = range.end
     }
 }

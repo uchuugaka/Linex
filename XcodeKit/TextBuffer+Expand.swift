@@ -18,7 +18,7 @@ extension TextBuffer {
 
         if isSelectionEmpty,
             let newRange = rangeForExpandedSelection(for: .validWordChars, at: range) {
-            range.update(selection: newRange)
+            range.updateSelection(range: newRange)
             return
         }
 
@@ -28,7 +28,7 @@ extension TextBuffer {
         if (borderStart == "." || borderEnd == ".") {
             let validChars = CharacterSet("@$_.!?").union(.alphanumerics)
             if let newRange = rangeForExpandedSelection(for: validChars, at: range) {
-                range.update(selection: newRange)
+                range.updateSelection(range: newRange)
             }
             return
         }
@@ -50,7 +50,7 @@ extension TextBuffer {
         }
 
         if let newRange = smartExpand(current: range) {
-            range.update(selection: newRange)
+            range.updateSelection(range: newRange)
         }
     }
 }
