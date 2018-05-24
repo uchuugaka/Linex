@@ -9,11 +9,9 @@
 import Foundation
 import XcodeKit
 
-
-
+//MARK - Word selection
 extension TextBuffer {
-
-    func rangeForExpandedSelection(for chars: CharacterSet, at range: TextRange) -> TextRange? {
+    func rangeForWordSelection(for chars: CharacterSet, at range: TextRange) -> TextRange? {
         guard let start = nextPosition(.backward, from: range.start, until: chars),
             let end = nextPosition(.forward, from: range.end, until: chars) else {
                 return nil
@@ -21,7 +19,7 @@ extension TextBuffer {
         return TextRange(start: start, end: end)
     }
 
-    func nextPosition(_ direction: TextDirection,
+    private func nextPosition(_ direction: TextDirection,
                       from startPosition: TextPosition,
                       until charSet: CharacterSet) -> TextPosition? {
         var currentPosition = Optional(startPosition)
@@ -36,7 +34,10 @@ extension TextBuffer {
         }
         return nil
     }
+}
 
+//MARK - Find specific opening/closing bracket
+extension TextBuffer {
     func findClosing(for openingChar: Character, at position: TextPosition) -> TextPosition? {
         assert(openingChar.isOpening, "Char must be opening")
         var stackCount = 0
@@ -74,14 +75,17 @@ extension TextBuffer {
         }
         return nil
     }
+}
 
+//MARK - Smart expansion
+extension TextBuffer {
     func smartExpand(current range: TextRange) -> TextRange? {
         guard let newStart = searchLeft(from: range.start),
             let newEnd = searchRight(from: range.end) else { return nil }
         return TextRange(start: newStart, end: newEnd)
     }
 
-    func searchLeft(from position: TextPosition) -> TextPosition? {
+    private func searchLeft(from position: TextPosition) -> TextPosition? {
         var stackCount = 0
         var currentPosition = position.previous(in: self)
         while currentPosition != nil {
@@ -100,7 +104,7 @@ extension TextBuffer {
         return nil
     }
 
-    func searchRight(from position: TextPosition) -> TextPosition? {
+    private func searchRight(from position: TextPosition) -> TextPosition? {
         var stackCount = 0
         var currentPosition: TextPosition? = position
         while currentPosition != nil {
@@ -120,27 +124,3 @@ extension TextBuffer {
     }
 }
 
-extension TextBuffer {
-    var selectedLines: IndexSet {
-        return self.selectionType.selectedLines
-    }
-    var isSelectionEmpty: Bool {
-        let selections = self.selections as! [XCSourceTextRange]
-        let range = selections.first!
-        return range.start == range.end
-    }
-    var selectionType: SelectionType {
-        let selections = self.selections as! [XCSourceTextRange]
-        if selections.count == 1 {
-            let range = selections.first!
-            if range.start.line == range.end.line {
-                if range.start.column == range.end.column {
-                    return .none(position: TextPosition(line: range.start.line, column: range.start.column))
-                }
-                return .words(line: range.start.line, colStart: range.start.column, colEnd: range.end.column)
-            }
-            return .lines(start: range.start, end: range.end)
-        }
-        return .multiLocation(selections)
-    }
-}

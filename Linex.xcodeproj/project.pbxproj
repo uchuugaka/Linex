@@ -20,6 +20,9 @@
 		E35783C120B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */; };
 		E35783C220B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */; };
 		E35783C320B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */; };
+		E35783C520B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C420B73C7700D845A7 /* TextBuffer+Selection.swift */; };
+		E35783C620B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C420B73C7700D845A7 /* TextBuffer+Selection.swift */; };
+		E35783C720B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C420B73C7700D845A7 /* TextBuffer+Selection.swift */; };
 		E359421B1F55564C009EFA35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421A1F55564C009EFA35 /* AppDelegate.swift */; };
 		E359421D1F55564C009EFA35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421C1F55564C009EFA35 /* ViewController.swift */; };
 		E359421F1F55564C009EFA35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E359421E1F55564C009EFA35 /* Assets.xcassets */; };
@@ -123,6 +126,7 @@
 		E330C82F1F796DF000ECC222 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		E356FD811F66F55C004558F1 /* TestPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPad.swift; sourceTree = "<group>"; };
 		E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextBuffer+Basic.swift"; sourceTree = "<group>"; };
+		E35783C420B73C7700D845A7 /* TextBuffer+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextBuffer+Selection.swift"; sourceTree = "<group>"; };
 		E35942171F55564C009EFA35 /* Linex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E359421A1F55564C009EFA35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E359421C1F55564C009EFA35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				E3938E4F209DF8B0007F69E3 /* SelectionType.swift */,
 				E306510A20B0388C006B0BBF /* TextRange.swift */,
 				E3938E45209DF772007F69E3 /* TextBuffer.swift */,
+				E35783C420B73C7700D845A7 /* TextBuffer+Selection.swift */,
 				E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */,
 				E306510620AEEC48006B0BBF /* TextBuffer+Expand.swift */,
 				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
@@ -583,6 +588,7 @@
 				E306510720AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
 				E306510B20B0388C006B0BBF /* TextRange.swift in Sources */,
 				E30650FE20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
+				E35783C520B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */,
 				E3938E41209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */,
 				E35942451F55565E009EFA35 /* SourceEditorCommand.swift in Sources */,
@@ -603,6 +609,7 @@
 				E3938E42209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */,
 				E306510820AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
+				E35783C620B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */,
 				E359BCF61F604E000071246B /* Alignment.swift in Sources */,
 				E3938E37209DEC33007F69E3 /* String+Linex.swift in Sources */,
 				E30650FF20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
@@ -624,6 +631,7 @@
 				E306510920AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
 				E306510D20B0388C006B0BBF /* TextRange.swift in Sources */,
 				E306510020AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
+				E35783C720B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */,
 				E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E38209DEC34007F69E3 /* String+Linex.swift in Sources */,
 				E3938E43209DF666007F69E3 /* TextPosition.swift in Sources */,
