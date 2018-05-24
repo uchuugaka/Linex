@@ -105,7 +105,7 @@ extension TextBuffer {
 
     func searchLeft(from position: TextPosition) -> TextPosition? {
         var stackCount = 0
-        var currentPosition = position.previous(in: self)?.previous(in: self)
+        var currentPosition = position.previous(in: self)
         while currentPosition != nil {
             let currentChar = self.char(at: currentPosition!)
             if currentChar.isClosing {
@@ -124,7 +124,7 @@ extension TextBuffer {
 
     func searchRight(from position: TextPosition) -> TextPosition? {
         var stackCount = 0
-        var currentPosition = position.next(in: self)
+        var currentPosition: TextPosition? = position
         while currentPosition != nil {
             let currentChar = self.char(at: currentPosition!)
             if currentChar.isOpening {
@@ -133,7 +133,7 @@ extension TextBuffer {
                 if stackCount == 0 { return currentPosition! }
                 stackCount -= 1
             } else if currentChar == "\"" {
-                if stackCount == 0 { return currentPosition! }
+                if stackCount == 0 { return currentPosition!.next(in: self) }
             }
 
             currentPosition = currentPosition?.next(in: self)
