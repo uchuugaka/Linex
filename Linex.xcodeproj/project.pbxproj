@@ -17,6 +17,9 @@
 		E306510C20B0388C006B0BBF /* TextRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306510A20B0388C006B0BBF /* TextRange.swift */; };
 		E306510D20B0388C006B0BBF /* TextRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306510A20B0388C006B0BBF /* TextRange.swift */; };
 		E35783BE20B73B5A00D845A7 /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
+		E35783C120B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */; };
+		E35783C220B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */; };
+		E35783C320B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */; };
 		E359421B1F55564C009EFA35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421A1F55564C009EFA35 /* AppDelegate.swift */; };
 		E359421D1F55564C009EFA35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359421C1F55564C009EFA35 /* ViewController.swift */; };
 		E359421F1F55564C009EFA35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E359421E1F55564C009EFA35 /* Assets.xcassets */; };
@@ -119,6 +122,7 @@
 		E330C82E1F796DE600ECC222 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E330C82F1F796DF000ECC222 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		E356FD811F66F55C004558F1 /* TestPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPad.swift; sourceTree = "<group>"; };
+		E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextBuffer+Basic.swift"; sourceTree = "<group>"; };
 		E35942171F55564C009EFA35 /* Linex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E359421A1F55564C009EFA35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E359421C1F55564C009EFA35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				E3938E4F209DF8B0007F69E3 /* SelectionType.swift */,
 				E306510A20B0388C006B0BBF /* TextRange.swift */,
 				E3938E45209DF772007F69E3 /* TextBuffer.swift */,
+				E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */,
 				E306510620AEEC48006B0BBF /* TextBuffer+Expand.swift */,
 				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
 			);
@@ -573,6 +578,7 @@
 				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
 				E39E22801F59C59100354A5F /* RawRepresentable.swift in Sources */,
 				E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */,
+				E35783C120B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */,
 				E3938E47209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E306510720AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
 				E306510B20B0388C006B0BBF /* TextRange.swift in Sources */,
@@ -601,6 +607,7 @@
 				E3938E37209DEC33007F69E3 /* String+Linex.swift in Sources */,
 				E30650FF20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
 				E306510C20B0388C006B0BBF /* TextRange.swift in Sources */,
+				E35783C220B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +619,7 @@
 				E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */,
 				E3938E49209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */,
+				E35783C320B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */,
 				E3938E3D209DF624007F69E3 /* Character+Linex.swift in Sources */,
 				E306510920AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
 				E306510D20B0388C006B0BBF /* TextRange.swift in Sources */,
