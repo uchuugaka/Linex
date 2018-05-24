@@ -53,5 +53,4 @@ extension TextBuffer {
             range.update(selection: newRange)
         }
     }
-
 }

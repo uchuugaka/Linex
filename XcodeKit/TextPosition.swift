@@ -11,6 +11,10 @@ import XcodeKit
 
 typealias TextPosition = XCSourceTextPosition
 
+enum TextDirection {
+    case forward, backward
+}
+
 extension TextPosition {
     var isStart: Bool {
         return self.line == 0 && self.column == 0

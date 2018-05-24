@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import XcodeKit
+
+typealias TextRange = XCSourceTextRange
+
 extension TextRange {
     func update(selection: TextRange) {
         self.start = selection.start

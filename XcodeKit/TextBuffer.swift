@@ -10,7 +10,6 @@ import Foundation
 import XcodeKit
 
 typealias TextBuffer = XCSourceTextBuffer
-typealias TextRange = XCSourceTextRange
 
 extension TextBuffer {
     var lastPosition: TextPosition {
