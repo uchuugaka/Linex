@@ -41,7 +41,7 @@ extension String {
     }
 
     mutating func replace(range: Range<Int>, with replacement: String) {
-        self.replaceSubrange(self.index(at: range.lowerBound)..<self.index(at: range.lowerBound), with: replacement)
+        self.replaceSubrange(self.index(at: range.lowerBound)..<self.index(at: range.upperBound), with: replacement)
     }
 
     /// Fetch indentation offset of lines in code
