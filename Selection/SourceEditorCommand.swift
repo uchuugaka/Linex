@@ -17,10 +17,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation,
                  completionHandler: @escaping (Error?) -> Void ) -> Void {
+
         let buffer = invocation.buffer
 
         switch Options(command: invocation.commandIdentifier)! {
-
         case .selectLine:
             buffer.selectionRanges.forEach { range in
                 if range.isSelectionEmpty {
