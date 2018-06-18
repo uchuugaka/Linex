@@ -10,9 +10,13 @@ import Foundation
 import XcodeKit
 
 extension TextBuffer {
+    func outerExpand() {
+        selectionRanges.forEach { range in
+            expand(range)
+        }
+    }
 
-    func expand() {
-        let range = selections.lastObject as! TextRange
+    func expand(_ range: TextRange) {
         guard lines.count != 0 else { return }
 
 

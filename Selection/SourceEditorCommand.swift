@@ -19,11 +19,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                  completionHandler: @escaping (Error?) -> Void ) -> Void {
         let buffer = invocation.buffer
 
-//        let selection = buffer.selectionType
-//        let selectedLines = buffer.selectedLines
-//        let range = buffer.selections.lastObject as! TextRange
-
         switch Options(command: invocation.commandIdentifier)! {
+
         case .selectLine:
             buffer.selectionRanges.forEach { range in
                 if range.isSelectionEmpty {
@@ -54,18 +51,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     range.start.column = newOffset
                 }
             }
-//            switch selection {
-//            case .none(let position):
-//                let currentLine = buffer.lines[position.line] as! String
-//                let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: position.column)
-//                buffer.lines.replaceObject(at: position.line, with: newLine)
-//                range.end.column = newOffset
-//                range.start.column = newOffset
-//            case .words(_, _, _): break
-//            case .lines(_, _): break
-//            }
 
-        case .expand: buffer.expand()
+        case .expand: buffer.outerExpand()
 
         case .align: break
 //            switch selection {
