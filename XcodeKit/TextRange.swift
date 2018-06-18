@@ -13,15 +13,29 @@ typealias TextRange = XCSourceTextRange
 
 extension TextRange {
 
+    enum Selection {
+        //Complete line selection is counted multiline
+        case none, words, lines
+    }
+
     var selectedLines: IndexSet {
-        if start.line == end.line {
-            return IndexSet(integer: start.line)
+        switch selection {
+        case .none, .words: return IndexSet(integer: start.line)
+        case .lines: return IndexSet(integersIn: start.line...(end.column == 0 ? end.line - 1 : end.line))
         }
-        return IndexSet(integersIn: start.line...(end.column == 0 ? end.line - 1 : end.line))
+    }
+
+    var selection: Selection {
+        if start == end {
+            return .none
+        } else if start.line == end.line {
+            return .words
+        }
+        return .lines
     }
 
     var isSelectionEmpty: Bool {
-        return start == end
+        return selection == .none
     }
 
     func updateSelection(range: TextRange) {
