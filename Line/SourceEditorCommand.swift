@@ -115,14 +115,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .lines:
                 let lines = buffer.lines.objects(at: range.selectedLines) as! [String]
 
-                var joinedLine = ""
-                for (i, line) in lines.enumerated() {
-                    if i == 0 {
-                        joinedLine += line.trimmingCharacters(in: .newlines)
-                    } else {
-                        joinedLine += " " + line.trimmedStart.trimmingCharacters(in: .newlines)
-                    }
-                }
+                var joinedLine = lines.lineJoined
+
                 buffer.lines.removeObjects(at: range.selectedLines)
                 buffer.lines.insert(joinedLine, at: range.start.line)
 

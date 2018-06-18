@@ -11,6 +11,12 @@ import XCTest
 
 class LinexTests: XCTestCase {
 
+    func testLineJoined() {
+        let arr = ["    Kaunteya\n", "    Suryawanshi\n"]
+        XCTAssertEqual(arr.lineJoined, "    Kaunteya Suryawanshi", arr.lineJoined)
+
+    }
+    
     func testLineIndentatinOffset() {
         XCTAssertEqual("".indentationOffset, 0)
         //              123456

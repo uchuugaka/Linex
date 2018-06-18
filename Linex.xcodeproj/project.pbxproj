@@ -63,6 +63,8 @@
 		E39E22801F59C59100354A5F /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* RawRepresentable.swift */; };
 		E39E22811F59C59200354A5F /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* RawRepresentable.swift */; };
 		E39E22821F59C59300354A5F /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E227E1F59C58E00354A5F /* RawRepresentable.swift */; };
+		E3A56CCA20D8236E00A44165 /* Array<String>+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A56CC920D8236E00A44165 /* Array<String>+Join.swift */; };
+		E3A56CCB20D8236E00A44165 /* Array<String>+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A56CC920D8236E00A44165 /* Array<String>+Join.swift */; };
 		E3F543941F5A84FC008F426E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
 		E3F543991F5A84FC008F426E /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */; };
 		E3F5439B1F5A84FC008F426E /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5439A1F5A84FC008F426E /* SourceEditorCommand.swift */; };
@@ -157,6 +159,7 @@
 		E39E22741F59876A00354A5F /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		E39E22761F59876A00354A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E39E227E1F59C58E00354A5F /* RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
+		E3A56CC920D8236E00A44165 /* Array<String>+Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array<String>+Join.swift"; sourceTree = "<group>"; };
 		E3F543931F5A84FC008F426E /* Convert.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Convert.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F543971F5A84FC008F426E /* Convert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Convert.entitlements; sourceTree = "<group>"; };
 		E3F543981F5A84FC008F426E /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -299,6 +302,7 @@
 			children = (
 				E35942421F55565E009EFA35 /* SourceEditorExtension.swift */,
 				E35942441F55565E009EFA35 /* SourceEditorCommand.swift */,
+				E3A56CC920D8236E00A44165 /* Array<String>+Join.swift */,
 				E35942461F55565E009EFA35 /* Info.plist */,
 				E35942401F55565E009EFA35 /* Supporting Files */,
 			);
@@ -564,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A56CCA20D8236E00A44165 /* Array<String>+Join.swift in Sources */,
 				E3938E3E209DF626007F69E3 /* Character+Linex.swift in Sources */,
 				E39E22821F59C59300354A5F /* RawRepresentable.swift in Sources */,
 				E359422D1F55564D009EFA35 /* LinexTests.swift in Sources */,
@@ -588,6 +593,7 @@
 				E306510720AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
 				E306510B20B0388C006B0BBF /* TextRange.swift in Sources */,
 				E30650FE20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
+				E3A56CCB20D8236E00A44165 /* Array<String>+Join.swift in Sources */,
 				E35783C520B73C7700D845A7 /* TextBuffer+Selection.swift in Sources */,
 				E3938E41209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */,
