@@ -9,10 +9,10 @@
 import Foundation
 import XcodeKit
 
-enum SelectionType {
-    case none(position: TextPosition)
-    case words(line: Int, colStart: Int, colEnd: Int)
-    case lines(start:TextPosition, end: TextPosition)//Complete line selection is counted multiline
+//enum SelectionType {
+//    case none(position: TextPosition)
+//    case words(line: Int, colStart: Int, colEnd: Int)
+//    case lines(start:TextPosition, end: TextPosition)//Complete line selection is counted multiline
 //    case multiLocation([XCSourceTextRange])
 
 //    var selectedLines: IndexSet {
@@ -29,4 +29,4 @@ enum SelectionType {
 //            ranges.map
 //        }
 //    }
-}
+//}

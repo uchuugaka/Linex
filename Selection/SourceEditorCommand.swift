@@ -52,20 +52,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
             }
 
-        case .expand: buffer.outerExpand()
+        case .expand:
+            buffer.outerExpand()
 
-        case .align: break
-//            switch selection {
-//            case .none(_): break
-//            case .words(_, _, _): break
-//            case .lines(_, _):
-//                let lines = buffer.lines.objects(at: selectedLines) as! [String]
-//                if let aligned = lines.autoAlign() {
-//                    buffer.lines.replaceObjects(at: selectedLines, with: aligned)
-//                }
-//
-//            }
+        case .align:
+            buffer.selectionRanges.forEach { range in
+                if range.start.line != range.end.line {
+                    let lines = buffer.lines.objects(at: range.selectedLines) as! [String]
+                    if let aligned = lines.autoAlign() {
+                        buffer.lines.replaceObjects(at: range.selectedLines, with: aligned)
+                    }
+                }
+            }
         }
+
         defer {
             completionHandler(nil)
         }
