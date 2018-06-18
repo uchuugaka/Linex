@@ -17,10 +17,10 @@ enum Options: String {
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     public func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Swift.Void) {
-
+/*
         let buffer = invocation.buffer
-        let selection = buffer.selectionType
-        let selectedLines = buffer.selectedLines
+//        let selection = buffer.selectionType
+//        let selectedLines = buffer.selectedLines
 
         switch Options(command: invocation.commandIdentifier)! {
         case .duplicate:
@@ -194,6 +194,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             case .multiLocation(_): break
             }
         }
+ */
         completionHandler(nil)
     }
 }

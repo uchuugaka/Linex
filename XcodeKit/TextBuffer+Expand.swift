@@ -16,7 +16,7 @@ extension TextBuffer {
         guard lines.count != 0 else { return }
 
 
-        if isSelectionEmpty,
+        if range.isSelectionEmpty,
             let newRange = rangeForWordSelection(for: .validWordChars, at: range) {
             range.updateSelection(range: newRange)
             return

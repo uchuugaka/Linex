@@ -17,12 +17,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
 
-        let buffer = invocation.buffer
-        let selection = buffer.selectionType
-        let range = buffer.selections.firstObject as! XCSourceTextRange
+//        let buffer = invocation.buffer
+//        let selection = buffer.selectionType
+//        let range = buffer.selections.firstObject as! XCSourceTextRange
 
-        if let command = Options(command: invocation.commandIdentifier) {
-
+//        if let command = Options(command: invocation.commandIdentifier) {
+/*
             switch selection {
             case .none(let position):
                 var currentLine = buffer.lines[position.line] as! String
@@ -76,9 +76,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
 
             case .lines(_, _): break
-            case .multiLocation(_): break
             }
-        }
+  */
+
+//        }
 
         completionHandler(nil)
     }
