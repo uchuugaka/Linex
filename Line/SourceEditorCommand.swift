@@ -28,8 +28,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 buffer.lines.insert(copyOfLines, at: range.selectedLines)
 
                 switch range.selection {
-                case .none:
-                    if range.start.column == 0 {
+                case .none(_, let column):
+                    if column == 0 {
                         range.start.line += 1
                         range.end.line += 1
                     }
@@ -46,8 +46,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 buffer.lines.insert(commentedLines, at: range.selectedLines)
 
                 switch range.selection {
-                case .none:
-                    if range.start.column == 0 {
+                case .none(_, let column):
+                    if column == 0 {
                         range.start.line += 1
                         range.end.line += 1
                     }
@@ -59,8 +59,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .openNewLineBelow:
             buffer.selectionRanges.forEach { range in
                 if range.isSelectionEmpty {
-                    let indentationOffset = (buffer.lines[range.start.line] as! String).indentationOffset
-                    let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
+                    let indentationOffset = buffer[range.start.line].indentationOffset
+                    let offsetWhiteSpaces = String(repeating: " ", count: indentationOffset)
                     buffer.lines.insert(offsetWhiteSpaces, at: range.start.line + 1)
                     //Selection
                     let position = TextPosition(line: range.start.line + 1, column: indentationOffset)
@@ -72,8 +72,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .openNewLineAbove:
             buffer.selectionRanges.forEach { range in
                 if range.isSelectionEmpty {
-                    let indentationOffset = (buffer.lines[range.start.line] as! String).indentationOffset
-                    let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
+                    let indentationOffset = buffer[range.start.line].indentationOffset
+                    let offsetWhiteSpaces = String(repeating: " ", count: indentationOffset)
                     buffer.lines.insert(offsetWhiteSpaces, at: range.start.line)
                     //Selection
                     let position = TextPosition(line: range.start.line, column: indentationOffset)
@@ -97,25 +97,29 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             buffer.selectionRanges.forEach { range in
 
             switch range.selection {
-            case .none:
-                if range.start.line == buffer.lines.count { return }
+            case .none(let line, _):
+                if line == buffer.lines.count { return }
 
-                let firstLine = (buffer.lines[range.start.line] as! String).trimmingCharacters(in: .newlines)
-                let newLine = (buffer.lines[range.start.line + 1] as! String).trimmingCharacters(in: .whitespaces)
+                let caretOffset = buffer[line].count + 1
+                let lineIndexSet = IndexSet(arrayLiteral: line, line + 1)
+                let lines = buffer[lineIndexSet]
 
-                buffer.lines.replaceObject(at: range.start.line, with: "\(firstLine) \(newLine)")
-                buffer.lines.removeObject(at: range.start.line + 1)
+                var joinedLine = lines.joined(separator: " ", trimming: .whitespacesAndNewlines)
+                joinedLine.indent(by: lines.first!.indentationOffset)
+
+                buffer.lines.replaceObject(at: line, with: joinedLine)
+                buffer.lines.removeObject(at: line + 1)
 
                 //Selection/CaretPosition
-                range.start.column = firstLine.count + 1
-                range.end.column = firstLine.count + 1
+                range.start.column = caretOffset
+                range.end.column = caretOffset
 
             case .words: break
 
             case .lines:
-                let lines = buffer.lines.objects(at: range.selectedLines) as! [String]
-
-                var joinedLine = lines.lineJoined
+                let lines = buffer[range.selectedLines]
+                var joinedLine = lines.joined(separator: " ", trimming: .whitespacesAndNewlines)
+                joinedLine.indent(by: lines.first!.indentationOffset)
 
                 buffer.lines.removeObjects(at: range.selectedLines)
                 buffer.lines.insert(joinedLine, at: range.start.line)
@@ -130,9 +134,9 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .lineBeginning:
             buffer.selectionRanges.forEach { range in
                 switch range.selection {
-                case .none:
-                    let indentationOffset = (buffer.lines[range.start.line] as! String).indentationOffset
-                    if range.start.column == indentationOffset {
+                case .none(let line, let column):
+                    let indentationOffset = buffer[line].indentationOffset
+                    if column == indentationOffset {
                         range.start.column = 0; range.end.column = 0;
                     } else {
                         range.start.column = indentationOffset; range.end.column = indentationOffset;

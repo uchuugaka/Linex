@@ -12,9 +12,24 @@ import XcodeKit
 typealias TextBuffer = XCSourceTextBuffer
 
 extension TextBuffer {
+
+    subscript (offset: Int) -> Line {
+        return Line(lines[offset] as! String)
+    }
+
+    subscript (indexSet: IndexSet) -> [Line] {
+        return indexSet.map { self[$0] }
+    }
+    
+    var selectionRanges: [TextRange] {
+        return selections as! [TextRange]
+    }
+
     var lastPosition: TextPosition {
-        let lastLine = self.lines[self.lines.count - 1] as! String
-        return TextPosition(line: self.lines.count - 1, column: lastLine.count - 1)
+        let lastLineIndex = self.lines.count - 1
+        let lastLine = self[lastLineIndex]
+
+        return TextPosition(line: lastLineIndex, column: lastLine.count - 1)
     }
 
     func isStart(postion: TextPosition) -> Bool {
@@ -26,7 +41,18 @@ extension TextBuffer {
     }
 
     func char(at position: TextPosition) -> Character {
-        let currentLine = self.lines[position.line] as! String
-        return currentLine[position.column] as Character
+        let currentLine = self[position.line]
+        return currentLine[position.column]
     }
 }
+
+
+
+
+
+
+
+
+
+
+

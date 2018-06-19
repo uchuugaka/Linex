@@ -15,7 +15,8 @@ extension TextRange {
 
     enum Selection {
         //Complete line selection is counted multiline
-        case none, words, lines
+        case none(line: Int, column: Int)
+        case words, lines
     }
 
     var selectedLines: IndexSet {
@@ -27,7 +28,7 @@ extension TextRange {
 
     var selection: Selection {
         if start == end {
-            return .none
+            return .none(line: start.line, column: start.column)
         } else if start.line == end.line {
             return .words
         }
@@ -35,7 +36,10 @@ extension TextRange {
     }
 
     var isSelectionEmpty: Bool {
-        return selection == .none
+        if case Selection.none(_, _) = selection {
+            return true
+        }
+        return false
     }
 
     func updateSelection(range: TextRange) {

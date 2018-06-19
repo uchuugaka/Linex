@@ -44,18 +44,6 @@ extension String {
         self.replaceSubrange(self.index(at: range.lowerBound)..<self.index(at: range.upperBound), with: replacement)
     }
 
-    /// Fetch indentation offset of lines in code
-    /// "    var foo" -> 4
-    var indentationOffset: Int {
-        var i = 0
-        for a in self {
-            if a == " " {
-                i += 1
-            } else { break }
-        }
-        return i
-    }
-
     var trimmedStart: String {
         return self.replacingOccurrences(of: "^[ \t]+", with: "", options: .regularExpression)
     }

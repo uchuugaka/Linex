@@ -8,15 +8,13 @@
 
 import Foundation
 
-extension Array where Element == String {
-    var lineJoined: String {
+extension Array where Element == Line {
+    func joined(separator: String, trimming: CharacterSet) -> Line {
         guard self.count > 1 else { return self.first! }
+        let joinedString = self
+            .map { $0.stringValue.trimmingCharacters(in: trimming)}
+            .joined(separator: separator)
 
-        let offset = String(repeating: " ", count: self.first!.indentationOffset)
-        return
-            offset +
-            self
-                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
-                .joined(separator: " ")
+        return Line(joinedString)
     }
 }
