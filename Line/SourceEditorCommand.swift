@@ -128,8 +128,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 range.end.line = range.start.line
                 range.end.column = joinedLine.count
 
-                }//switch range.selection
-            }//for each range
+                }
+            }
 
         case .lineBeginning:
             buffer.selectionRanges.forEach { range in

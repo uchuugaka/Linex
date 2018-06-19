@@ -14,15 +14,18 @@ typealias TextRange = XCSourceTextRange
 extension TextRange {
 
     enum Selection {
-        //Complete line selection is counted multiline
         case none(line: Int, column: Int)
         case words, lines
     }
 
     var selectedLines: IndexSet {
         switch selection {
-        case .none, .words: return IndexSet(integer: start.line)
-        case .lines: return IndexSet(integersIn: start.line...(end.column == 0 ? end.line - 1 : end.line))
+        case .none, .words:
+            return IndexSet(integer: start.line)
+
+        //Complete line selection is counted multiline
+        case .lines:
+            return IndexSet(integersIn: start.line...(end.column == 0 ? end.line - 1 : end.line))
         }
     }
 

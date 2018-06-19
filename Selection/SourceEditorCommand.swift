@@ -24,7 +24,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .selectLine:
             buffer.selectionRanges.forEach { range in
                 if range.isSelectionEmpty {
-
                     let indentationOffset = buffer[range.start.line].indentationOffset
                     range.start.column = indentationOffset
                     range.end.column = (buffer.lines[range.start.line] as! String).count - 1

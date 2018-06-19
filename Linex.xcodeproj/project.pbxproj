@@ -50,9 +50,6 @@
 		E3938E4C209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
 		E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
 		E3938E4E209DF834007F69E3 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4A209DF834007F69E3 /* String+Basic.swift */; };
-		E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
-		E3938E52209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
-		E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3938E4F209DF8B0007F69E3 /* SelectionType.swift */; };
 		E39E226E1F59876A00354A5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E359423D1F55565E009EFA35 /* Cocoa.framework */; };
 		E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22721F59876A00354A5F /* SourceEditorExtension.swift */; };
 		E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E22741F59876A00354A5F /* SourceEditorCommand.swift */; };
@@ -152,7 +149,6 @@
 		E3938E3F209DF64F007F69E3 /* TextPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPosition.swift; sourceTree = "<group>"; };
 		E3938E45209DF772007F69E3 /* TextBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBuffer.swift; sourceTree = "<group>"; };
 		E3938E4A209DF834007F69E3 /* String+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Basic.swift"; sourceTree = "<group>"; };
-		E3938E4F209DF8B0007F69E3 /* SelectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionType.swift; sourceTree = "<group>"; };
 		E39E226D1F59876A00354A5F /* Selection.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Selection.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39E22711F59876A00354A5F /* Selection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Selection.entitlements; sourceTree = "<group>"; };
 		E39E22721F59876A00354A5F /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -225,12 +221,11 @@
 		E35783BF20B73B9A00D845A7 /* XcodeKit */ = {
 			isa = PBXGroup;
 			children = (
-				E3938E4F209DF8B0007F69E3 /* SelectionType.swift */,
+				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
 				E306510A20B0388C006B0BBF /* TextRange.swift */,
 				E3938E45209DF772007F69E3 /* TextBuffer.swift */,
 				E35783C020B73BF700D845A7 /* TextBuffer+Basic.swift */,
 				E306510620AEEC48006B0BBF /* TextBuffer+Expand.swift */,
-				E3938E3F209DF64F007F69E3 /* TextPosition.swift */,
 			);
 			path = XcodeKit;
 			sourceTree = "<group>";
@@ -589,7 +584,6 @@
 				E3938E3B209DF622007F69E3 /* Character+Linex.swift in Sources */,
 				E35942431F55565E009EFA35 /* SourceEditorExtension.swift in Sources */,
 				E39E22801F59C59100354A5F /* RawRepresentable.swift in Sources */,
-				E3938E51209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E35783C120B73BF700D845A7 /* TextBuffer+Basic.swift in Sources */,
 				E3938E47209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E306510720AEEC48006B0BBF /* TextBuffer+Expand.swift in Sources */,
@@ -612,7 +606,6 @@
 				E39E22811F59C59200354A5F /* RawRepresentable.swift in Sources */,
 				E39E22731F59876A00354A5F /* SourceEditorExtension.swift in Sources */,
 				E39E22751F59876A00354A5F /* SourceEditorCommand.swift in Sources */,
-				E3938E52209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E48209DF772007F69E3 /* TextBuffer.swift in Sources */,
 				E3938E42209DF665007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4D209DF834007F69E3 /* String+Basic.swift in Sources */,
@@ -640,7 +633,6 @@
 				E306510D20B0388C006B0BBF /* TextRange.swift in Sources */,
 				E306510020AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */,
 				E3A56CD020D82AD400A44165 /* Line.swift in Sources */,
-				E3938E53209DF8B0007F69E3 /* SelectionType.swift in Sources */,
 				E3938E38209DEC34007F69E3 /* String+Linex.swift in Sources */,
 				E3938E43209DF666007F69E3 /* TextPosition.swift in Sources */,
 				E3938E4E209DF834007F69E3 /* String+Basic.swift in Sources */,
