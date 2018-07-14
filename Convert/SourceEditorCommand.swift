@@ -17,11 +17,26 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
 
-//        let buffer = invocation.buffer
-//        let selection = buffer.selectionType
-//        let range = buffer.selections.firstObject as! XCSourceTextRange
+        let buffer = invocation.buffer
 
-//        if let command = Options(command: invocation.commandIdentifier) {
+        let command = Options(command: invocation.commandIdentifier)!
+        buffer.selectionRanges.forEach { range in
+            switch range.selection {
+
+            case .none(let line, let column):
+                let currentLine = buffer[line]
+                let currentChar = currentLine[column]
+                if currentChar.presentIn(.decimalDigits), var num = Int(String(currentChar)) {
+                    switch command {
+                    case .increment: num += 1
+                    case .decrement: num -= 1//currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
+                    }
+                }
+
+            default: break
+            }
+        }
+
 /*
             switch selection {
             case .none(let position):

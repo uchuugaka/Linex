@@ -13,11 +13,12 @@ typealias TextBuffer = XCSourceTextBuffer
 
 extension TextBuffer {
 
-    subscript (offset: Int) -> Line {
+    subscript(offset: Int) -> Line {
         return Line(lines[offset] as! String)
     }
 
-    subscript (indexSet: IndexSet) -> [Line] {
+    /// Fetch all lines at index present in indexSet
+    subscript(indexSet: IndexSet) -> [Line] {
         return indexSet.map { self[$0] }
     }
     
@@ -45,14 +46,3 @@ extension TextBuffer {
         return currentLine[position.column]
     }
 }
-
-
-
-
-
-
-
-
-
-
-

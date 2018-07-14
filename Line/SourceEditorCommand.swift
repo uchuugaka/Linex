@@ -137,9 +137,11 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 case .none(let line, let column):
                     let indentationOffset = buffer[line].indentationOffset
                     if column == indentationOffset {
-                        range.start.column = 0; range.end.column = 0;
+                        range.start.column = 0;
+                        range.end.column = 0;
                     } else {
-                        range.start.column = indentationOffset; range.end.column = indentationOffset;
+                        range.start.column = indentationOffset;
+                        range.end.column = indentationOffset;
                     }
                 case .words, .lines: break
                 }

@@ -12,16 +12,18 @@ import XCTest
 class LinexTests: XCTestCase {
 
     func testLineJoined() {
-        let arr = ["    Kaunteya\n", "    Suryawanshi\n"]
-        XCTAssertEqual(arr.lineJoined, "    Kaunteya Suryawanshi", arr.lineJoined)
-
+        let arr = [Line("    Kaunteya\n"), Line("    Suryawanshi\n")]
+        XCTAssertEqual(
+            arr.joined(separator: " ", trimming: .whitespacesAndNewlines),
+            Line("Kaunteya Suryawanshi")
+        )
     }
     
     func testLineIndentatinOffset() {
-        XCTAssertEqual("".indentationOffset, 0)
+        XCTAssertEqual(Line("").indentationOffset, 0)
         //              123456
-        XCTAssertEqual("      ".indentationOffset, 6)
-        XCTAssertEqual("      ABC".indentationOffset, 6)
+        XCTAssertEqual(Line("      ").indentationOffset, 6)
+        XCTAssertEqual(Line("      ABC").indentationOffset, 6)
     }
     
     func testOneSpace() {
