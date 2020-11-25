@@ -495,7 +495,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Kaunteya Suryawanshi";
 				TargetAttributes = {
 					E35942161F55564C009EFA35 = {
@@ -538,7 +538,7 @@
 			};
 			buildConfigurationList = E35942121F55564C009EFA35 /* Build configuration list for PBXProject "Linex" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -842,6 +842,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				CURRENT_PROJECT_VERSION = 10;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -863,6 +864,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				CURRENT_PROJECT_VERSION = 10;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -915,6 +917,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -934,6 +937,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -954,6 +958,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				CURRENT_PROJECT_VERSION = 10;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Selection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -972,6 +977,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				CURRENT_PROJECT_VERSION = 10;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Selection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -990,6 +996,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				CURRENT_PROJECT_VERSION = 10;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Convert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -1008,6 +1015,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
 				CURRENT_PROJECT_VERSION = 10;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Convert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
