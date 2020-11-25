@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD60A3FF256F15330053F85C /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD60A3FE256F15330053F85C /* XcodeKit.framework */; };
+		DD60A400256F15330053F85C /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD60A3FE256F15330053F85C /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DDD528CB256F162200DF2491 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD60A3FE256F15330053F85C /* XcodeKit.framework */; };
+		DDD528CC256F162200DF2491 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD60A3FE256F15330053F85C /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DDD528CE256F162900DF2491 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD60A3FE256F15330053F85C /* XcodeKit.framework */; };
+		DDD528CF256F162900DF2491 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD60A3FE256F15330053F85C /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E30650FE20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
 		E30650FF20AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
 		E306510020AC6E52006B0BBF /* CharacterSet+Linex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */; };
@@ -100,6 +106,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		DD60A401256F15330053F85C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DD60A400256F15330053F85C /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDD528CD256F162200DF2491 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DDD528CC256F162200DF2491 /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDD528D0256F162900DF2491 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DDD528CF256F162900DF2491 /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E359424D1F55565E009EFA35 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +155,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DD60A3FE256F15330053F85C /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		E30650FD20AC6E52006B0BBF /* CharacterSet+Linex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Linex.swift"; sourceTree = "<group>"; };
 		E306510620AEEC48006B0BBF /* TextBuffer+Expand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextBuffer+Expand.swift"; sourceTree = "<group>"; };
 		E306510A20B0388C006B0BBF /* TextRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRange.swift; sourceTree = "<group>"; };
@@ -181,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E359423E1F55565E009EFA35 /* Cocoa.framework in Frameworks */,
+				DD60A3FF256F15330053F85C /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E39E226E1F59876A00354A5F /* Cocoa.framework in Frameworks */,
+				DDD528CB256F162200DF2491 /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F543941F5A84FC008F426E /* Cocoa.framework in Frameworks */,
+				DDD528CE256F162900DF2491 /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +328,7 @@
 		E359423C1F55565E009EFA35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD60A3FE256F15330053F85C /* XcodeKit.framework */,
 				E359423D1F55565E009EFA35 /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -397,6 +441,7 @@
 				E35942371F55565E009EFA35 /* Sources */,
 				E35942381F55565E009EFA35 /* Frameworks */,
 				E35942391F55565E009EFA35 /* Resources */,
+				DD60A401256F15330053F85C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,6 +459,7 @@
 				E39E22691F59876A00354A5F /* Sources */,
 				E39E226A1F59876A00354A5F /* Frameworks */,
 				E39E226B1F59876A00354A5F /* Resources */,
+				DDD528CD256F162200DF2491 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -431,6 +477,7 @@
 				E3F5438F1F5A84FC008F426E /* Sources */,
 				E3F543901F5A84FC008F426E /* Frameworks */,
 				E3F543911F5A84FC008F426E /* Resources */,
+				DDD528D0256F162900DF2491 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -792,8 +839,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				CURRENT_PROJECT_VERSION = 10;
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -810,8 +859,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				CURRENT_PROJECT_VERSION = 10;
 				INFOPLIST_FILE = Linex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -861,6 +912,7 @@
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex.Line;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -879,6 +931,7 @@
 				INFOPLIST_FILE = Line/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaunteya.Linex.Line;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -894,6 +947,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				CURRENT_PROJECT_VERSION = 10;
 				INFOPLIST_FILE = Selection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -911,6 +965,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				CURRENT_PROJECT_VERSION = 10;
 				INFOPLIST_FILE = Selection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -928,6 +983,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				CURRENT_PROJECT_VERSION = 10;
 				INFOPLIST_FILE = Convert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -945,6 +1001,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KQQ77ZBE5E;
+				CURRENT_PROJECT_VERSION = 10;
 				INFOPLIST_FILE = Convert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
