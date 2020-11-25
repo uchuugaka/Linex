@@ -66,8 +66,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
         }
 
-        defer {
-            completionHandler(nil)
-        }
-    }    
+        completionHandler(nil)
+    }
 }
