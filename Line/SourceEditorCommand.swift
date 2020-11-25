@@ -16,144 +16,138 @@ enum Options: String {
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
-    public func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Swift.Void) {
-
+    public func perform(with invocation: XCSourceEditorCommandInvocation,
+                        completionHandler: @escaping (Error?) -> Swift.Void) {
         let buffer = invocation.buffer
-        let selectedRanges: SelectionType = selectionRanges(of: buffer)
-        let selectionIndexSet: IndexSet = selectedLinesIndexSet(for: selectedRanges)
 
         switch Options(command: invocation.commandIdentifier)! {
         case .duplicate:
-            let range = buffer.selections.firstObject as! XCSourceTextRange
-            let copyOfLines = buffer.lines.objects(at: selectionIndexSet)
-            buffer.lines.insert(copyOfLines, at: selectionIndexSet)
+            buffer.selectionRanges.forEach { range in
+                let end = range.end//Required for updating selection
+                let copyOfLines = buffer.lines.objects(at: range.selectedLines)
+                buffer.lines.insert(copyOfLines, at: range.selectedLines)
 
-            switch selectedRanges {
-            case .none(_, let column):
-                if column == 0 {
-                    range.start.line += 1
-                    range.end.line += 1
+                switch range.selection {
+                case .none(_, let column):
+                    if column == 0 {
+                        range.start.line += 1
+                        range.end.line += 1
+                    }
+                case .words: break
+                case .lines: range.start = end
                 }
-            case .words(_, _, _)://TODO:
-                break
-            case .lines(_, let endPosition): range.start = endPosition
-            case .multiLocation(_): break
             }
 
         case .commentedDuplicate:
-            let range = buffer.selections.firstObject as! XCSourceTextRange
-            let copyOfLines = buffer.lines.objects(at: selectionIndexSet)
-            let commentedLines = copyOfLines.map { "//" + ($0 as! String) }
-            buffer.lines.insert(commentedLines, at: selectionIndexSet)
+            buffer.selectionRanges.forEach { range in
+                let end = range.end//Required for updating selection
+                let copyOfLines = buffer.lines.objects(at: range.selectedLines)
+                let commentedLines = copyOfLines.map { "//" + ($0 as! String) }
+                buffer.lines.insert(commentedLines, at: range.selectedLines)
 
-            switch selectedRanges {
-            case .none(_, let column):
-                if column == 0 {
-                    range.start.line += 1
-                    range.end.line += 1
+                switch range.selection {
+                case .none(_, let column):
+                    if column == 0 {
+                        range.start.line += 1
+                        range.end.line += 1
+                    }
+                case .words: break
+                case .lines: range.start = end
                 }
-            case .words(_, _, _)://TODO:
-                break
-            case .lines(_, let endPosition): range.start = endPosition
-            case .multiLocation(_): break
             }
 
         case .openNewLineBelow:
-            switch selectedRanges {
-            case .none(let line, _),
-                 .words(let line, _, _):
-                let indentationOffset = (buffer.lines[line] as! String).lineIndentationOffset()
-                let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
-                buffer.lines.insert(offsetWhiteSpaces, at: line + 1)
-                //Selection
-                let position = XCSourceTextPosition(line: line + 1, column: indentationOffset)
-                let lineSelection = XCSourceTextRange(start: position, end: position)
-                buffer.selections.setArray([lineSelection])
-
-            case .lines(_, _): break
-            case .multiLocation(_): break
+            buffer.selectionRanges.forEach { range in
+                if range.isSelectionEmpty {
+                    let indentationOffset = buffer[range.start.line].indentationOffset
+                    let offsetWhiteSpaces = String(repeating: " ", count: indentationOffset)
+                    buffer.lines.insert(offsetWhiteSpaces, at: range.start.line + 1)
+                    //Selection
+                    let position = TextPosition(line: range.start.line + 1, column: indentationOffset)
+                    let lineSelection = XCSourceTextRange(start: position, end: position)
+                    buffer.selections.setArray([lineSelection])
+                }
             }
 
         case .openNewLineAbove:
-            switch selectedRanges {
-            case .none(let line, _),
-                 .words(let line, _, _):
-                let indentationOffset = (buffer.lines[line] as! String).lineIndentationOffset()
-                let offsetWhiteSpaces = Array(repeating: " ", count: indentationOffset).joined()
-                buffer.lines.insert(offsetWhiteSpaces, at: line)
-                //Selection
-                let position = XCSourceTextPosition(line: line, column: indentationOffset)
-                let lineSelection = XCSourceTextRange(start: position, end: position)
-                buffer.selections.setArray([lineSelection])
-
-            case .lines(_, _): break
-            case .multiLocation(_): break
+            buffer.selectionRanges.forEach { range in
+                if range.isSelectionEmpty {
+                    let indentationOffset = buffer[range.start.line].indentationOffset
+                    let offsetWhiteSpaces = String(repeating: " ", count: indentationOffset)
+                    buffer.lines.insert(offsetWhiteSpaces, at: range.start.line)
+                    //Selection
+                    let position = TextPosition(line: range.start.line, column: indentationOffset)
+                    let lineSelection = XCSourceTextRange(start: position, end: position)
+                    buffer.selections.setArray([lineSelection])
+                }
             }
 
         case .deleteLine:
-            switch selectedRanges {
-            case .none(let line, _),
-                 .words(let line, _, _):
-                buffer.lines.removeObject(at: line)
+            buffer.selectionRanges.forEach { range in
+                switch range.selection {
+                case .none, .words:
+                    buffer.lines.removeObject(at: range.start.line)
 
-            case .lines(_, _): break
-            case .multiLocation(_): break
+                case .lines: break
+
+                }
             }
 
         case .join:
-            switch selectedRanges {
-            case .none(let line, _),
-                 .words(let line, _, _):
+            buffer.selectionRanges.forEach { range in
+
+            switch range.selection {
+            case .none(let line, _):
                 if line == buffer.lines.count { return }
 
-                let firstLine = (buffer.lines[line] as! String).trimmingCharacters(in: .newlines)
-                let newLine = (buffer.lines[line + 1] as! String).trimmingCharacters(in: .whitespaces)
+                let caretOffset = buffer[line].count + 1
+                let lineIndexSet = IndexSet(arrayLiteral: line, line + 1)
+                let lines = buffer[lineIndexSet]
 
-                buffer.lines.replaceObject(at: line, with: "\(firstLine) \(newLine)")
+                var joinedLine = lines.joined(separator: " ", trimming: .whitespacesAndNewlines)
+                joinedLine.indent(by: lines.first!.indentationOffset)
+
+                buffer.lines.replaceObject(at: line, with: joinedLine)
                 buffer.lines.removeObject(at: line + 1)
 
                 //Selection/CaretPosition
-                let range = buffer.selections.lastObject as! XCSourceTextRange
-                range.start.column = firstLine.characters.count + 1
-                range.end.column = firstLine.characters.count + 1
+                range.start.column = caretOffset
+                range.end.column = caretOffset
 
-            case .lines(_, _):
-                let range = buffer.selections.firstObject as! XCSourceTextRange
-                let selectedLines = buffer.lines.objects(at: selectionIndexSet) as! [String]
+            case .words: break
 
-                var joinedLine = ""
-                for (i, line) in selectedLines.enumerated() {
-                    if i == 0 {
-                        joinedLine += line.trimmingCharacters(in: .newlines)
-                    } else {
-                        joinedLine += " " + line.trimmedStart().trimmingCharacters(in: .newlines)
-                    }
-                }
-                buffer.lines.removeObjects(at: selectionIndexSet)
+            case .lines:
+                let lines = buffer[range.selectedLines]
+                var joinedLine = lines.joined(separator: " ", trimming: .whitespacesAndNewlines)
+                joinedLine.indent(by: lines.first!.indentationOffset)
+
+                buffer.lines.removeObjects(at: range.selectedLines)
                 buffer.lines.insert(joinedLine, at: range.start.line)
 
                 //Selection/CaretPosition
                 range.end.line = range.start.line
-                range.end.column = joinedLine.characters.count
+                range.end.column = joinedLine.count
 
-            case .multiLocation(_): break
+                }
             }
 
         case .lineBeginning:
-            switch selectedRanges {
-            case .none(let line, _),
-                 .words(let line, _, _):
-                let range = buffer.selections.lastObject as! XCSourceTextRange
-                let indentationOffset = (buffer.lines[line] as! String).lineIndentationOffset()
-                if range.start.column == indentationOffset {
-                    range.start.column = 0; range.end.column = 0;
-                } else {
-                    range.start.column = indentationOffset; range.end.column = indentationOffset;
+            buffer.selectionRanges.forEach { range in
+                switch range.selection {
+                case .none(let line, let column):
+                    let indentationOffset = buffer[line].indentationOffset
+                    if column == indentationOffset {
+                        range.start.column = 0;
+                        range.end.column = 0;
+                    } else {
+                        range.start.column = indentationOffset;
+                        range.end.column = indentationOffset;
+                    }
+                case .words, .lines: break
                 }
-            case .lines(_, _): break
-            case .multiLocation(_): break
             }
         }
+
         completionHandler(nil)
     }
 }

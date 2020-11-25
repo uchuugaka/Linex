@@ -18,32 +18,47 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
 
         let buffer = invocation.buffer
-        let selectedRanges: SelectionType = selectionRanges(of: buffer)
 
-        if let command = Options(command: invocation.commandIdentifier) {
+        let command = Options(command: invocation.commandIdentifier)!
+        buffer.selectionRanges.forEach { range in
+            switch range.selection {
 
-            switch selectedRanges {
             case .none(let line, let column):
-                let range = buffer.selections.firstObject as! XCSourceTextRange
-                var currentLine = buffer.lines[line] as! String
-                let currentChar = currentLine[column] as String
+                let currentLine = buffer[line]
+                let currentChar = currentLine[column]
+                if currentChar.presentIn(.decimalDigits), var num = Int(String(currentChar)) {
+                    switch command {
+                    case .increment: num += 1
+                    case .decrement: num -= 1//currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
+                    }
+                }
+
+            default: break
+            }
+        }
+
+/*
+            switch selection {
+            case .none(let position):
+                var currentLine = buffer.lines[position.line] as! String
+                let currentChar = currentLine[position.column]
 
                 //If caret is beside number
-                if let _ = currentChar.rangeOfCharacter(from: .decimalDigits), let num = Int(currentChar) {
+                if currentChar.presentIn(.decimalDigits), let num = Int(String(currentChar)) {
                     let currentRange = currentLine.indexRangeFor(range: range.start.column...range.start.column)
                     switch command {
                     case .increment: currentLine.replaceSubrange(currentRange, with: "\(num + 1)")
                     case .decrement: currentLine.replaceSubrange(currentRange, with: "\(num - 1)")
                     }
                 } else {
-                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: column) {
+                    if let selectionRange:Range<String.Index> = currentLine.selectWord(pin: position.column, validChars: .validWordChars) {
                         let selectedSubString = currentLine[selectionRange]
                         if let newString = toggle(boolString: selectedSubString) {
                             currentLine.replaceSubrange(selectionRange, with: newString)
                         }
                     }
                 }
-                buffer.lines.replaceObject(at: line, with: currentLine)
+                buffer.lines.replaceObject(at: position.line, with: currentLine)
 
             case .words(let line, let colStart, let colEnd):
                 var currentLine = buffer.lines[line] as! String
@@ -76,9 +91,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 }
 
             case .lines(_, _): break
-            case .multiLocation(_): break
             }
-        }
+  */
+
+//        }
 
         completionHandler(nil)
     }

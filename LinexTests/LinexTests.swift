@@ -10,70 +10,44 @@ import XCTest
 @testable import Linex
 
 class LinexTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
 
+    func testLineJoined() {
+        let arr = [Line("    Kaunteya\n"), Line("    Suryawanshi\n")]
+        XCTAssertEqual(
+            arr.joined(separator: " ", trimming: .whitespacesAndNewlines),
+            Line("Kaunteya Suryawanshi")
+        )
+    }
+    
     func testLineIndentatinOffset() {
-        XCTAssertEqual("".lineIndentationOffset(), 0)
+        XCTAssertEqual(Line("").indentationOffset, 0)
         //              123456
-        XCTAssertEqual("      ".lineIndentationOffset(), 6)
-        XCTAssertEqual("      ABC".lineIndentationOffset(), 6)
-
+        XCTAssertEqual(Line("      ").indentationOffset, 6)
+        XCTAssertEqual(Line("      ABC").indentationOffset, 6)
     }
     
     func testOneSpace() {
-
-        XCTAssert(" ".lineOneSpaceAt(pin: 0) == (0, " "))
+        XCTAssert(" ".lineOneSpaceAt(pin: 0) == (0, ""))
         XCTAssert("   ".lineOneSpaceAt(pin: 0) == (0, " "))
         XCTAssert("   ".lineOneSpaceAt(pin: 1) == (0, " "))
 
-        XCTAssert("ABC".lineOneSpaceAt(pin: 0) == (0, "ABC"))
-        XCTAssert("ABC".lineOneSpaceAt(pin: 1) == (1, "ABC"))
-        XCTAssert("ABC".lineOneSpaceAt(pin: 2) == (2, "ABC"))
+        XCTAssert("ABC".lineOneSpaceAt(pin: 0) == (0, " ABC"))
+        XCTAssert("ABC".lineOneSpaceAt(pin: 1) == (1, "A BC"))
+        XCTAssert("ABC".lineOneSpaceAt(pin: 2) == (2, "AB C"))
+        XCTAssert("AB C".lineOneSpaceAt(pin: 2) == (2, "ABC"))
 
-        //        0123456789
-        let t1 = "A    BCD", t2 = "A BCD"
-        XCTAssert(t1.lineOneSpaceAt(pin: 0) == (0, t1))
-        XCTAssert(t1.lineOneSpaceAt(pin: 1) == (1, t2))
-        XCTAssert(t1.lineOneSpaceAt(pin: 2) == (1, t2))
-        XCTAssert(t1.lineOneSpaceAt(pin: 3) == (1, t2))
-        XCTAssert(t1.lineOneSpaceAt(pin: 4) == (1, t2))
-        XCTAssert(t1.lineOneSpaceAt(pin: 5) == (1, t2))
-        XCTAssert(t1.lineOneSpaceAt(pin: 6) == (6, t1))
-        XCTAssert(t1.lineOneSpaceAt(pin: 7) == (7, t1))
-        XCTAssert(t1.lineOneSpaceAt(pin: 8) == (8, t1))
+        //         0123456789
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 0) == (0,  " A    BCD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 1) == (1, "A BCD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 2) == (1, "A BCD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 3) == (1, "A BCD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 4) == (1, "A BCD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 5) == (1, "A BCD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 6) == (6,  "A    B CD"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 7) == (7,  "A    BC D"))
+        XCTAssert("A    BCD".lineOneSpaceAt(pin: 8) == (8,  "A    BCD "))
     }
-
-    func testFarthestDistance() {
-        XCTAssertEqual(["var name = Kaunteya",].farthestOffsetFor(subStr: "=")!, 8)
-
-        XCTAssertEqual(["var name = Kaunteya",
-                        "self.lastupdated = createdOn",
-                        ].farthestOffsetFor(subStr: "=")!,16)
-
-        XCTAssertEqual(["var name = Kaunteya",
-                        "self.lastupdated = createdOn",
-                        "self.name = name",
-                        ].farthestOffsetFor(subStr: "=")!, 16)
-
-        XCTAssertEqual(["var name  = Kaunteya",
-                        "self.lastupdated     = createdOn",
-                        "self.name = name",
-                        ].farthestOffsetFor(subStr: "=")!, 16)
-
-        XCTAssertEqual(["var name  = Kaunteya",
-                        "self.lastupdated     = createdOn",
-                        "self.name                             = name",
-                        ].farthestOffsetFor(subStr: "=")!, 16)
-
-    }
-
+    
     func testAlign() {
         XCTAssertEqual(["let name = \"Kaunteya\""].autoAlign()!,
                        ["let name = \"Kaunteya\""])

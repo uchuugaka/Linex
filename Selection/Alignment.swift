@@ -10,20 +10,20 @@ import Foundation
 extension Array where Element == String {
 
     // Return nil when offset is not found in any line
-    func farthestOffsetFor(subStr: String) -> Int? {
+    private func farthestOffsetFor(subStr: String) -> Int? {
         guard self.count > 0 else { return nil; }
         var farthest: Int = 0
         for str in self {
             let seperated = str.components(separatedBy: subStr)
             if seperated.count == 2 {
-                let offset = seperated.first!.trimmedEnd().characters.count
+                let offset = seperated.first!.trimmedEnd.count
                 if offset > farthest { farthest = offset }
             }
         }
         return farthest
     }
 
-    func alignedDefineStatements() -> [String] {
+    private func alignedDefineStatements() -> [String] {
         var farthestOffset = 0
         var indexSet = [Int]()
         var alignedLines = self
@@ -34,8 +34,8 @@ extension Array where Element == String {
                 indexSet.append(i)
                 let split = line.condensedWhitespace.components(separatedBy: " ")
                 if split.count > 2 {
-                    if farthestOffset < split[1].characters.count {
-                        farthestOffset = split[1].characters.count
+                    if farthestOffset < split[1].count {
+                        farthestOffset = split[1].count
                     }
                 }
             }
@@ -56,7 +56,7 @@ extension Array where Element == String {
         return alignedLines
     }
 
-    func alignedPropertyStatements() -> [String]? {
+    private func alignedPropertyStatements() -> [String]? {
         let pattern = "@property\\s*(\\([\\w,= ]+\\))*\\s*(\\w+)\\s*(\\*)*\\s*(\\w+);(.*)"
         let mainRegex = try! NSRegularExpression(pattern: pattern)
 
@@ -67,7 +67,8 @@ extension Array where Element == String {
             let range = NSRange(location: 0, length: line.count)
             if let property = mainRegex.firstMatch(in: line, options: [], range: range) {
                 let attributeRange = property.range(at: 1)
-                if attributeRange.lowerBound < attributeRange.upperBound && maxAttributeLength < line[attributeRange].count {
+                if attributeRange.lowerBound < attributeRange.upperBound &&
+                    maxAttributeLength < line[attributeRange].count {
                     maxAttributeLength = line[attributeRange].count
                 }
                 let dataTypeRange = property.range(at: 2)
@@ -105,7 +106,7 @@ extension Array where Element == String {
         }
     }
 
-    func aligned(seperator: String) -> [String]? {
+    private func aligned(seperator: String) -> [String]? {
         guard self.count > 1 else {
             assert(self.count == 1)
             return self
@@ -119,7 +120,7 @@ extension Array where Element == String {
             let component = str.components(separatedBy: seperator)
             if component.count == 2 {
                 let a = component.first!.padding(toLength: alignOffset, withPad: " ", startingAt: 0)
-                return "\(a)\(seperator)\(component[1].trimmedStart())"
+                return "\(a)\(seperator)\(component[1].trimmedStart)"
             }
             return str
         }

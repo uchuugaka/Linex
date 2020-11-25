@@ -15,68 +15,57 @@ enum Options: String {
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
+    func perform(with invocation: XCSourceEditorCommandInvocation,
+                 completionHandler: @escaping (Error?) -> Void ) -> Void {
 
         let buffer = invocation.buffer
-        let selectedRanges: SelectionType = selectionRanges(of: buffer)
-        let selectionIndex: IndexSet = selectedLinesIndexSet(for: selectedRanges)
 
         switch Options(command: invocation.commandIdentifier)! {
         case .selectLine:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            range.start.column = 0
-            range.end.line += 1
-            range.end.column = 0
+            buffer.selectionRanges.forEach { range in
+                if range.isSelectionEmpty {
+                    let indentationOffset = buffer[range.start.line].indentationOffset
+                    range.start.column = indentationOffset
+                    range.end.column = (buffer.lines[range.start.line] as! String).count - 1
+                } else {
+                    range.start.column = 0
+                    range.end.line += 1
+                    range.end.column = 0
+                }
+            }
 
         case .selectLineAbove:
-            let range = buffer.selections.lastObject as! XCSourceTextRange
-            range.start.column = 0
-            range.start.line = max(range.start.line - 1, 0)
-            range.end.column = 0
+            buffer.selectionRanges.forEach { range in
+                range.start.column = 0
+                range.start.line = max(range.start.line - 1, 0)
+                range.end.column = 0
+            }
 
         case .oneSpace:
-            switch selectedRanges {
-            case .none(let line, let column):
-                let range = buffer.selections.lastObject as! XCSourceTextRange
-                let currentLine = buffer.lines[line] as! String
-                let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: column)
-                buffer.lines.replaceObject(at: line, with: newLine)
-                range.end.column = newOffset
-                range.start.column = newOffset
-            case .words(_, _, _): break
-            case .lines(_, _): break
-            case .multiLocation(_): break
+            buffer.selectionRanges.forEach { range in
+                if range.isSelectionEmpty {
+                    let currentLine = buffer.lines[range.start.line] as! String
+                    let (newOffset, newLine) = currentLine.lineOneSpaceAt(pin: range.start.column)
+                    buffer.lines.replaceObject(at: range.start.line, with: newLine)
+                    range.end.column = newOffset
+                    range.start.column = newOffset
+                }
             }
 
         case .expand:
-            switch selectedRanges {
-            case .none(let line, let column):
-                let range = buffer.selections.lastObject as! XCSourceTextRange
-                let currentLine = buffer.lines[line] as! String
-
-                if let selectionRange:Range<Int> = currentLine.selectWord(pin: column) {
-                    range.start.column = selectionRange.lowerBound
-                    range.end.column = selectionRange.upperBound
-                }
-            case .words(_, _, _): break
-            case .lines(_, _): break
-            case .multiLocation(_): break
-            }
+            buffer.outerExpand()
 
         case .align:
-            switch selectedRanges {
-            case .none(_, _): break
-            case .words(_, _, _): break
-            case .lines(_, _):
-                let selectedLines = buffer.lines.objects(at: selectionIndex) as! [String]
-                if let aligned = selectedLines.autoAlign() {
-                    buffer.lines.replaceObjects(at: selectionIndex, with: aligned)
+            buffer.selectionRanges.forEach { range in
+                if range.start.line != range.end.line {
+                    let lines = buffer.lines.objects(at: range.selectedLines) as! [String]
+                    if let aligned = lines.autoAlign() {
+                        buffer.lines.replaceObjects(at: range.selectedLines, with: aligned)
+                    }
                 }
-
-            case .multiLocation(_): break
             }
         }
+
         completionHandler(nil)
     }
-    
 }
