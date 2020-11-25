@@ -27,11 +27,11 @@ extension Character {
 
     var closing: Character {
         assert(self.isOpening, "Only opening characters can have closing characters")
-        return ["{":"}", "(":")", "[":"]"][self]!
+        return Self(["{":"}", "(":")", "[":"]"][self]!)
     }
 
     var opening: Character {
         assert(self.isClosing, "Only closing characters can have opening characters")
-        return ["}":"{", ")":"(", "]":"["][self]!
+        return Self(["}":"{", ")":"(", "]":"["][self]!)
     }
 }
